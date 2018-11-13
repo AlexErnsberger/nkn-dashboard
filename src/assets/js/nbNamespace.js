@@ -1,4 +1,5 @@
 const nsNamespace = {
+  global: 'global',
   signIn: 'signin'
 }
 

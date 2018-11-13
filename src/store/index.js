@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import global from '@/store/global'
+import nbNamespace from '@/assets/js/nbNamespace'
 
 Vue.use(Vuex)
 
+let modules = {}
+modules[nbNamespace.global] = global
+
 const vuex = new Vuex.Store({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {}
+  modules: modules
 })
 
 export default vuex

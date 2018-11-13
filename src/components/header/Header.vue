@@ -4,7 +4,7 @@
       <div class="header-logo">
         <img src="../../assets/img/icon/logo.png">
       </div>
-      <div class="header-nav">
+      <div class="header-nav" v-if="$store.getters['global/getUserInfo']">
         <header-nav></header-nav>
       </div>
     </div>
