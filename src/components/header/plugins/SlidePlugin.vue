@@ -25,10 +25,20 @@ export default {
   methods: {
     showList () {
       this.active = !this.active
+      setTimeout(document.addEventListener('click', this.checkClick), 0)
     },
     handlerClick () {
+      this.active = false
       this.$emit('activeEvent',this)
+    },
+    checkClick (e) {
+      if (!this.$el.contains(e.target)) {
+        this.active = false
+      }
     }
+  },
+  beforeDestroy () {
+    document.removeEventListener('click',this.checkClick)
   }
 }
 </script>
@@ -56,6 +66,9 @@ export default {
         text-align: center;
         color:#8992b0;
         background: @common-bg-color;
+      }
+      li:hover {
+        background: #f8f9fa;
       }
     }
   }
