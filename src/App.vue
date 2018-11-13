@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <nb-header></nb-header>
     <router-view/>
+    <nb-footer></nb-footer>
   </div>
 </template>
 
 <script>
+import nbHeader from '@/components/header/Header.vue'
+import nbFooter from '@/components/footer/Footer.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    nbHeader, nbFooter
+  }
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 #app {
+  background: @body-bg-color;
 }
 </style>

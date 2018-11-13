@@ -1,7 +1,8 @@
-html, body {
+html{
   font: 14px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 1440px;
 }
 
 img {
@@ -24,4 +25,13 @@ html {
 body {
   width: 100vw;
   overflow: hidden;
-} 
+}
+
+/**
+*common class
+*/
+.nb-container{
+  width: 1440px;
+  padding: 0 60px;
+  margin: auto;
+}
