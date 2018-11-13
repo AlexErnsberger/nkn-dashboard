@@ -30,8 +30,7 @@ header{
   .header-logo{
     float: left;
     img{
-      height: 30px;
-      max-width: 100%;
+      width: 90px;height: 36px;
     }
   }
   .header-nav{
