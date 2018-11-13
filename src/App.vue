@@ -9,10 +9,11 @@
 <script>
 import nbHeader from '@/components/header/Header.vue'
 import nbFooter from '@/components/footer/Footer.vue'
+import CommonLoading from '@/components/base/CommonLoading.vue'
 export default {
   name: 'App',
   components: {
-    nbHeader, nbFooter
+    nbHeader, nbFooter, CommonLoading
   }
 }
 </script>
