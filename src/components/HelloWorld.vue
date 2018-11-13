@@ -27,9 +27,6 @@
 </template>
  
 <script>
-  $(function () {
-    alert(123);
-  });
   export default {
     name: 'hello',
     data () {

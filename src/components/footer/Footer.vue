@@ -15,13 +15,10 @@ export default {
 
 <style lang="less" scoped>
 footer{
-  height: 80px;
-  width: 100%;
+  height: 80px;width: 100%;
+  font-size: 12px;font-weight: 100;color:@footer-color;
   background: @common-bg-color;
   text-align: center;
-  font-size: 12px;
-  font-weight: 100;
-  color:@footer-color;
   .nb-copyright{
     line-height: 40px;
   }

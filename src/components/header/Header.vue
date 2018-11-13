@@ -2,10 +2,10 @@
   <header>
     <div class="nb-container">
       <div class="header-logo">
-        <img src="../../assets/img/logo.png">
+        <img src="../../assets/img/icon/logo.png">
       </div>
       <div class="header-nav">
-        
+        <header-nav></header-nav>
       </div>
     </div>
   </header>
