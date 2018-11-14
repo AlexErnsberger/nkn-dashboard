@@ -1,0 +1,10 @@
+.input-separate {
+  margin-top: 42px;
+}
+.buttom-separate {
+  margin-top: 80px;
+}
+.sigin-content, .pwdchange-content{
+  width: 640px;
+  margin: auto;
+}

@@ -6,8 +6,7 @@
       :placeholder="placeholder" 
       :maxlength="maxlength" 
       :value="currentValue"
-      @input="handleInput"
-      @change="handleChange">
+      @input="handleInput">
     <img v-if="this.type === 'password'" :src="iconSrc" @click="showPass">
   </div>
 </template>
@@ -44,17 +43,12 @@ export default {
     handleInput (event) {
       let value = event.target.value
       this.setCurrentValue(value)
-      this.$emit('input', value)
-      this.$emit('on-change', event)
     },
-    handleChange (event) {
-      this.$emit('on-input-change', event)
-    },
-    setCurrentValue () {
-      if (this.currentValue === this.value) {
+    setCurrentValue (value) {
+      if (this.currentValue === value) {
         return
       }
-      this.currentValue = this.value
+      this.currentValue = value
     },
     showPass () {
       switch (this.currentType) {
@@ -77,9 +71,8 @@ export default {
 
 <style lang="less" scoped>
 .signin-input-item{
-  width: 640px;
-  margin: auto;
   border-bottom: 2px solid @si-color;
+  position: relative;
   label {
     display: block;
     color: @si-input-label-color;
@@ -88,15 +81,16 @@ export default {
     margin-bottom: 14px;
   }
   input {
-    padding-bottom: 12px;
+    margin-bottom: 12px;
     outline: none;border:none;
-    width: 600px;
     &::placeholder{
       color: @si-input-ph-color;
     }
   }
   img {
     width: 36px;height: 21px;
+    position: absolute;
+    right: 0;bottom: 8px;
   }
 }
 </style>

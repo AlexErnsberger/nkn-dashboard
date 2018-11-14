@@ -1,31 +1,47 @@
 <template>
   <div class="signin-button-item">
-    <button>
-      <span>{{word}}</span>
+    <button @click="btnClick">
+      {{btnContent}}
     </button>
+    <span @click="linkClick">{{linkContent}}</span>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    word: String
+    btnContent: String,
+    linkContent: String
+  },
+  methods: {
+    btnClick (event) {
+      this.$emit('click', event)
+    },
+    linkClick (event) {
+      this.$emit('linkTo', event)
+    }
   }
 }
 </script>
 
 <style lang="less" scoped>
 .signin-button-item{
+  text-align: center;
   button{
-    display: block;
     width: 400px;height: 90px;
-    margin: auto;
     text-align: center;
     border-radius: 6px;
-    background: #318bec;
+    background: @si-buttom-common-color;
     font-size: 24px;
     color: white;
     border: none;outline: none;
+  }
+  &>span{
+    display: block;
+    cursor: pointer;
+    margin-top: 25px;
+    font-size: 20px;
+    color: @si-buttom-common-color;
   }
 }
 </style>

@@ -1,15 +1,16 @@
 <template>
   <div class="nb-signin">
     <h1>NKN Mining Dashboard</h1>
-    <sign-in-content></sign-in-content>
+    <pwd-change-component></pwd-change-component>
   </div>
 </template>
 
 <script>
-import SignInContent from '@/components/signin/Signin.vue'
+import SignInComponent from '@/components/signin/Signin.vue'
+import PwdChangeComponent from '@/components/signin/PwdChange.vue'
 export default {
   components: {
-    SignInContent
+    SignInComponent, PwdChangeComponent
   }
 }
 </script>
@@ -23,7 +24,7 @@ export default {
   h1{
     font-size: 30px;
     color:@si-color;
-    padding:60px 0;
+    padding:60px 0;margin: 0;
     text-align: center;
   }
 }
