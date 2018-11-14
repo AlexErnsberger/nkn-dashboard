@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <nb-header></nb-header>
-    <router-view/>
+    <div class="nb-container">
+      <router-view class="view-margin"/>
+    </div>
     <nb-footer></nb-footer>
   </div>
 </template>
@@ -9,11 +11,10 @@
 <script>
 import nbHeader from '@/components/header/Header.vue'
 import nbFooter from '@/components/footer/Footer.vue'
-import CommonLoading from '@/components/base/CommonLoading.vue'
 export default {
   name: 'App',
   components: {
-    nbHeader, nbFooter, CommonLoading
+    nbHeader, nbFooter
   }
 }
 </script>
@@ -21,5 +22,8 @@ export default {
 <style lang="less" scoped>
 #app {
   background: @body-bg-color;
+  .view-margin{
+    margin: 20px 0;
+  }
 }
 </style>

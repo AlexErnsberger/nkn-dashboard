@@ -4,7 +4,7 @@
     <span v-if="iconDesc">{{iconDesc}}</span>
     <div :class="['slide-list',{'show':active}]">
       <ul>
-        <li v-for="(item, index) in list" :key="index" @click.stop="handlerClick">{{item}}</li>
+        <li v-for="(item, index) in list" :key="index" @click.stop="handleClick">{{item}}</li>
       </ul>
     </div>
   </div>
@@ -27,7 +27,7 @@ export default {
       this.active = !this.active
       setTimeout(document.addEventListener('click', this.checkClick), 0)
     },
-    handlerClick () {
+    handleClick () {
       this.active = false
       this.$emit('activeEvent',this)
     },

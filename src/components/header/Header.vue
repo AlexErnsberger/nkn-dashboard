@@ -25,8 +25,8 @@ header{
   display: inline-block;
   width: 100%;
   line-height: 60px;
-  margin-bottom: 30px;
   background: @common-bg-color;
+  .mixin-boxshadow;
   .header-logo{
     float: left;
     img{
