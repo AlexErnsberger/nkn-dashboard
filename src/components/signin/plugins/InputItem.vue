@@ -79,14 +79,12 @@ export default {
     color: @si-input-label-color;
     font-size: 14px;
     text-align: left;
-    margin-bottom: 14px;
+    line-height: 1;
   }
 
   input {
-    margin-bottom: 12px;
-    outline: none;
-    border: none;
-
+    padding: 14px 0 12px;
+    outline: none;border: 0;background: none;
     &::placeholder {
       color: @si-input-ph-color;
     }

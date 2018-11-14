@@ -1,7 +1,9 @@
 <template>
 <div class="nb-signin">
-  <h1>NKN Mining Dashboard</h1>
-  <component :is="currentComponent" @linkTo="setComponent"></component>
+  <div class="nb-content-container"> 
+    <h1>NKN Mining Dashboard</h1>
+    <component :is="currentComponent" @linkTo="setComponent"></component>
+  </div>
 </div>
 </template>
 
@@ -28,18 +30,19 @@ export default {
 
 <style lang="less" scoped>
 .nb-signin {
-  width: 1300px;
-  height: 680px;
-  .mixin-boxshadow;
-  margin: auto;
-  background: @common-bg-color;
+  .nb-content-container{
+    height: 680px;
+    .mixin-boxshadow;
+    background: @common-bg-color;
 
-  h1 {
-    font-size: 30px;
-    color: @si-color;
-    padding: 60px 0;
-    margin: 0;
-    text-align: center;
+    h1 {
+      font-size: 30px;
+      color: @si-color;
+      padding: 60px 0;
+      margin: 0;
+      text-align: center;
+      line-height: 1;
+    }
   }
 }
 </style>

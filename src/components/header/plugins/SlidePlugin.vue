@@ -58,7 +58,6 @@ export default {
   .slide-list {
     display: none;
     position: absolute;
-    margin-top: -10px;
     border: 1px solid rgba(0, 0, 0, .15);
     border-radius: .25rem;
 

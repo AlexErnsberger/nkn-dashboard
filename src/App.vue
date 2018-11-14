@@ -23,7 +23,7 @@ export default {
 #app {
   background: @body-bg-color;
   .view-margin{
-    margin: 20px 0;
+    margin: 20px auto;
   }
 }
 </style>

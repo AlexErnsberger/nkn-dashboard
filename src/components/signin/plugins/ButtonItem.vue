@@ -46,6 +46,7 @@ export default {
     margin-top: 25px;
     font-size: 20px;
     color: @si-buttom-common-color;
+    line-height: 1;
   }
 }
 </style>

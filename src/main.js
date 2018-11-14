@@ -8,8 +8,6 @@ import axios from '@/assets/js/axios'
 import VueAxios from 'vue-axios'
 import storage from '@/assets/js/nbStorage'
 import namespace from '@/assets/js/nbNamespace'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.min'
 import '@/assets/css/global.css'
 
 Vue.config.productionTip = false

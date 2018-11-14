@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     login () {
-      console.log('login')
+      this.$router.push({name: 'home'})
     },
     changePass () {
       this.$emit('linkTo', 'PwdChange')
