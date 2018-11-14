@@ -1,5 +1,5 @@
 <template>
-  <div class="nb-input-item">
+  <div class="signin-input-item">
     <label class="item-title">{{label}}</label>
     <input class="item-content" 
       :type="currentType" 
@@ -76,13 +76,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.nb-input-item{
+.signin-input-item{
   width: 640px;
   margin: auto;
-  border-bottom: 2px solid @signIn-color;
+  border-bottom: 2px solid @si-color;
   label {
     display: block;
-    color: #8d96b4;
+    color: @si-input-label-color;
     font-size: 14px;
     text-align: left;
     margin-bottom: 14px;
@@ -92,7 +92,7 @@ export default {
     outline: none;border:none;
     width: 600px;
     &::placeholder{
-      color:#ccd0dd;
+      color: @si-input-ph-color;
     }
   }
   img {

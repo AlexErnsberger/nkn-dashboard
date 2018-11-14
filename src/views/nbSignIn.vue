@@ -22,7 +22,7 @@ export default {
   background: @common-bg-color;
   h1{
     font-size: 30px;
-    color:@signIn-color;
+    color:@si-color;
     padding:60px 0;
     text-align: center;
   }
