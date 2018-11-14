@@ -1,24 +1,9 @@
 <template>
-  <div class="sigin-content">
-    <input-item 
-      label="ACCOUNT" 
-      placeholder="8-20 characters" 
-      :maxlength=20
-      v-model="account"></input-item>
-    <input-item 
-      class="input-separate" 
-      label="PASSWORD" 
-      type="password" 
-      placeholder="8-20 characters" 
-      :maxlength=20
-      v-model="password"></input-item>
-    <button-item 
-      class="buttom-separate" 
-      btnContent="Log in" 
-      linkContent="Change password"
-      @click="login"
-      @linkTo="changePass"></button-item>
-  </div>
+<div class="sigin-content">
+  <input-item label="ACCOUNT" placeholder="8-20 characters" :maxlength=20 v-model="account"></input-item>
+  <input-item class="input-separate" label="PASSWORD" type="password" placeholder="8-20 characters" :maxlength=20 v-model="password"></input-item>
+  <button-item class="buttom-separate" btnContent="Log in" linkContent="Change password" @click="login" @linkTo="changePass"></button-item>
+</div>
 </template>
 
 <script>
@@ -26,7 +11,8 @@ import InputItem from '@/components/signin/plugins/InputItem.vue'
 import ButtonItem from '@/components/signin/plugins/ButtonItem.vue'
 export default {
   components: {
-    InputItem, ButtonItem
+    InputItem,
+    ButtonItem
   },
   data () {
     return {
@@ -39,7 +25,7 @@ export default {
       console.log('login')
     },
     changePass () {
-      console.log('changePass')
+      this.$emit('linkTo', 'PwdChange')
     }
   }
 }

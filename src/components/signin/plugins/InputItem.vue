@@ -1,13 +1,13 @@
 <template>
-  <div class="signin-input-item">
-    <label class="item-title">{{label}}</label>
-    <input class="item-content" 
-      :type="currentType" 
-      :placeholder="placeholder" 
-      :maxlength="maxlength" 
+<div class="signin-input-item">
+  <label class="item-title">{{label}}</label>
+  <input class="item-content"
+      :type="currentType"
+      :placeholder="placeholder"
+      :maxlength="maxlength"
       :value="currentValue"
       @input="handleInput">
-    <img v-if="this.type === 'password'" :src="iconSrc" @click="showPass">
+  <img v-if="this.type === 'password'" :src="iconSrc" @click="showPass">
   </div>
 </template>
 
@@ -52,17 +52,17 @@ export default {
     },
     showPass () {
       switch (this.currentType) {
-        case 'text': 
-        this.currentType = 'password'
-        this.iconSrc = require('../../../assets/img/icon/closeeyes.png')
-        break
-        case 'password': 
-        this.currentType = 'text'
-        this.iconSrc = require('../../../assets/img/icon/eyes.png')
-        break
+        case 'text':
+          this.currentType = 'password'
+          this.iconSrc = require('../../../assets/img/icon/closeeyes.png')
+          break
+        case 'password':
+          this.currentType = 'text'
+          this.iconSrc = require('../../../assets/img/icon/eyes.png')
+          break
         default:
-        this.currentType = 'password'
-        this.iconSrc = require('../../../assets/img/icon/closeeyes.png')
+          this.currentType = 'password'
+          this.iconSrc = require('../../../assets/img/icon/closeeyes.png')
       }
     }
   }
@@ -70,9 +70,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.signin-input-item{
+.signin-input-item {
   border-bottom: 2px solid @si-color;
   position: relative;
+
   label {
     display: block;
     color: @si-input-label-color;
@@ -80,17 +81,23 @@ export default {
     text-align: left;
     margin-bottom: 14px;
   }
+
   input {
     margin-bottom: 12px;
-    outline: none;border:none;
-    &::placeholder{
+    outline: none;
+    border: none;
+
+    &::placeholder {
       color: @si-input-ph-color;
     }
   }
+
   img {
-    width: 36px;height: 21px;
+    width: 36px;
+    height: 21px;
     position: absolute;
-    right: 0;bottom: 8px;
+    right: 0;
+    bottom: 8px;
   }
 }
 </style>

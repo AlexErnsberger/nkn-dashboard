@@ -1,14 +1,7 @@
 <template>
-  <nav>
-    <slide-plugin 
-      v-for="(item, index) in navs" 
-      :key="index" 
-      :iconSrc="item.iconSrc" 
-      :iconDesc="item.iconDesc" 
-      :list="item.list"
-      @activeEvent="item.event"
-      ></slide-plugin>
-  </nav>
+<nav>
+  <slide-plugin v-for="(item, index) in navs" :key="index" :iconSrc="item.iconSrc" :iconDesc="item.iconDesc" :list="item.list" @activeEvent="item.event"></slide-plugin>
+</nav>
 </template>
 
 <script>
@@ -25,7 +18,9 @@ export default {
         list: ['Logout'],
         event: function (scope) {
           scope.$storage.logout()
-          scope.$router.push({name: scope.$namespace.signIn})
+          scope.$router.push({
+            name: scope.$namespace.signIn
+          })
         }
       }]
     }
