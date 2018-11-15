@@ -1,24 +1,30 @@
 <template>
   <div class="nb-content-container clearfix">
     <div class="nb-home-nv">
-      <home-nav></home-nav>
+      <home-nav @check="checkDetail"></home-nav>
     </div>
     <div class="nb-home-content">
-      <home-main></home-main>
+      <component :is="currentComponent"></component>
     </div>
   </div>
 </template>
 
 <script>
 import HomeNav from '@/components/home/nav/HomeNav.vue'
-import HomeMain from '@/components/home/homemain/HomeMain.vue'
+import Home from '@/components/home/homemain/HomeMain.vue'
+import Wallet from '@/components/home/homewallet/HomeWallet.vue'
 export default {
   components: {
-    HomeNav, HomeMain
+    HomeNav, Home, Wallet
   },
   data () {
     return {
-      currentComponent: ''
+      currentComponent: 'Home'
+    }
+  },
+  methods: {
+    checkDetail (tab) {
+      this.currentComponent = tab
     }
   }
 }

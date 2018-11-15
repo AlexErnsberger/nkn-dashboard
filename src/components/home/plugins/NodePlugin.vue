@@ -1,12 +1,18 @@
 <template>
   <div class="node-plugin">
     <div v-if="!type">
-      <span class="customer-title">{{title}}</span>
+      <span class="customer-title">{{title}}:</span>
       <span class="customer-data">{{data}}</span>
     </div>
     <div v-else-if="type === title">
       <span class="node-title " :class="nodeClass">{{title}}:</span>
       <span class="node-data">{{data}}</span>
+    </div>
+    <div v-else-if="type === 'list'">
+      <span class="customer-title">{{title}}:</span>
+      <select>
+        <option v-for="(node, index) in nodeList" :key="index">{{node}}</option>
+      </select>
     </div>
   </div>
 </template>
@@ -16,7 +22,8 @@ export default {
   props: {
     type: String,
     title: String,
-    data: String
+    data: String,
+    nodeList: Array
   },
   computed: {
     nodeClass () {
@@ -34,6 +41,11 @@ export default {
   .customer-data, .node-data{
     .home-commom-data-font;
   }
+}
+</style>
+
+<style lang="less" scoped>
+.node-plugin{
   .node-syncstarted::before{
     .node-dot-style;
     background: #ffb938;

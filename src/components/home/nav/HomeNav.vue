@@ -54,6 +54,7 @@ export default {
   methods: {
     choose (tab) {
       this.currentTab = tab
+      this.$emit('check', tab)
     }
   }
 }
