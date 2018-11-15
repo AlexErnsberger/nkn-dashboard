@@ -54,7 +54,6 @@ export default {
   }
 }
 .active{
-  color: #253a7e;
-  background: #e6e8ef;
+  .mixin-slidehover;
 }
 </style>

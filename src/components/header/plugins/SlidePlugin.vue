@@ -76,7 +76,7 @@ export default {
       }
 
       li:hover {
-        background: #f8f9fa;
+        .mixin-slidehover;
       }
     }
   }

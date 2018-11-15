@@ -10,15 +10,17 @@
     </div>
     <div v-else-if="type === 'list'">
       <span class="customer-title">{{title}}:</span>
-      <select>
-        <option v-for="(node, index) in nodeList" :key="index">{{node}}</option>
-      </select>
+      <node-slide-plugin :nodeList="nodeList"></node-slide-plugin>
     </div>
   </div>
 </template>
 
 <script>
+import NodeSlidePlugin from '@/components/home/plugins/NodeSlidePlugin.vue'
 export default {
+  components: {
+    NodeSlidePlugin
+  },
   props: {
     type: String,
     title: String,
@@ -64,3 +66,4 @@ export default {
   }
 }
 </style>
+
