@@ -6,8 +6,10 @@
       :placeholder="placeholder"
       :maxlength="maxlength"
       :value="currentValue"
+      :size="size"
       @input="handleInput">
-  <img v-if="this.type === 'password'" :src="iconSrc" @click="showPass">
+  <span v-if="unit">{{unit}}</span>
+  <img v-if="type === 'password'" :src="iconSrc" @click="showPass">
   </div>
 </template>
 
@@ -28,8 +30,14 @@ export default {
       type: [String, Number],
       default: ''
     },
+    size: {
+      type: Number
+    },
     maxlength: {
       type: Number
+    },
+    unit: {
+      type: String
     }
   },
   data () {
@@ -88,6 +96,11 @@ export default {
     &::placeholder {
       color: @si-input-ph-color;
     }
+  }
+
+  span{
+    font-size: 12px;
+    color: #000;
   }
 
   img {

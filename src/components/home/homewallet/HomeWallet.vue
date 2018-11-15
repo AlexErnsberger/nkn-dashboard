@@ -12,7 +12,12 @@
       <currency-plugin title="Mining Reward" data="20000.0000" unit="NKN" style="width:262px;"></currency-plugin>
       <currency-plugin title="Wallet Address" data="ADSAddsdsadDSSCSdsaDSDSdda" copy  style="width:372px;"></currency-plugin>
     </div>
-    <div class="nkn-transfer"></div>
+    <div class="nkn-transfer">
+      <block-plugin title="Transfer"></block-plugin>
+      <input-item label="Transfer Address" class="transfer-input" :size="55"></input-item>
+      <input-item label="Transfer Amount" class="transfer-input" :size="55" unit="NKN"></input-item>
+      <button-plugin class="transfer-commit">Transfer</button-plugin>
+    </div>
     <div class="transfer-history"></div>
     <div class="mining-reward"></div>
   </div>
@@ -22,10 +27,12 @@
 import CurrencyPlugin from '@/components/home/plugins/CurrencyPlugin.vue'
 import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
+import ButtonPlugin from '@/components/home/plugins/ButtonPlugin.vue'
+import InputItem from '@/components/signin/plugins/InputItem.vue'
 export default {
   name:'home-wallet',
   components: {
-    CurrencyPlugin, BlockPlugin, NodePlugin
+    CurrencyPlugin, BlockPlugin, NodePlugin, InputItem, ButtonPlugin
   },
   data () {
     return {
@@ -48,6 +55,20 @@ export default {
   .my-wallet{
     .home-common-flex;
 
+  }
+  .nkn-transfer{
+    .home-common-bg;
+    .mixin-boxshadow;
+    .transfer-input{
+      width: 420px;
+      display: inline-block;
+      &+.transfer-input{
+        margin-left: 32px;
+      }
+    }
+    .transfer-commit{
+      margin: 24px 12px 22px 746px;
+    }
   }
   &>div+div{
     margin-top: 16px;
