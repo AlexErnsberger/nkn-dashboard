@@ -1,5 +1,5 @@
 <template>
-  <div class="home-btn-plugin" :class="{'disabled':disabled}">
+  <div class="btn-plugin" :class="{'disabled':disabled}">
     <slot></slot>
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.home-btn-plugin{
+.btn-plugin{
   display: inline-block;
   width: 130px;line-height: 38px;
   border-radius: 6px;
