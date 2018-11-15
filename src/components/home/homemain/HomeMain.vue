@@ -13,17 +13,24 @@
       <block-plugin title="Total Node" data="1000"></block-plugin>
       <block-plugin title="Version Info" data="V 1.0"></block-plugin>
     </div>
-    <div class="nkn-node"></div>
+    <div class="nkn-node">
+      <node-plugin title="My Node:" data="20"></node-plugin>
+      <node-plugin title="SyncStarted" data="2" type="SyncStarted"></node-plugin>
+      <node-plugin title="SyncFinished" data="2" type="SyncFinished"></node-plugin>
+      <node-plugin title="PersistFinished" data="2" type="PersistFinished"></node-plugin>
+      <node-plugin title="Stopped" data="2" type="Stopped"></node-plugin>
+    </div>
   </div>
 </template>
 
 <script>
 import CurrencyPlugin from '@/components/home/plugins/CurrencyPlugin.vue'
 import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
+import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 export default {
   name:'home-main',
   components: {
-    CurrencyPlugin, BlockPlugin
+    CurrencyPlugin, BlockPlugin, NodePlugin
   }
 }
 </script>
@@ -34,11 +41,16 @@ export default {
   .nkn-currency{
     .home-common-flex;
     .size{
-      width: 220px;height: 90px;
-      box-sizing: border-box;
+      width: 220px;
     }
   }
   .nkn-block{
+    .home-common-bg;
+    .mixin-boxshadow;
+    .home-common-flex;
+    margin-top: 16px;
+  }
+  .nkn-node{
     .home-common-bg;
     .mixin-boxshadow;
     .home-common-flex;
