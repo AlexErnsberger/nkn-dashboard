@@ -43,4 +43,11 @@ body {
   width: 1300px;
   margin: auto;
 }
-
+.clearfix::after{
+  content:'';
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  font-size: 0;
+}
