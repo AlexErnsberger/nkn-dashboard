@@ -8,9 +8,17 @@
       <span class="node-title " :class="nodeClass">{{title}}:</span>
       <span class="node-data">{{data}}</span>
     </div>
-    <div v-else-if="type === 'list'">
+    <div v-else-if="type === 'nodeList'">
       <span class="customer-title">{{title}}:</span>
       <node-slide-plugin :nodeList="nodeList"></node-slide-plugin>
+    </div>
+    <div v-else-if="type === 'nodeAdd'" class="node-func">
+      <img class="node-icon" src="../../../assets/img/icon/add.png">
+      <span class="node-title">{{title}}</span>
+    </div>
+    <div v-else-if="type === 'nodeDelete'" class="node-func">
+      <img class="node-icon" src="../../../assets/img/icon/delete.png">
+      <span class="node-title">{{title}}</span>
     </div>
   </div>
 </template>
@@ -42,6 +50,14 @@ export default {
   }
   .customer-data, .node-data{
     .home-commom-data-font;
+  }
+  .node-func{
+    cursor: pointer;
+    img{
+      width: 18px;height: 18px;
+      max-width: 100%;
+      vertical-align: -3px;
+    }
   }
 }
 </style>

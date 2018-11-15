@@ -44,16 +44,12 @@ export default {
       width: 220px;
     }
   }
-  .nkn-block{
+  .nkn-block, .nkn-node{
     .home-common-bg;
     .mixin-boxshadow;
     .home-common-flex;
-    margin-top: 16px;
   }
-  .nkn-node{
-    .home-common-bg;
-    .mixin-boxshadow;
-    .home-common-flex;
+  &>div+div{
     margin-top: 16px;
   }
 }
