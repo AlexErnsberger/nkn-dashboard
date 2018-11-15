@@ -20,28 +20,21 @@ export default {
 
 <style lang="less" scoped>
 .currency-plugin{
-  background: @common-bg-color;
+  .home-common-bg;
   .mixin-boxshadow;
-  padding: 20px;
   .currency-title{
-    font-size: 14px;
-    color:black;
-    line-height: 1;
+    .home-common-title-font;
   }
   .currency-content{
     margin-top: 16px;
     .currency-data{
-      font-size: 20px;
-      color: @si-color;
+      .home-commom-data-font;
       float: left;
-      line-height: 1;
     }
     .currency-unit{
-      font-size: 14px;
-      color:black;
+      .home-common-title-font;
       float: right;
       margin-top: 6px;
-      line-height: 1;
     }
   }
 }

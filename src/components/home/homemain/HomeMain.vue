@@ -1,29 +1,17 @@
 <template>
   <div class="nb-home-main">
     <div class="nkn-currency">
-      <ul>
-        <li>
-          <currency-plugin title="Balance" data="18000.0000" unit="NKN"></currency-plugin>
-        </li>
-        <li>
-          <currency-plugin title="Mining Reward" data="20000.0000" unit="NKN"></currency-plugin>
-        </li>
-        <li>
-          <currency-plugin title="NKN/USDT Price" data="0.05100" unit="USDT"></currency-plugin>
-        </li>
-        <li>
-          <currency-plugin title="NKN/ETH Price" data="0.0002210" unit="ETH"></currency-plugin>
-        </li>
-      </ul>
+      <currency-plugin class="size" title="Balance" data="18000.0000" unit="NKN"></currency-plugin>
+      <currency-plugin class="size" title="Mining Reward" data="20000.0000" unit="NKN"></currency-plugin>
+      <currency-plugin class="size" title="NKN/USDT Price" data="0.05100" unit="USDT"></currency-plugin>
+      <currency-plugin class="size" title="NKN/ETH Price" data="0.0002210" unit="ETH"></currency-plugin>
     </div>
     <div class="nkn-block">
-      <ul>
-        <li class="current-height"></li>
-        <li class="current-transection"></li>
-        <li class="average-time"></li>
-        <li class="total-node"></li>
-        <li class="version-info"></li>
-      </ul>
+      <block-plugin title="Current Height" data="5707446"></block-plugin>
+      <block-plugin title="Current Transection" data="5707446"></block-plugin>
+      <block-plugin title="Average Block Time" data="10s"></block-plugin>
+      <block-plugin title="Total Node" data="1000"></block-plugin>
+      <block-plugin title="Version Info" data="V 1.0"></block-plugin>
     </div>
     <div class="nkn-node"></div>
   </div>
@@ -31,10 +19,11 @@
 
 <script>
 import CurrencyPlugin from '@/components/home/plugins/CurrencyPlugin.vue'
+import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 export default {
   name:'home-main',
   components: {
-    CurrencyPlugin
+    CurrencyPlugin, BlockPlugin
   }
 }
 </script>
@@ -42,29 +31,18 @@ export default {
 <style lang="less" scoped>
 .nb-home-main{
   width: 928px;
-  ul{
-    margin: 0;padding: 0;
-    display: inline-block;
-    li{
-      list-style-type: none;
-      float: left;
-    }
-  }
   .nkn-currency{
-    ul{
-      li{
-        width: 220px;height: 90px;
-      }
-      li+li{
-        margin-left: 16px;
-      }
+    .home-common-flex;
+    .size{
+      width: 220px;height: 90px;
+      box-sizing: border-box;
     }
   }
   .nkn-block{
+    .home-common-bg;
+    .mixin-boxshadow;
+    .home-common-flex;
     margin-top: 16px;
-    ul{
-
-    }
   }
 }
 </style>

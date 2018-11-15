@@ -9,7 +9,27 @@
 @si-buttom-common-color: #318bec;
 //footer
 @footer-color: #aaa;
-//mixin
+//common mixin
 .mixin-boxshadow {
   box-shadow: rgba(0, 0, 0, 0.12) 0 2px 6px, rgba(0, 0, 0, 0.24) 0 1px 2px;
+}
+//home mixin
+.home-common-bg{
+  background: @common-bg-color;
+  padding: 20px;
+}
+.home-common-title-font{
+  font-size: 14px;
+  color: #000;
+  line-height: 14px;
+}
+.home-commom-data-font{
+  font-size: 20px;
+  line-height: 20px;
+  color: @si-color;
+}
+.home-common-flex{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
