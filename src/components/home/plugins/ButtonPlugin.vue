@@ -1,7 +1,7 @@
 <template>
-  <div class="btn-plugin" :class="{'disabled':disabled}">
-    <slot></slot>
-  </div>
+<div class="btn-plugin" :class="{'disabled':disabled}">
+  <slot></slot>
+</div>
 </template>
 
 <script>
@@ -13,9 +13,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.btn-plugin{
+.btn-plugin {
   display: inline-block;
-  width: 130px;line-height: 38px;
+  width: 130px;
+  line-height: 38px;
   border-radius: 6px;
   background: @si-buttom-common-color;
   font-size: 14px;
@@ -23,7 +24,8 @@ export default {
   text-align: center;
   cursor: pointer;
 }
-.disabled{
+
+.disabled {
   background: #BAC1DA;
   cursor: not-allowed;
 }

@@ -1,23 +1,23 @@
 <template>
-  <div class="table-plugin">
-    <div class="table-title">{{title}}</div>
-    <div class="table-content">
-      <table>
-        <tr class="table-header">
-          <th v-if="colHeader1" class="table-header-size">{{colHeader1}}</th>
-          <th v-if="colHeader2" class="table-header-size">{{colHeader2}}</th>
-          <th v-if="colHeader3" class="table-header-size">{{colHeader3}}</th>
-          <th v-if="colHeader4" class="table-header-size">{{colHeader4}}</th>
-        </tr>
-        <tr class="table-record" v-for="(item, index) in currentData" :key="index">
-          <td v-for="(value, index) in item" :key="index">{{value}}</td>
-        </tr>
-      </table>
-    </div>
-    <div class="table-separate" v-if="needSep">
-      <table-separate-plugin :dataSum="dataSum" :eachPageSum="eachPageSum" @getData="handleData"></table-separate-plugin>
-    </div>
+<div class="table-plugin">
+  <div class="table-title">{{title}}</div>
+  <div class="table-content">
+    <table>
+      <tr class="table-header">
+        <th v-if="colHeader1" class="table-header-size">{{colHeader1}}</th>
+        <th v-if="colHeader2" class="table-header-size">{{colHeader2}}</th>
+        <th v-if="colHeader3" class="table-header-size">{{colHeader3}}</th>
+        <th v-if="colHeader4" class="table-header-size">{{colHeader4}}</th>
+      </tr>
+      <tr class="table-record" v-for="(item, index) in currentData" :key="index">
+        <td v-for="(value, index) in item" :key="index">{{value}}</td>
+      </tr>
+    </table>
   </div>
+  <div class="table-separate" v-if="needSep">
+    <table-separate-plugin :dataSum="dataSum" :eachPageSum="eachPageSum" @getData="handleData"></table-separate-plugin>
+  </div>
+</div>
 </template>
 
 <script>
@@ -55,29 +55,34 @@ export default {
 
 <style lang="less" scoped>
 .table-plugin {
-  .table-title{
+  .table-title {
     font-size: 14px;
     color: #000;
     margin-bottom: 14px;
   }
-  .table-content{
-    table{
+
+  .table-content {
+    table {
       width: 100%;
       border-collapse: collapse;
-      tr.table-header{
-        th{
+
+      tr.table-header {
+        th {
           text-align: left;
           padding: 4px 0;
           color: #8992b0;
           font-weight: normal;
-          &.table-header-size{
+
+          &.table-header-size {
             font-size: 12px;
           }
         }
       }
-      tr.table-record{
-        border-bottom:2px solid #d0d5e7;
-        td{
+
+      tr.table-record {
+        border-bottom: 2px solid #d0d5e7;
+
+        td {
           padding: 10px 0;
           font-size: 12px;
           color: #000;
@@ -85,7 +90,8 @@ export default {
       }
     }
   }
-  .table-separate{
+
+  .table-separate {
     text-align: right;
     margin-top: 28px;
   }

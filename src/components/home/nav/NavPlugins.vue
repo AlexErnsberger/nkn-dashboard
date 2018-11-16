@@ -1,8 +1,8 @@
 <template>
-  <div :class="['nav-option', {'active':active}]" @click="handleClick">
-    <img :src="currentIcon">
-    <span>{{option}}</span>
-  </div>
+<div :class="['nav-option', {'active':active}]" @click="handleClick">
+  <img :src="currentIcon">
+  <span>{{option}}</span>
+</div>
 </template>
 
 <script>
@@ -23,11 +23,11 @@ export default {
   },
   watch: {
     active () {
-      if(this.active) {
+      if (this.active) {
         this.currentIcon = this.iconHover
       } else {
         this.currentIcon = this.icon
-      } 
+      }
     }
   },
   methods: {
@@ -39,21 +39,25 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.nav-option{
+.nav-option {
   line-height: 52px;
   padding-left: 34px;
   cursor: pointer;
-  img{
-    width: 20px;height: 20px;
+
+  img {
+    width: 20px;
+    height: 20px;
     vertical-align: -4px;
     margin-right: 14px;
   }
-  span{
+
+  span {
     color: inherit;
     font-size: 14px;
   }
 }
-.active{
+
+.active {
   .mixin-slidehover;
 }
 </style>

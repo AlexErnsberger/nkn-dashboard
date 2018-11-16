@@ -1,19 +1,19 @@
 <template>
-  <div class="table-page-separate">
-    <a class="go-previous" @click="firstPage">
+<div class="table-page-separate">
+  <a class="go-previous" @click="firstPage">
       <img src="../../../assets/img/icon/firstpage.png">
     </a>
-    <a class="go-previous" @click="previousPage">
+  <a class="go-previous" @click="previousPage">
       <img src="../../../assets/img/icon/previouspage.png">
     </a>
-    <span>{{currentPage}}-{{pageSum}}</span>
-    <a class="go-next" @click="nextPage">
+  <span>{{currentPage}}-{{pageSum}}</span>
+  <a class="go-next" @click="nextPage">
       <img src="../../../assets/img/icon/nextpage.png">
     </a>
-    <a class="go-next" @click="lastPage">
+  <a class="go-next" @click="lastPage">
       <img src="../../../assets/img/icon/lastpage.png">
     </a>
-  </div>
+</div>
 </template>
 
 <script>
@@ -53,49 +53,57 @@ export default {
       if (this.currentPage === this.pageSum) {
         return
       }
-      this.$emit('getData', this.currentPage * this.eachPageSum, (this.currentPage + 1) * this.eachPageSum -1)
+      this.$emit('getData', this.currentPage * this.eachPageSum, (this.currentPage + 1) * this.eachPageSum - 1)
       this.currentPage += 1
     }
   },
   computed: {
     pageSum () {
-      return Math.ceil(this.dataSum/this.eachPageSum)
+      return Math.ceil(this.dataSum / this.eachPageSum)
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-.table-page-separate{
+.table-page-separate {
   display: inline-block;
-  
-  a{
+
+  a {
     display: inline-block;
     box-sizing: border-box;
     width: 32px;
     line-height: 32px;
     border-radius: 50%;
-    img{
-      width: 14px;height: 14px;
+
+    img {
+      width: 14px;
+      height: 14px;
       position: relative;
     }
-    img+img{
+
+    img+img {
       margin-left: 24px;
     }
-    &:hover{
+
+    &:hover {
       background: #ecedf2;
     }
-    &.go-previous{
+
+    &.go-previous {
       padding-right: 10px;
     }
-    &.go-next{
+
+    &.go-next {
       padding-right: 8px;
     }
   }
-  a+a{
+
+  a+a {
     margin-left: 24px;
   }
-  span{
+
+  span {
     font-size: 14px;
     color: #8992b0;
     margin: 0 24px;

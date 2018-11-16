@@ -1,14 +1,14 @@
 <template>
-  <div class="currency-plugin">
-    <div class="currency-header clearfix">
-      <div class="currency-title">{{title}}</div>
-      <div v-if="copy" class="currency-copy">
-        <img src="../../../assets/img/icon/copy.png">
-        <span>copy</span>
-      </div>
+<div class="currency-plugin">
+  <div class="currency-header clearfix">
+    <div class="currency-title">{{title}}</div>
+    <div v-if="copy" class="currency-copy">
+      <img src="../../../assets/img/icon/copy.png">
+      <span>copy</span>
     </div>
-    <div class="currency-content clearfix">
-      <div class="currency-data">{{data}}</div>
+  </div>
+  <div class="currency-content clearfix">
+    <div class="currency-data">{{data}}</div>
       <div v-if="unit" class="currency-unit">{{unit}}</div>
     </div>
   </div>
@@ -26,37 +26,45 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.currency-plugin{
+.currency-plugin {
   .home-common-bg;
   .mixin-boxshadow;
-  .currency-header{
+
+  .currency-header {
     line-height: 12px;
-    .currency-title{
+
+    .currency-title {
       float: left;
       .home-common-title-font;
     }
-    .currency-copy{
+
+    .currency-copy {
       cursor: pointer;
       float: right;
-      img{
-        width: 10px;height: 10px;
+
+      img {
+        width: 10px;
+        height: 10px;
         vertical-align: -2px;
       }
-      span{
+
+      span {
         color: #318bec;
         font-size: 12px;
       }
     }
   }
-  
-  .currency-content{
+
+  .currency-content {
     margin-top: 16px;
     line-height: 20px;
-    .currency-data{
+
+    .currency-data {
       .home-commom-data-font;
       float: left;
     }
-    .currency-unit{
+
+    .currency-unit {
       .home-common-title-font;
       float: right;
       margin-top: 6px;

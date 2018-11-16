@@ -1,12 +1,12 @@
 <template>
-  <div class="nb-content-container clearfix">
-    <div class="nb-home-nv">
-      <home-nav @check="checkDetail"></home-nav>
-    </div>
-    <div class="nb-home-content">
-      <component :is="currentComponent"></component>
-    </div>
+<div class="nb-content-container clearfix">
+  <div class="nb-home-nv">
+    <home-nav @check="checkDetail"></home-nav>
   </div>
+  <div class="nb-home-content">
+    <component :is="currentComponent"></component>
+  </div>
+</div>
 </template>
 
 <script>
@@ -18,7 +18,12 @@ import Calculator from '@/components/home/homecalculator/HomeCalculate.vue'
 import Log from '@/components/home/homelog/HomeLog.vue'
 export default {
   components: {
-    HomeNav, Home, Wallet, Node, Calculator, Log
+    HomeNav,
+    Home,
+    Wallet,
+    Node,
+    Calculator,
+    Log
   },
   data () {
     return {
@@ -34,11 +39,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.nb-home-nv{
+.nb-home-nv {
   margin-right: 16px;
   float: left;
 }
-.nb-home-content{
+
+.nb-home-content {
   float: right;
   width: 928px;
 }
