@@ -18,7 +18,9 @@
       <input-item label="Transfer Amount" class="transfer-input" :size="55" unit="NKN"></input-item>
       <button-plugin class="transfer-commit">Transfer</button-plugin>
     </div>
-    <div class="transfer-history"></div>
+    <div class="transfer-history">
+      <table-plugin title="Transaction History" colHeader1="From" colHeader2="To" colHeader3="Value" colHeader4="Time" :data="testTableList"></table-plugin>
+    </div>
     <div class="mining-reward"></div>
   </div>
 </template>
@@ -29,16 +31,68 @@ import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 import ButtonPlugin from '@/components/home/plugins/ButtonPlugin.vue'
 import InputItem from '@/components/signin/plugins/InputItem.vue'
+import TablePlugin from '@/components/home/plugins/TablePlugin.vue'
 export default {
   name:'home-wallet',
   components: {
-    CurrencyPlugin, BlockPlugin, NodePlugin, InputItem, ButtonPlugin
+    CurrencyPlugin, BlockPlugin, NodePlugin, InputItem, ButtonPlugin, TablePlugin
   },
   data () {
     return {
       nodeList: [
         'Node #8','Node #2','Node #3'
-      ]
+      ],
+      testTableList: [{
+        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      }]
     }
   }
 }
@@ -69,6 +123,10 @@ export default {
     .transfer-commit{
       margin: 24px 12px 22px 746px;
     }
+  }
+  .transfer-history{
+    .home-common-bg;
+    .mixin-boxshadow;
   }
   &>div+div{
     margin-top: 16px;
