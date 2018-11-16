@@ -68,9 +68,11 @@ export default {
         th{
           text-align: left;
           padding: 4px 0;
-          font-size: 12px;
           color: #8992b0;
           font-weight: normal;
+          &.table-header-size{
+            font-size: 12px;
+          }
         }
       }
       tr.table-record{
