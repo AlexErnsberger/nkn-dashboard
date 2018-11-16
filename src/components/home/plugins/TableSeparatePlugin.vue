@@ -32,29 +32,29 @@ export default {
       if (this.currentPage === 1) {
         return
       }
-      this.currentPage = 1
       this.$emit('getData', 0, this.eachPageSum - 1)
+      this.currentPage = 1
     },
     lastPage () {
       if (this.currentPage === this.pageSum) {
         return
       }
-      this.currentPage = this.pageSum
       this.$emit('getData', this.eachPageSum * (this.pageSum - 1), this.dataSum - 1)
+      this.currentPage = this.pageSum
     },
     previousPage () {
       if (this.currentPage === 1) {
         return
       }
-      this.currentPage -= 1
       this.$emit('getData', (this.currentPage - 2) * this.eachPageSum, (this.currentPage - 1) * this.eachPageSum - 1)
+      this.currentPage -= 1
     },
     nextPage () {
       if (this.currentPage === this.pageSum) {
         return
       }
-      this.currentPage += 1
       this.$emit('getData', this.currentPage * this.eachPageSum, (this.currentPage + 1) * this.eachPageSum -1)
+      this.currentPage += 1
     }
   },
   computed: {

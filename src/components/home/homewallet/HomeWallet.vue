@@ -128,6 +128,7 @@ export default {
   .transfer-history{
     .home-common-bg;
     .mixin-boxshadow;
+    height: 397px;
   }
   &>div+div{
     margin-top: 16px;

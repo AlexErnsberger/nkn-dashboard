@@ -9,13 +9,13 @@
           <th v-if="colHeader3">{{colHeader3}}</th>
           <th v-if="colHeader4">{{colHeader4}}</th>
         </tr>
-        <tr class="table-record" v-for="(item, index) in data" :key="index">
+        <tr class="table-record" v-for="(item, index) in currentData" :key="index">
           <td v-for="(value, index) in item" :key="index">{{value}}</td>
         </tr>
       </table>
     </div>
     <div class="table-separate">
-      <table-separate-plugin :dataSum="dataSum" :eachPageSum="eachPageSum"></table-separate-plugin>
+      <table-separate-plugin :dataSum="dataSum" :eachPageSum="eachPageSum" @getData="handleData"></table-separate-plugin>
     </div>
   </div>
 </template>
@@ -35,6 +35,16 @@ export default {
     colHeader2: String,
     colHeader3: String,
     colHeader4: String
+  },
+  data () {
+    return {
+      currentData: this.data
+    }
+  },
+  methods: {
+    handleData (start, end) {
+      this.currentData = this.data.slice(start, end)
+    }
   }
 }
 </script>
