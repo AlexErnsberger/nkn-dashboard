@@ -15,9 +15,10 @@ import Home from '@/components/home/homemain/HomeMain.vue'
 import Wallet from '@/components/home/homewallet/HomeWallet.vue'
 import Node from '@/components/home/homenode/HomeNode.vue'
 import Calculator from '@/components/home/homecalculator/HomeCalculate.vue'
+import Log from '@/components/home/homelog/HomeLog.vue'
 export default {
   components: {
-    HomeNav, Home, Wallet, Node, Calculator
+    HomeNav, Home, Wallet, Node, Calculator, Log
   },
   data () {
     return {
@@ -39,5 +40,6 @@ export default {
 }
 .nb-home-content{
   float: right;
+  width: 928px;
 }
 </style>

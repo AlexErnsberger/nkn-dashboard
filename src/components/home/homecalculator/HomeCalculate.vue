@@ -41,7 +41,6 @@ export default {
 
 <style lang="less" scoped>
 .nb-home-calculator{
-  width: 928px;
   .nb-home-calculator-info{
     .home-common-flex;
     .calculator-block{

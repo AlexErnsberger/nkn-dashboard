@@ -58,7 +58,6 @@ export default {
 
 <style lang="less" scoped>
 .nb-home-node{
-  width: 928px;
   .my-node-operate{
     .home-common-bg;
     .mixin-boxshadow;

@@ -160,7 +160,6 @@ export default {
 
 <style lang="less" scoped>
 .nb-home-wallet{
-  width: 928px;
   .my-node{
     .home-common-bg;
     .mixin-boxshadow;

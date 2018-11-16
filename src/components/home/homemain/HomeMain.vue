@@ -37,7 +37,6 @@ export default {
 
 <style lang="less" scoped>
 .nb-home-main{
-  width: 928px;
   .nkn-currency{
     .home-common-flex;
     .size{
