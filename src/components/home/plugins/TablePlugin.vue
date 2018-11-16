@@ -4,17 +4,17 @@
     <div class="table-content">
       <table>
         <tr class="table-header">
-          <th v-if="colHeader1">{{colHeader1}}</th>
-          <th v-if="colHeader2">{{colHeader2}}</th>
-          <th v-if="colHeader3">{{colHeader3}}</th>
-          <th v-if="colHeader4">{{colHeader4}}</th>
+          <th v-if="colHeader1" class="table-header-size">{{colHeader1}}</th>
+          <th v-if="colHeader2" class="table-header-size">{{colHeader2}}</th>
+          <th v-if="colHeader3" class="table-header-size">{{colHeader3}}</th>
+          <th v-if="colHeader4" class="table-header-size">{{colHeader4}}</th>
         </tr>
         <tr class="table-record" v-for="(item, index) in currentData" :key="index">
           <td v-for="(value, index) in item" :key="index">{{value}}</td>
         </tr>
       </table>
     </div>
-    <div class="table-separate">
+    <div class="table-separate" v-if="needSep">
       <table-separate-plugin :dataSum="dataSum" :eachPageSum="eachPageSum" @getData="handleData"></table-separate-plugin>
     </div>
   </div>
@@ -34,6 +34,7 @@ export default {
     data: Array,
     dataSum: Number,
     eachPageSum: Number,
+    needSep: Boolean,
     colHeader1: String,
     colHeader2: String,
     colHeader3: String,

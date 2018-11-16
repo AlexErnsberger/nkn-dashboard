@@ -15,10 +15,10 @@
       <button-plugin class="transfer-commit">Transfer</button-plugin>
     </div>
     <div class="transfer-history">
-      <table-plugin title="Transaction History" colHeader1="From" colHeader2="To" colHeader3="Value" colHeader4="Time" :data="testTableList" :dataSum="testListSum" :eachPageSum="8"></table-plugin>
+      <table-plugin title="Transaction History" colHeader1="From" colHeader2="To" colHeader3="Value" colHeader4="Time" :data="testTableList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
     </div>
     <div class="mining-reward">
-      <table-plugin title="Mining Reward" colHeader1="Height" colHeader2="Transaction Hash" colHeader3="Value" colHeader4="Time" :data="testRewardList" :dataSum="testListSum" :eachPageSum="8"></table-plugin>
+      <table-plugin title="Mining Reward" colHeader1="Height" colHeader2="Transaction Hash" colHeader3="Value" colHeader4="Time" :data="testRewardList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
     </div>
   </div>
 </template>

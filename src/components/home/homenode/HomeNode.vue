@@ -28,6 +28,10 @@
     <div class="my-node-chrod">
       <block-plugin title="Chrod ID" data="AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6" small></block-plugin>
     </div>
+    <div class="my-neighbor-info">
+      <table-plugin class="my-node-neighbor" title="Node Neighbor" colHeader1="Node ID" colHeader2="Node IP" colHeader3="Port"  :data="testNodeList" ></table-plugin>
+      <table-plugin class="my-chrod-neighbor" title="Chrod Neighbor" colHeader1="Chrod ID" colHeader2="Chrod IP" colHeader3="Port"  :data="testChrodList" ></table-plugin>      
+    </div>
   </div>
 </template>
 
@@ -35,15 +39,18 @@
 import NodeInfoPlugin from '@/components/home/commonplugins/NodeInfoPlugin.vue'
 import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
+import TablePlugin from '@/components/home/plugins/TablePlugin.vue'
 export default {
   components: {
-    NodeInfoPlugin, NodePlugin, BlockPlugin
+    NodeInfoPlugin, NodePlugin, BlockPlugin, TablePlugin
   },
   data () {
     return {
       nodeList: [
         'Node #8','Node #2','Node #3'
-      ]
+      ],
+      testNodeList: [],
+      testChrodList: []
     }
   }
 }
@@ -63,6 +70,14 @@ export default {
   }
   .my-node-info > div, .my-node-netinfo > div{
     width: 200px;
+  }
+  .my-neighbor-info {
+     .home-common-flex;
+     .my-node-neighbor, .my-chrod-neighbor{
+       width: 455px; height: 350px;
+       .home-common-bg;
+      .mixin-boxshadow;
+     }
   }
   &>div+div{
     margin-top: 16px;
