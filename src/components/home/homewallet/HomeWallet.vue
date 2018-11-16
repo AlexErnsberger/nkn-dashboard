@@ -1,11 +1,7 @@
 <template>
   <div class="nb-home-wallet">
     <div class="my-node">
-      <node-plugin title="My Node" type="nodeList" :nodeList="nodeList"></node-plugin>
-      <node-plugin title="SyncStarted" data="2" type="SyncStarted"></node-plugin>
-      <node-plugin title="My Node" data="20" class="node-separate"></node-plugin>
-      <node-plugin title="Add Node" type="nodeAdd" class="node-separate"></node-plugin>
-      <node-plugin title="Delete Node" type="nodeDelete" class="node-separate"></node-plugin>
+      <node-info-plugin :nodeList="nodeList"></node-info-plugin>
     </div>
     <div class="my-wallet">
       <currency-plugin title="Balance" data="20000.0000" unit="NKN" style="width:262px;"></currency-plugin>
@@ -30,14 +26,14 @@
 <script>
 import CurrencyPlugin from '@/components/home/plugins/CurrencyPlugin.vue'
 import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
-import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 import ButtonPlugin from '@/components/home/plugins/ButtonPlugin.vue'
 import InputItem from '@/components/signin/plugins/InputItem.vue'
 import TablePlugin from '@/components/home/plugins/TablePlugin.vue'
+import NodeInfoPlugin from '@/components/home/commonplugins/NodeInfoPlugin.vue'
 export default {
   name:'home-wallet',
   components: {
-    CurrencyPlugin, BlockPlugin, NodePlugin, InputItem, ButtonPlugin, TablePlugin
+    CurrencyPlugin, BlockPlugin, NodeInfoPlugin, InputItem, ButtonPlugin, TablePlugin
   },
   data () {
     return {
@@ -168,7 +164,6 @@ export default {
   .my-node{
     .home-common-bg;
     .mixin-boxshadow;
-    .home-common-flex;
   }
   .my-wallet{
     .home-common-flex;
