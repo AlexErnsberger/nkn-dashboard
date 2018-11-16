@@ -21,7 +21,9 @@
     <div class="transfer-history">
       <table-plugin title="Transaction History" colHeader1="From" colHeader2="To" colHeader3="Value" colHeader4="Time" :data="testTableList" :dataSum="testListSum" :eachPageSum="8"></table-plugin>
     </div>
-    <div class="mining-reward"></div>
+    <div class="mining-reward">
+      <table-plugin title="Mining Reward" colHeader1="Height" colHeader2="Transaction Hash" colHeader3="Value" colHeader4="Time" :data="testRewardList" :dataSum="testListSum" :eachPageSum="8"></table-plugin>
+    </div>
   </div>
 </template>
 
@@ -93,6 +95,67 @@ export default {
         to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
         value: '80 NKN',
         time: '1 min ago'
+      }],
+      testRewardList: [{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
+      },{
+        height: 2400,
+        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
+        value: '80 NKN',
+        time: '1 min ago'
       }]
     }
   }
@@ -126,6 +189,11 @@ export default {
     }
   }
   .transfer-history{
+    .home-common-bg;
+    .mixin-boxshadow;
+    height: 397px;
+  }
+  .mining-reward{
     .home-common-bg;
     .mixin-boxshadow;
     height: 397px;
