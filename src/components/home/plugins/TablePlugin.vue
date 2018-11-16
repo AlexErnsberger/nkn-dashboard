@@ -14,14 +14,23 @@
         </tr>
       </table>
     </div>
+    <div class="table-separate">
+      <table-separate-plugin :dataSum="dataSum" :eachPageSum="eachPageSum"></table-separate-plugin>
+    </div>
   </div>
 </template>
 
 <script>
+import TableSeparatePlugin from '@/components/home/plugins/TableSeparatePlugin.vue'
 export default {
+  components: {
+    TableSeparatePlugin
+  },
   props: {
     title: String,
     data: Array,
+    dataSum: Number,
+    eachPageSum: Number,
     colHeader1: String,
     colHeader2: String,
     colHeader3: String,
@@ -59,6 +68,10 @@ export default {
         }
       }
     }
+  }
+  .table-separate{
+    text-align: right;
+    margin-top: 28px;
   }
 }
 </style>

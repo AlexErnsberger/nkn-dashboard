@@ -19,7 +19,7 @@
       <button-plugin class="transfer-commit">Transfer</button-plugin>
     </div>
     <div class="transfer-history">
-      <table-plugin title="Transaction History" colHeader1="From" colHeader2="To" colHeader3="Value" colHeader4="Time" :data="testTableList"></table-plugin>
+      <table-plugin title="Transaction History" colHeader1="From" colHeader2="To" colHeader3="Value" colHeader4="Time" :data="testTableList" :dataSum="testListSum" :eachPageSum="8"></table-plugin>
     </div>
     <div class="mining-reward"></div>
   </div>
@@ -42,6 +42,7 @@ export default {
       nodeList: [
         'Node #8','Node #2','Node #3'
       ],
+      testListSum: 10,
       testTableList: [{
         from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
         to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
