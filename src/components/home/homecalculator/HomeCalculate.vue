@@ -18,15 +18,23 @@
         <button-plugin class="compute-calculate">Calculate</button-plugin>
       </div>
     </div>
+    <div class="nb-home-calcultor-specific">
+      <calculator-item title="Approximate amount of NKN testnet tokens mined per day" data="144" unit="NKN"></calculator-item>
+      <calculator-item title="Total testnet tokens mined per 1 month" data="4320" unit="NKN"></calculator-item>
+      <calculator-item title="NKN mainnet tokens (1:5 ratio) per 1 month" data="864" unit="NKN"></calculator-item>
+      <calculator-item title="USD profit per day" data="1.4400" unit="$"></calculator-item>
+      <calculator-item title="USD profit per 1 month" data="43.2" unit="$"></calculator-item>
+    </div>
   </div>
 </template>
 
 <script>
 import CalculatorBlock from '@/components/home/homecalculator/plugins/CalculatorBlock.vue'
+import CalculatorItem from '@/components/home/homecalculator/plugins/CalculatorItem.vue'
 import ButtonPlugin from '@/components/home/plugins/ButtonPlugin.vue'
 export default {
   components: {
-    CalculatorBlock, ButtonPlugin
+    CalculatorBlock, ButtonPlugin, CalculatorItem
   }
 }
 </script>
@@ -60,6 +68,10 @@ export default {
         margin-right: 30px;
       }
     }
+  }
+  .nb-home-calcultor-specific{
+    .home-common-bg;
+    .mixin-boxshadow;
   }
   &>div+div{
     margin-top: 16px;

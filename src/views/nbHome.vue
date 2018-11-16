@@ -14,7 +14,7 @@ import HomeNav from '@/components/home/nav/HomeNav.vue'
 import Home from '@/components/home/homemain/HomeMain.vue'
 import Wallet from '@/components/home/homewallet/HomeWallet.vue'
 import Node from '@/components/home/homenode/HomeNode.vue'
-import Calculator from '@/components/home/homecalculator/HomeCalculator.vue'
+import Calculator from '@/components/home/homecalculator/HomeCalculate.vue'
 export default {
   components: {
     HomeNav, Home, Wallet, Node, Calculator
