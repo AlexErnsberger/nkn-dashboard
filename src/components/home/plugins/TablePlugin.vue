@@ -26,6 +26,9 @@ export default {
   components: {
     TableSeparatePlugin
   },
+  mounted () {
+    this.currentData = this.data.slice(0, this.eachPageSum - 1)
+  },
   props: {
     title: String,
     data: Array,
