@@ -2,7 +2,7 @@
 <div class="nb-home-calculator">
   <div class="nb-home-calculator-info">
     <div class="calculator-block">
-      <input-item  label="Average block time in seconds" v-model="averageTime" style="width:230px;" homeStyle></input-item>
+      <input-item  label="Average block time in seconds" v-model="averageTime" style="width:230px;" homeStyle homeCalaulateStyle></input-item>
     </div>
     <div class="calculator-block">
       <input-item  label="Currnet node count in NKN network" v-model="currentNode" style="width:230px;" homeStyle></input-item>

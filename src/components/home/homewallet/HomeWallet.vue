@@ -12,7 +12,7 @@
     <block-plugin title="Transfer"></block-plugin>
     <input-item label="Transfer Address" class="transfer-input" :size="55" homeStyle></input-item>
     <input-item label="Transfer Amount" class="transfer-input" :size="55" unit="NKN" homeStyle></input-item>
-    <button-plugin class="transfer-commit">Transfer</button-plugin>
+    <button-plugin class="transfer-commit" @click.native="transferConfirm">Transfer</button-plugin>
   </div>
   <div class="transfer-history">
     <table-plugin title="Transaction History" colHeader1="From" colHeader2="To" colHeader3="Value" colHeader4="Time" :data="testTableList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
@@ -20,6 +20,13 @@
   <div class="mining-reward">
     <table-plugin title="Mining Reward" colHeader1="Height" colHeader2="Transaction Hash" colHeader3="Value" colHeader4="Time" :data="testRewardList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
   </div>
+  <section>
+    <common-dialog v-model="transfer">
+      <span slot="dialog-header-text">Transfer</span>
+      <dialog-input placeholder="wallet password" slot="dialog-body-content"></dialog-input>
+      <dialog-button type="danger" slot="dialog-footer-btn">transfer</dialog-button>
+    </common-dialog>
+  </section>
 </div>
 </template>
 
@@ -30,6 +37,9 @@ import ButtonPlugin from '@/components/home/plugins/ButtonPlugin.vue'
 import InputItem from '@/components/signin/plugins/InputItem.vue'
 import TablePlugin from '@/components/home/plugins/TablePlugin.vue'
 import NodeInfoPlugin from '@/components/home/commonplugins/NodeInfoPlugin.vue'
+import CommonDialog from '@/components/base/CommonDialog.vue'
+import DialogInput from '@/components/base/plugins/DialogInput.vue'
+import DialogButton from '@/components/base/plugins/DialogButton.vue'
 export default {
   name: 'home-wallet',
   components: {
@@ -38,7 +48,16 @@ export default {
     NodeInfoPlugin,
     InputItem,
     ButtonPlugin,
-    TablePlugin
+    TablePlugin,
+    CommonDialog,
+    DialogInput,
+    DialogButton
+  },
+  methods: {
+    transferConfirm () {
+      console.log(1)
+      this.transfer = true
+    }
   },
   data () {
     return {
@@ -46,118 +65,9 @@ export default {
         'Node #8', 'Node #2', 'Node #3'
       ],
       testListSum: 10,
-      testTableList: [{
-        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        from: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        to: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }],
-      testRewardList: [{
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }, {
-        height: 2400,
-        hash: 'AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6',
-        value: '80 NKN',
-        time: '1 min ago'
-      }]
+      transfer: false,
+      testTableList: [],
+      testRewardList: []
     }
   }
 }

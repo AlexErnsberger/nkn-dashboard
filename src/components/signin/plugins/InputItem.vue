@@ -2,6 +2,7 @@
 <div class="signin-input-item" :class="{'home-style':homeStyle}">
   <label class="item-title">{{label}}</label>
   <input class="item-content"
+      :class="{'home-calculate-style':homeCalaulateStyle}"
       :type="currentType"
       :placeholder="placeholder"
       :maxlength="maxlength"
@@ -39,7 +40,8 @@ export default {
     unit: {
       type: String
     },
-    homeStyle: Boolean
+    homeStyle: Boolean,
+    homeCalaulateStyle: Boolean
   },
   data () {
     return {
@@ -82,6 +84,7 @@ export default {
 .signin-input-item {
   border-bottom: 2px solid @si-color;
   position: relative;
+
   label {
     display: block;
     color: @si-input-label-color;
@@ -92,13 +95,20 @@ export default {
 
   input {
     padding: 14px 0 12px;
-    outline: none;border: 0;background: none;
+    outline: none;
+    border: 0;
+    background: none;
+
     &::placeholder {
       color: @si-input-ph-color;
     }
+
+    .home-calculate-style {
+      direction: ltr;
+    }
   }
 
-  span{
+  span {
     font-size: 12px;
     color: #000;
   }
@@ -111,7 +121,8 @@ export default {
     bottom: 8px;
   }
 }
-.home-style{
+
+.home-style {
   border-bottom-color: @home-common-border-color;
 }
 </style>
