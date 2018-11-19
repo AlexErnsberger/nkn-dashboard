@@ -1,5 +1,5 @@
 <template>
-<div class="signin-input-item">
+<div class="signin-input-item" :class="{'home-style':homeStyle}">
   <label class="item-title">{{label}}</label>
   <input class="item-content"
       :type="currentType"
@@ -38,7 +38,8 @@ export default {
     },
     unit: {
       type: String
-    }
+    },
+    homeStyle: Boolean
   },
   data () {
     return {
@@ -81,7 +82,6 @@ export default {
 .signin-input-item {
   border-bottom: 2px solid @si-color;
   position: relative;
-
   label {
     display: block;
     color: @si-input-label-color;
@@ -110,5 +110,8 @@ export default {
     right: 0;
     bottom: 8px;
   }
+}
+.home-style{
+  border-bottom-color: @home-common-border-color;
 }
 </style>

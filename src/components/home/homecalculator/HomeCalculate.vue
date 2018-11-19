@@ -1,12 +1,20 @@
 <template>
 <div class="nb-home-calculator">
   <div class="nb-home-calculator-info">
-    <calculator-block class="calculator-block" title="Average block time in seconds" data="12" hasOrder></calculator-block>
-    <calculator-block class="calculator-block" title="Currnet node count in NKN network" data="1000"></calculator-block>
+    <div class="calculator-block">
+      <input-item  label="Average block time in seconds" v-model="averageTime" style="width:230px;" homeStyle></input-item>
+    </div>
+    <div class="calculator-block">
+      <input-item  label="Currnet node count in NKN network" v-model="currentNode" style="width:230px;" homeStyle></input-item>
+    </div>
   </div>
   <div class="nb-home-calculator-info">
-    <calculator-block class="calculator-block" title="Amount of your nodes" data="2"></calculator-block>
-    <calculator-block class="calculator-block" title="Your nodes working time in months" data="1"></calculator-block>
+    <div class="calculator-block">
+      <input-item  label="Amount of your nodes" v-model="nodeSum" style="width:230px;" homeStyle></input-item>
+    </div>
+    <div class="calculator-block">
+      <input-item  label="Your nodes working time in months" v-model="workingTimes" style="width:230px;" homeStyle></input-item>
+    </div>
   </div>
   <div class="nb-home-calcultor-compute">
     <div class="price-block">
@@ -29,14 +37,22 @@
 </template>
 
 <script>
-import CalculatorBlock from '@/components/home/homecalculator/plugins/CalculatorBlock.vue'
 import CalculatorItem from '@/components/home/homecalculator/plugins/CalculatorItem.vue'
 import ButtonPlugin from '@/components/home/plugins/ButtonPlugin.vue'
+import InputItem from '@/components/signin/plugins/InputItem.vue'
 export default {
   components: {
-    CalculatorBlock,
     ButtonPlugin,
-    CalculatorItem
+    CalculatorItem,
+    InputItem
+  },
+  data () {
+    return {
+      averageTime: 12,
+      currentNode: 1000,
+      nodeSum: 2,
+      workingTimes: 1
+    }
   }
 }
 </script>

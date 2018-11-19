@@ -62,6 +62,8 @@ export default {
   }
 
   .table-content {
+    overflow: auto;
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -88,6 +90,27 @@ export default {
           color: #000;
         }
       }
+    }
+
+    /**
+    *滚动条设置
+    */
+    ::-webkit-scrollbar {
+      /* 血槽宽度 */
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      /* 拖动条 */
+      background-color: rgba(0, 0, 0, .3);
+      border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      /* 背景槽 */
+      background-color: #ddd;
+      border-radius: 6px;
     }
   }
 

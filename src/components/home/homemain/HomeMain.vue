@@ -14,11 +14,7 @@
     <block-plugin title="Version Info" data="V 1.0"></block-plugin>
   </div>
   <div class="nkn-node">
-    <node-plugin title="My Node" data="20"></node-plugin>
-    <node-plugin title="SyncStarted" data="2" type="SyncStarted"></node-plugin>
-    <node-plugin title="SyncFinished" data="2" type="SyncFinished"></node-plugin>
-    <node-plugin title="PersistFinished" data="2" type="PersistFinished"></node-plugin>
-    <node-plugin title="Stopped" data="2" type="Stopped"></node-plugin>
+    <node-status-plugin></node-status-plugin>
   </div>
 </div>
 </template>
@@ -27,12 +23,14 @@
 import CurrencyPlugin from '@/components/home/plugins/CurrencyPlugin.vue'
 import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
+import NodeStatusPlugin from '@/components/home/commonplugins/NodeStatusPlugin.vue'
 export default {
   name: 'home-main',
   components: {
     CurrencyPlugin,
     BlockPlugin,
-    NodePlugin
+    NodePlugin,
+    NodeStatusPlugin
   }
 }
 </script>
@@ -46,12 +44,13 @@ export default {
       width: 220px;
     }
   }
-
+  .nkn-block{
+    .home-common-flex;
+  }
   .nkn-block,
   .nkn-node {
     .home-common-bg;
     .mixin-boxshadow;
-    .home-common-flex;
   }
 
   &>div+div {

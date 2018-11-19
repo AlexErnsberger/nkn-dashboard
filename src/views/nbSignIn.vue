@@ -31,8 +31,12 @@ export default {
 <style lang="less" scoped>
 .nb-signin {
   .nb-content-container{
-    height: 680px;
+    height: 784px;
     .mixin-boxshadow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: @common-bg-color;
 
     h1 {

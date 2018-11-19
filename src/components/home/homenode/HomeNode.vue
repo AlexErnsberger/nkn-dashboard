@@ -4,11 +4,7 @@
     <node-info-plugin :nodeList="nodeList"></node-info-plugin>
   </div>
   <div class="my-node-status">
-    <node-plugin title="My Node Status" data="20"></node-plugin>
-    <node-plugin title="SyncStarted" data="2" type="SyncStarted"></node-plugin>
-    <node-plugin title="SyncFinished" data="2" type="SyncFinished"></node-plugin>
-    <node-plugin title="PersistFinished" data="2" type="PersistFinished"></node-plugin>
-    <node-plugin title="Stopped" data="2" type="Stopped"></node-plugin>
+    <node-status-plugin></node-status-plugin>
   </div>
   <div class="my-node-info">
     <block-plugin title="Total Node" data="1000"></block-plugin>
@@ -40,12 +36,14 @@ import NodeInfoPlugin from '@/components/home/commonplugins/NodeInfoPlugin.vue'
 import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 import TablePlugin from '@/components/home/plugins/TablePlugin.vue'
+import NodeStatusPlugin from '@/components/home/commonplugins/NodeStatusPlugin.vue'
 export default {
   components: {
     NodeInfoPlugin,
     NodePlugin,
     BlockPlugin,
-    TablePlugin
+    TablePlugin,
+    NodeStatusPlugin
   },
   data () {
     return {
@@ -73,6 +71,12 @@ export default {
   .my-node-chrod {
     .home-common-bg;
     .mixin-boxshadow;
+  }
+
+  .my-node-info,
+  .my-node-netinfo,
+  .my-node-id,
+  .my-node-chrod {
     .home-common-flex;
   }
 

@@ -10,8 +10,8 @@
   </div>
   <div class="nkn-transfer">
     <block-plugin title="Transfer"></block-plugin>
-    <input-item label="Transfer Address" class="transfer-input" :size="55"></input-item>
-    <input-item label="Transfer Amount" class="transfer-input" :size="55" unit="NKN"></input-item>
+    <input-item label="Transfer Address" class="transfer-input" :size="55" homeStyle></input-item>
+    <input-item label="Transfer Amount" class="transfer-input" :size="55" unit="NKN" homeStyle></input-item>
     <button-plugin class="transfer-commit">Transfer</button-plugin>
   </div>
   <div class="transfer-history">
