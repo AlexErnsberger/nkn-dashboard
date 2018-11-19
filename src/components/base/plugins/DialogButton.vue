@@ -28,11 +28,22 @@ export default {
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   margin-right: .25rem;
   color: white;
+  pointer-events: auto;
+  position: relative;
+  &::after {
+    position: absolute;
+    top:0;left: 0;right: 0;bottom: 0;
+    background: rgba(0, 0, 0, .1);
+    border-radius: .25rem;
+  }
+  &:hover::after{
+    content: '';
+  }
 }
 .secondary{
-  background-color: #6c757d;
+  background: #6c757d;
 }
 .danger{
-  background-color: #dc3545;
+  background: #dc3545;
 }
 </style>

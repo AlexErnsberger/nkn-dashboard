@@ -1,5 +1,5 @@
 <template>
-<div :class="['nb-dialog',{'show':value}]" @click="handleClick">
+<div :class="['nb-dialog',{'show':value}]" @click="handleClick" @mousewheel.prevent>
   <div class="dialog-message-box" ref="dialog">
     <dialog-header>
       <slot name="dialog-header-text"></slot>

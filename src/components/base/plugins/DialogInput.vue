@@ -30,5 +30,8 @@ export default {
   width: 100%;
   box-sizing: border-box;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  &:focus{
+    box-shadow: 0 0 0 2px #89bdf5;
+  }
 }
 </style>

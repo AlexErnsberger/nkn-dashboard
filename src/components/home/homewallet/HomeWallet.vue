@@ -55,7 +55,6 @@ export default {
   },
   methods: {
     transferConfirm () {
-      console.log(1)
       this.transfer = true
     }
   },
