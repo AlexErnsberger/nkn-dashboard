@@ -30,7 +30,7 @@ export default {
   color: white;
   pointer-events: auto;
   position: relative;
-
+  outline: none;
   &::after {
     position: absolute;
     top: 0;
