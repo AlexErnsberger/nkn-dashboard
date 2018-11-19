@@ -49,7 +49,7 @@ export default {
       }
 
       span {
-        color: #318bec;
+        color: @home-wallet-copy-color;
         font-size: 12px;
       }
     }
@@ -62,6 +62,7 @@ export default {
     .currency-data {
       .home-commom-data-font;
       float: left;
+      word-break: break-all;
     }
 
     .currency-unit {

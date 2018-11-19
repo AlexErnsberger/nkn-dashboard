@@ -32,7 +32,7 @@ export default {
     padding: 16px 0;
     font-size: 14px;
     color: @si-color;
-    border-bottom: 2px solid #d0d5e7;
+    border-bottom: 2px solid @home-common-border-color;
     word-wrap: break-word;
   }
 }

@@ -87,7 +87,7 @@ export default {
     }
 
     &:hover {
-      background: #ecedf2;
+      background: @home-table-sep-hover-color;
     }
 
     &.go-previous {
@@ -105,7 +105,7 @@ export default {
 
   span {
     font-size: 14px;
-    color: #8992b0;
+    color: @home-table-color;
     margin: 0 24px;
   }
 }

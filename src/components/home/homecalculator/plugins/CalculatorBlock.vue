@@ -27,7 +27,7 @@ export default {
 
   .calculator-block-content {
     width: 220px;
-    border-bottom: 2px solid #d0d5e7;
+    border-bottom: 2px solid @home-common-border-color;
     text-align: right;
     position: relative;
 

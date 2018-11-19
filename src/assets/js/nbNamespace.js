@@ -1,6 +1,6 @@
-const nsNamespace = {
+const nbNamespace = {
   global: 'global',
   signIn: 'signin'
 }
 
-export default nsNamespace
+export default nbNamespace

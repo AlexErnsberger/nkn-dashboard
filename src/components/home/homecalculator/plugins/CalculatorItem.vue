@@ -22,7 +22,7 @@ export default {
 .calculator-item {
   .home-common-flex;
   padding: 11px 0;
-  border-bottom: 2px solid #d0d5e7;
+  border-bottom: 2px solid @home-common-border-color;
 
   .calculator-item-title {
     .home-common-title-font;

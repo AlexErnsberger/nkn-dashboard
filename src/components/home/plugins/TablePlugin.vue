@@ -70,7 +70,7 @@ export default {
         th {
           text-align: left;
           padding: 4px 0;
-          color: #8992b0;
+          color: @home-table-color;
           font-weight: normal;
 
           &.table-header-size {
@@ -80,7 +80,7 @@ export default {
       }
 
       tr.table-record {
-        border-bottom: 2px solid #d0d5e7;
+        border-bottom: 2px solid @home-common-border-color;
 
         td {
           padding: 10px 0;
