@@ -3,30 +3,28 @@
   <div class="my-node">
     <node-info-plugin :nodeList="nodeList"></node-info-plugin>
   </div>
-  <div class="my-wallet">
+  <div class="my-wallet home-info-seperate">
     <currency-plugin title="Balance" data="20000.0000" unit="NKN" style="width:262px;"></currency-plugin>
     <currency-plugin title="Mining Reward" data="20000.0000" unit="NKN" style="width:262px;"></currency-plugin>
     <currency-plugin title="Wallet Address" data="ADSAddsdsadDSSCSdsaDSDSdda" copy style="width:372px;"></currency-plugin>
   </div>
-  <div class="nkn-transfer">
+  <div class="nkn-transfer home-info-seperate">
     <block-plugin title="Transfer"></block-plugin>
     <input-item label="Transfer Address" class="transfer-input" :size="55" homeStyle></input-item>
     <input-item label="Transfer Amount" class="transfer-input" :size="55" unit="NKN" homeStyle></input-item>
     <button-plugin class="transfer-commit" @click.native="transferConfirm">Transfer</button-plugin>
   </div>
-  <div class="transfer-history">
+  <div class="transfer-history home-info-seperate">
     <table-plugin title="Transaction History" colHeader1="From" colHeader2="To" colHeader3="Value" colHeader4="Time" :data="testTableList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
   </div>
   <div class="mining-reward">
     <table-plugin title="Mining Reward" colHeader1="Height" colHeader2="Transaction Hash" colHeader3="Value" colHeader4="Time" :data="testRewardList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
   </div>
-  <section>
-    <common-dialog v-model="transfer">
-      <span slot="dialog-header-text">Transfer</span>
-      <dialog-input placeholder="wallet password" slot="dialog-body-content"></dialog-input>
-      <dialog-button type="danger" slot="dialog-footer-btn">transfer</dialog-button>
-    </common-dialog>
-  </section>
+  <common-dialog v-model="transfer">
+    <span slot="dialog-header-text">Transfer</span>
+    <dialog-input placeholder="wallet password" slot="dialog-body-content"></dialog-input>
+    <dialog-button type="danger" slot="dialog-footer-btn">transfer</dialog-button>
+  </common-dialog>
 </div>
 </template>
 
@@ -112,10 +110,6 @@ export default {
     .home-common-bg;
     .mixin-boxshadow;
     height: 397px;
-  }
-
-  &>div+div {
-    margin-top: 16px;
   }
 }
 </style>

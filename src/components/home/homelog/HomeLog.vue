@@ -3,7 +3,7 @@
   <div class="my-node">
     <node-info-plugin :nodeList="nodeList"></node-info-plugin>
   </div>
-  <div class="nb-home-log-content">
+  <div class="nb-home-log-content home-info-seperate">
     <log-plugin></log-plugin>
   </div>
 </div>
@@ -37,10 +37,6 @@ export default {
   .nb-home-log-content {
     .home-common-bg;
     .mixin-boxshadow;
-  }
-
-  &>div+div {
-    margin-top: 16px;
   }
 }
 </style>

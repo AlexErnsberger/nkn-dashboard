@@ -3,28 +3,28 @@
   <div class="my-node-operate">
     <node-info-plugin :nodeList="nodeList"></node-info-plugin>
   </div>
-  <div class="my-node-status">
+  <div class="my-node-status home-info-seperate">
     <node-status-plugin></node-status-plugin>
   </div>
-  <div class="my-node-info">
+  <div class="my-node-info home-info-seperate">
     <block-plugin title="Total Node" data="1000"></block-plugin>
     <block-plugin title="Node Version" data="1.0"></block-plugin>
     <block-plugin title="Relayed Transactions" data="120"></block-plugin>
     <block-plugin title="Connected Client" data="6"></block-plugin>
   </div>
-  <div class="my-node-netinfo">
+  <div class="my-node-netinfo home-info-seperate">
     <block-plugin title="Node IP" data="192.168.1.23" small></block-plugin>
     <block-plugin title="Chord" data="1.0"></block-plugin>
     <block-plugin title="Websocket" data="120"></block-plugin>
     <block-plugin title="Json rpc" data="6"></block-plugin>
   </div>
-  <div class="my-node-id">
+  <div class="my-node-id home-info-seperate">
     <block-plugin title="Node ID" data="AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6" small></block-plugin>
   </div>
-  <div class="my-node-chrod">
+  <div class="my-node-chrod home-info-seperate">
     <block-plugin title="Chrod ID" data="AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6" small></block-plugin>
   </div>
-  <div class="my-neighbor-info">
+  <div class="my-neighbor-info home-info-seperate">
     <table-plugin class="my-node-neighbor" title="Node Neighbor" colHeader1="Node ID" colHeader2="Node IP" colHeader3="Port" :data="testNodeList"></table-plugin>
     <table-plugin class="my-chrod-neighbor" title="Chrod Neighbor" colHeader1="Chrod ID" colHeader2="Chrod IP" colHeader3="Port" :data="testChrodList"></table-plugin>
   </div>
@@ -95,10 +95,6 @@ export default {
       .home-common-bg;
       .mixin-boxshadow;
     }
-  }
-
-  &>div+div {
-    margin-top: 16px;
   }
 }
 </style>

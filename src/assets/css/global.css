@@ -1,4 +1,5 @@
 @import './signin/signin.css';
+@import './home/home.css';
 
 html{
   font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;

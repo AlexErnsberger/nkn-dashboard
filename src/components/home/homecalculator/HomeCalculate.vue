@@ -2,21 +2,21 @@
 <div class="nb-home-calculator">
   <div class="nb-home-calculator-info">
     <div class="calculator-block">
-      <input-item  label="Average block time in seconds" v-model="averageTime" style="width:230px;" prefix="1 block/" @change="handleChange" homeStyle></input-item>
+      <input-item  label="Average block time in seconds" v-model="averageTime" class="home-calculator-input-width" prefix="1 block/" @change="handleChange" homeStyle></input-item>
     </div>
     <div class="calculator-block">
-      <input-item  label="Currnet node count in NKN network" v-model="currentNode" style="width:230px;" homeStyle></input-item>
+      <input-item  label="Currnet node count in NKN network" v-model="currentNode" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
     </div>
   </div>
-  <div class="nb-home-calculator-info">
+  <div class="nb-home-calculator-info home-info-seperate">
     <div class="calculator-block">
-      <input-item  label="Amount of your nodes" v-model="nodeSum" style="width:230px;" homeStyle></input-item>
+      <input-item  label="Amount of your nodes" v-model="nodeSum" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
     </div>
     <div class="calculator-block">
-      <input-item  label="Your nodes working time in months" v-model="workingTimes" style="width:230px;" homeStyle></input-item>
+      <input-item  label="Your nodes working time in months" v-model="workingTimes" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
     </div>
   </div>
-  <div class="nb-home-calcultor-compute">
+  <div class="nb-home-calcultor-compute home-info-seperate">
     <div class="price-block">
       <span class="nkn-price-title">NKN Price:</span>
       <span class="nkn-price-data">0.5100 $</span>
@@ -26,7 +26,7 @@
       <button-plugin class="compute-calculate">Calculate</button-plugin>
     </div>
   </div>
-  <div class="nb-home-calcultor-specific">
+  <div class="nb-home-calcultor-specific home-info-seperate">
     <calculator-item title="Approximate amount of NKN testnet tokens mined per day" data="144" unit="NKN"></calculator-item>
     <calculator-item title="Total testnet tokens mined per 1 month" data="4320" unit="NKN"></calculator-item>
     <calculator-item title="NKN mainnet tokens (1:5 ratio) per 1 month" data="864" unit="NKN"></calculator-item>
@@ -113,10 +113,6 @@ export default {
   .nb-home-calcultor-specific {
     .home-common-bg;
     .mixin-boxshadow;
-  }
-
-  &>div+div {
-    margin-top: 16px;
   }
 }
 </style>
