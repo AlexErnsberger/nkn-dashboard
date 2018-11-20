@@ -2,7 +2,7 @@
 <div class="nb-home-calculator">
   <div class="nb-home-calculator-info">
     <div class="calculator-block">
-      <input-item  label="Average block time in seconds" v-model="averageTime" style="width:230px;" homeStyle homeCalaulateStyle></input-item>
+      <input-item  label="Average block time in seconds" v-model="averageTime" style="width:230px;" prefix="1 block/" @change="handleChange" homeStyle></input-item>
     </div>
     <div class="calculator-block">
       <input-item  label="Currnet node count in NKN network" v-model="currentNode" style="width:230px;" homeStyle></input-item>
@@ -22,7 +22,7 @@
       <span class="nkn-price-data">0.5100 $</span>
     </div>
     <div class="price-compute">
-      <button-plugin class="compute-reset" disabled>Reset</button-plugin>
+      <button-plugin class="compute-reset" :disabled="disabled" @click.native="reset">Reset</button-plugin>
       <button-plugin class="compute-calculate">Calculate</button-plugin>
     </div>
   </div>
@@ -48,10 +48,27 @@ export default {
   },
   data () {
     return {
-      averageTime: 12,
-      currentNode: 1000,
-      nodeSum: 2,
-      workingTimes: 1
+      averageTime: '',
+      currentNode: '',
+      nodeSum: '',
+      workingTimes: '',
+      disabled: true
+    }
+  },
+  methods: {
+    reset () {
+      this.averageTime = ''
+      this.currentNode = ''
+      this.nodeSum = ''
+      this.workingTimes = ''
+      this.disabled = !this.disabled
+    },
+    handleChange (e) {
+      if (e) {
+        this.disabled = false
+      } else {
+        this.disabled = true
+      }
     }
   }
 }

@@ -2,10 +2,10 @@
 <div class="currency-plugin">
   <div class="currency-header clearfix">
     <div class="currency-title">{{title}}</div>
-    <div v-if="copy" class="currency-copy">
+    <button v-if="copy" class="currency-copy" v-clipboard:copy="data">
       <img src="../../../assets/img/icon/copy.png">
       <span>copy</span>
-    </div>
+    </button>
   </div>
   <div class="currency-content clearfix">
     <div class="currency-data">{{data}}</div>
@@ -39,8 +39,9 @@ export default {
     }
 
     .currency-copy {
-      cursor: pointer;
       float: right;
+      cursor: pointer;
+      outline: none;background:none;border:none;
 
       img {
         width: 10px;

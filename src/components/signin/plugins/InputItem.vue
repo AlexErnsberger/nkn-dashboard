@@ -1,6 +1,7 @@
 <template>
 <div class="signin-input-item" :class="{'home-style':homeStyle}">
   <label class="item-title">{{label}}</label>
+  <span v-if="prefix">{{prefix}}</span>
   <input class="item-content"
       :class="{'home-calculate-style':homeCalaulateStyle}"
       :type="currentType"
@@ -8,7 +9,8 @@
       :maxlength="maxlength"
       :value="currentValue"
       :size="size"
-      @input="handleInput">
+      @input="handleInput"
+      @change="handleChange">
   <span v-if="unit">{{unit}}</span>
   <img v-if="type === 'password'" :src="iconSrc" @click="showPass">
   </div>
@@ -40,6 +42,9 @@ export default {
     unit: {
       type: String
     },
+    prefix: {
+      type: String
+    },
     homeStyle: Boolean,
     homeCalaulateStyle: Boolean
   },
@@ -54,6 +59,10 @@ export default {
     handleInput (event) {
       let value = event.target.value
       this.setCurrentValue(value)
+      this.$emit('input', value)
+    },
+    handleChange (event) {
+      this.$emit('change', event.target.value)
     },
     setCurrentValue (value) {
       if (this.currentValue === value) {
@@ -75,6 +84,11 @@ export default {
           this.currentType = 'password'
           this.iconSrc = require('../../../assets/img/icon/closeeyes.png')
       }
+    }
+  },
+  watch: {
+    value () {
+      this.currentValue = this.value
     }
   }
 }
@@ -102,10 +116,11 @@ export default {
     &::placeholder {
       color: @si-input-ph-color;
     }
-
-    .home-calculate-style {
-      direction: ltr;
-    }
+  }
+  .home-calculate-style {
+    direction: rtl;
+    font-size: 20px;
+    color: @si-color;
   }
 
   span {
