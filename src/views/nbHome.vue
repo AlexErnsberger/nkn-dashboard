@@ -39,13 +39,16 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.nb-home-nv {
-  margin-right: 16px;
-  float: left;
+.nb-content-container{
+  .home-common-flex;
 }
+// .nb-home-nv {
+//   margin-right: 16px;
+//   float: left;
+// }
 
 .nb-home-content {
-  float: right;
+  // float: right;
   width: 928px;
 }
 </style>

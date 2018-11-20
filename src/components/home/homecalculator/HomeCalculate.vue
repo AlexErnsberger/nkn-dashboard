@@ -33,7 +33,7 @@
     <calculator-item title="USD profit per day" data="1.4400" unit="$"></calculator-item>
     <calculator-item title="USD profit per 1 month" data="43.2" unit="$"></calculator-item>
   </div>
-  <common-loading v-if="true"></common-loading>
+  <common-loading v-if="false"></common-loading>
 </div>
 </template>
 

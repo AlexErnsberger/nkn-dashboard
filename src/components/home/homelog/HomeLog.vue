@@ -6,7 +6,7 @@
   <div class="nb-home-log-content home-info-seperate">
     <log-plugin></log-plugin>
   </div>
-  <common-loading v-if="true"></common-loading>
+  <common-loading v-if="false"></common-loading>
 </div>
 </template>
 

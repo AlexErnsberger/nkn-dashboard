@@ -28,7 +28,7 @@
     <table-plugin class="my-node-neighbor home-node-tablelist-size" title="Node Neighbor" colHeader1="Node ID" colHeader2="Node IP" colHeader3="Port" :data="testNodeList"></table-plugin>
     <table-plugin class="my-chrod-neighbor home-node-tablelist-size" title="Chrod Neighbor" colHeader1="Chrod ID" colHeader2="Chrod IP" colHeader3="Port" :data="testChrodList"></table-plugin>
   </div>
-  <common-loading v-if="true"></common-loading>
+  <common-loading v-if="false"></common-loading>
 </div>
 </template>
 

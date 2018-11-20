@@ -2,7 +2,8 @@ export default {
   namespaced: true,
   state: {
     lang: 'en',
-    userInfo: null
+    userInfo: null,
+    loading: true
   },
   getters: {
     getLang (state) {

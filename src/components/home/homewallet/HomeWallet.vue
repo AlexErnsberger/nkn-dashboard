@@ -29,7 +29,7 @@
     <dialog-input placeholder="wallet password" slot="dialog-body-content"></dialog-input>
     <dialog-button type="danger" slot="dialog-footer-btn">transfer</dialog-button>
   </common-dialog>
-  <common-loading v-if="true"></common-loading>
+  <common-loading v-if="false"></common-loading>
 </div>
 </template>
 

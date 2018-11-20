@@ -28,12 +28,15 @@ export default {
 <style lang="less" scoped>
 .common-node-plugin {
   .home-common-flex;
+  align-items: center;
   &>div{
     width: 25%;
   }
   .node-separate{
-    padding: 8px 14px;
+    padding: 8px 0;
     border-left: 2px solid @si-color;
+    display: flex;
+    justify-content: center;
   }
 }
 </style>
