@@ -31,7 +31,7 @@ export default {
   .mixin-boxshadow;
 
   .currency-header {
-    line-height: 12px;
+    height: 12px;
 
     .currency-title {
       float: left;

@@ -1,10 +1,10 @@
 <template>
 <div class="nb-home-main">
   <div class="nkn-currency">
-    <currency-plugin class="home-main-curreny-plugin-width" title="Balance" data="18000.0000" unit="NKN"></currency-plugin>
-    <currency-plugin class="home-main-curreny-plugin-width" title="Mining Reward" data="20000.0000" unit="NKN"></currency-plugin>
-    <currency-plugin class="home-main-curreny-plugin-width" title="NKN/USDT Price" data="0.05100" unit="USDT"></currency-plugin>
-    <currency-plugin class="home-main-curreny-plugin-width" title="NKN/ETH Price" data="0.0002210" unit="ETH"></currency-plugin>
+    <currency-plugin class="home-main-currency-plugin-width" title="Balance" data="18000.0000" unit="NKN"></currency-plugin>
+    <currency-plugin class="home-main-currency-plugin-width" title="Mining Reward" data="20000.0000" unit="NKN"></currency-plugin>
+    <currency-plugin class="home-main-currency-plugin-width" title="NKN/USDT Price" data="0.05100" unit="USDT"></currency-plugin>
+    <currency-plugin class="home-main-currency-plugin-width" title="NKN/ETH Price" data="0.0002210" unit="ETH"></currency-plugin>
   </div>
   <div class="nkn-block home-info-seperate">
     <block-plugin title="Current Height" data="5707446"></block-plugin>

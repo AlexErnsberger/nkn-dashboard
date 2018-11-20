@@ -1,9 +1,41 @@
 .home-info-seperate{
   margin-top: 16px;
 }
+
+.home-main-currency-plugin-width{
+  width: 220px;
+}
+
+.home-wallet-currence-plugin-width{
+  width: 262px;
+}
+
+.home-wallet-address-currence-plugin-width{
+  width: 372px;
+}
+
+.home-wallet-tansfer-input-width{
+  width: 420px;
+}
+
+.home-wallet-tablelist-height{
+  height: 397px;
+}
+
+.home-node-block-plugin-width{
+  width: 200px;
+}
+
+.home-node-tablelist-size{
+  width: 455px;
+  height: 350px;
+}
+
+.home-calculator-block-size{
+  width: 455px;
+  height: 100px;
+}
+
 .home-calculator-input-width{
   width: 230px;
-}
-.home-main-curreny-plugin-width{
-  width: 220px;
 }

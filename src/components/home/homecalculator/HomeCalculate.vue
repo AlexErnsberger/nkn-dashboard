@@ -1,18 +1,18 @@
 <template>
 <div class="nb-home-calculator">
   <div class="nb-home-calculator-info">
-    <div class="calculator-block">
+    <div class="calculator-block home-calculator-block-size">
       <input-item  label="Average block time in seconds" v-model="averageTime" class="home-calculator-input-width" prefix="1 block/" @change="handleChange" homeStyle></input-item>
     </div>
-    <div class="calculator-block">
+    <div class="calculator-block home-calculator-block-size">
       <input-item  label="Currnet node count in NKN network" v-model="currentNode" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
     </div>
   </div>
   <div class="nb-home-calculator-info home-info-seperate">
-    <div class="calculator-block">
+    <div class="calculator-block home-calculator-block-size">
       <input-item  label="Amount of your nodes" v-model="nodeSum" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
     </div>
-    <div class="calculator-block">
+    <div class="calculator-block home-calculator-block-size">
       <input-item  label="Your nodes working time in months" v-model="workingTimes" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
     </div>
   </div>
@@ -82,8 +82,6 @@ export default {
     .calculator-block {
       .home-common-bg;
       .mixin-boxshadow;
-      width: 455px;
-      height: 100px;
     }
   }
 
@@ -99,7 +97,6 @@ export default {
 
       .nkn-price-data {
         .home-commom-data-font;
-        margin-left: 30px;
       }
     }
 
