@@ -15,7 +15,7 @@
       <input-item label="Transfer Amount" class="home-wallet-tansfer-input-width" :size="55" unit="NKN" homeStyle></input-item>
     </div>
     <div class="nkn-tranfer-commit">
-      <button-plugin class="transfer-commit" @click.native="transferConfirm">Transfer</button-plugin>
+      <button-plugin @click.native="transferConfirm">Transfer</button-plugin>
     </div>
   </div>
   <div class="transfer-history home-wallet-tablelist-height home-info-seperate">

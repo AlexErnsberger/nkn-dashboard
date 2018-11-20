@@ -13,7 +13,8 @@
       @change="handleChange">
   <span v-if="unit">{{unit}}</span>
   <img v-if="type === 'password'" :src="iconSrc" @click="showPass">
-  </div>
+  <div class="item-errorinfo" :class="{'item-errorInfo-show':errorInfo}">{{errorInfo}}</div>
+</div>
 </template>
 
 <script>
@@ -46,7 +47,10 @@ export default {
       type: String
     },
     homeStyle: Boolean,
-    homeCalaulateStyle: Boolean
+    homeCalaulateStyle: Boolean,
+    errorInfo: {
+      type: String
+    }
   },
   data () {
     return {
@@ -134,6 +138,18 @@ export default {
     position: absolute;
     right: 0;
     bottom: 8px;
+  }
+
+  .item-errorinfo{
+    visibility: hidden;
+    position: absolute;
+    color: #c22;
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 300;
+  }
+  .item-errorInfo-show{
+    visibility: visible;
   }
 }
 
