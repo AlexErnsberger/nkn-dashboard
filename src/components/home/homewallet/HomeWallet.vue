@@ -1,5 +1,5 @@
 <template>
-<div class="nb-home-wallet">
+<div class="nb-home-wallet home-component-position">
   <div class="my-node">
     <node-info-plugin :nodeList="nodeList"></node-info-plugin>
   </div>
@@ -29,6 +29,7 @@
     <dialog-input placeholder="wallet password" slot="dialog-body-content"></dialog-input>
     <dialog-button type="danger" slot="dialog-footer-btn">transfer</dialog-button>
   </common-dialog>
+  <common-loading v-if="true"></common-loading>
 </div>
 </template>
 
@@ -42,6 +43,7 @@ import NodeInfoPlugin from '@/components/home/commonplugins/NodeInfoPlugin.vue'
 import CommonDialog from '@/components/base/CommonDialog.vue'
 import DialogInput from '@/components/base/plugins/DialogInput.vue'
 import DialogButton from '@/components/base/plugins/DialogButton.vue'
+import CommonLoading from '@/components/base/CommonLoading.vue'
 export default {
   name: 'home-wallet',
   components: {
@@ -53,7 +55,8 @@ export default {
     TablePlugin,
     CommonDialog,
     DialogInput,
-    DialogButton
+    DialogButton,
+    CommonLoading
   },
   methods: {
     transferConfirm () {

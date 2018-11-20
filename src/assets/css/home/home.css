@@ -2,6 +2,10 @@
   margin-top: 16px;
 }
 
+.home-component-position{
+  position: relative;
+}
+
 .home-main-currency-plugin-width{
   width: 220px;
 }

@@ -9,9 +9,15 @@
 
 <script>
 import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
+import CommonDialog from '@/components/base/CommonDialog.vue'
+import DialogInput from '@/components/base/plugins/DialogInput.vue'
+import DialogButton from '@/components/base/plugins/DialogButton.vue'
 export default {
   components: {
-    NodePlugin
+    NodePlugin,
+    CommonDialog,
+    DialogInput,
+    DialogButton
   },
   props: {
     nodeList: Array

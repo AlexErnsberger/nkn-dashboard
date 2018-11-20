@@ -1,5 +1,5 @@
 <template>
-<div class="nb-home-node">
+<div class="nb-home-node home-component-position">
   <div class="my-node-operate">
     <node-info-plugin :nodeList="nodeList"></node-info-plugin>
   </div>
@@ -28,6 +28,7 @@
     <table-plugin class="my-node-neighbor home-node-tablelist-size" title="Node Neighbor" colHeader1="Node ID" colHeader2="Node IP" colHeader3="Port" :data="testNodeList"></table-plugin>
     <table-plugin class="my-chrod-neighbor home-node-tablelist-size" title="Chrod Neighbor" colHeader1="Chrod ID" colHeader2="Chrod IP" colHeader3="Port" :data="testChrodList"></table-plugin>
   </div>
+  <common-loading v-if="true"></common-loading>
 </div>
 </template>
 
@@ -37,13 +38,15 @@ import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 import TablePlugin from '@/components/home/plugins/TablePlugin.vue'
 import NodeStatusPlugin from '@/components/home/commonplugins/NodeStatusPlugin.vue'
+import CommonLoading from '@/components/base/CommonLoading.vue'
 export default {
   components: {
     NodeInfoPlugin,
     NodePlugin,
     BlockPlugin,
     TablePlugin,
-    NodeStatusPlugin
+    NodeStatusPlugin,
+    CommonLoading
   },
   data () {
     return {

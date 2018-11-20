@@ -1,5 +1,5 @@
 <template>
-<div class="nb-home-calculator">
+<div class="nb-home-calculator home-component-position">
   <div class="nb-home-calculator-info">
     <div class="calculator-block home-calculator-block-size">
       <input-item  label="Average block time in seconds" v-model="averageTime" class="home-calculator-input-width" prefix="1 block/" @change="handleChange" homeStyle></input-item>
@@ -33,6 +33,7 @@
     <calculator-item title="USD profit per day" data="1.4400" unit="$"></calculator-item>
     <calculator-item title="USD profit per 1 month" data="43.2" unit="$"></calculator-item>
   </div>
+  <common-loading v-if="true"></common-loading>
 </div>
 </template>
 
@@ -40,11 +41,13 @@
 import CalculatorItem from '@/components/home/homecalculator/plugins/CalculatorItem.vue'
 import ButtonPlugin from '@/components/home/plugins/ButtonPlugin.vue'
 import InputItem from '@/components/signin/plugins/InputItem.vue'
+import CommonLoading from '@/components/base/CommonLoading.vue'
 export default {
   components: {
     ButtonPlugin,
     CalculatorItem,
-    InputItem
+    InputItem,
+    CommonLoading
   },
   data () {
     return {

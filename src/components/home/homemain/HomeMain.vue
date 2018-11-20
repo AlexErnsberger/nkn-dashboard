@@ -1,5 +1,5 @@
 <template>
-<div class="nb-home-main">
+<div class="nb-home-main home-component-position">
   <div class="nkn-currency">
     <currency-plugin class="home-main-currency-plugin-width" title="Balance" data="18000.0000" unit="NKN"></currency-plugin>
     <currency-plugin class="home-main-currency-plugin-width" title="Mining Reward" data="20000.0000" unit="NKN"></currency-plugin>
@@ -16,6 +16,7 @@
   <div class="nkn-node home-info-seperate">
     <node-status-plugin></node-status-plugin>
   </div>
+  <common-loading v-if="false"></common-loading>
 </div>
 </template>
 
@@ -24,13 +25,15 @@ import CurrencyPlugin from '@/components/home/plugins/CurrencyPlugin.vue'
 import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 import NodeStatusPlugin from '@/components/home/commonplugins/NodeStatusPlugin.vue'
+import CommonLoading from '@/components/base/CommonLoading.vue'
 export default {
   name: 'home-main',
   components: {
     CurrencyPlugin,
     BlockPlugin,
     NodePlugin,
-    NodeStatusPlugin
+    NodeStatusPlugin,
+    CommonLoading
   }
 }
 </script>
