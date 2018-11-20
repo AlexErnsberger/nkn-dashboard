@@ -3,7 +3,7 @@ export default {
   state: {
     lang: 'en',
     userInfo: null,
-    loading: true
+    loading: false
   },
   getters: {
     getLang (state) {
