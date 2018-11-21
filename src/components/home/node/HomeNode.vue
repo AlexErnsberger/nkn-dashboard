@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import NodeInfoPlugin from '@/components/home/commonplugins/NodeInfoPlugin.vue'
+import NodeInfoPlugin from '@/components/home/commonmodules/NodeInfoPlugin.vue'
 import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 import TablePlugin from '@/components/home/plugins/TablePlugin.vue'
-import NodeStatusPlugin from '@/components/home/commonplugins/NodeStatusPlugin.vue'
+import NodeStatusPlugin from '@/components/home/commonmodules/NodeStatusPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
 export default {
   components: {

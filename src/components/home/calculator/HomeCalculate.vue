@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import CalculatorItem from '@/components/home/homecalculator/plugins/CalculatorItem.vue'
+import CalculatorItem from '@/components/home/calculator/plugins/CalculatorItem.vue'
 import ButtonPlugin from '@/components/home/plugins/ButtonPlugin.vue'
 import InputItem from '@/components/signin/plugins/InputItem.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'

@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import NodeInfoPlugin from '@/components/home/commonplugins/NodeInfoPlugin.vue'
-import LogPlugin from '@/components/home/homelog/plugins/LogPlugin.vue'
+import NodeInfoPlugin from '@/components/home/commonmodules/NodeInfoPlugin.vue'
+import LogPlugin from '@/components/home/log/plugins/LogPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
 export default {
   components: {

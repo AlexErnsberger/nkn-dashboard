@@ -49,10 +49,10 @@ module.exports = merge(base, {
   },
   nodeCommon: {
     myNodeCount: '我的节点数量',
-    SyncStarted: '同步开始的节点',
-    SyncFinished: '同步结束的节点',
-    PersistFinished: '同步完成的节点',
-    Stopped: '终止的节点',
+    SyncStarted: '开始同步',
+    SyncFinished: '结束同步',
+    PersistFinished: '完成同步',
+    Stopped: '终止',
     nodeAdd: '新增节点',
     nodeDel: '删除节点'
   },
