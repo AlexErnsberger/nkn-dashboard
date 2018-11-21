@@ -4,7 +4,7 @@
     <span class="customer-title">{{title}}<span v-if="data">{{$t('colon')}}</span></span>
     <span class="customer-data">{{data}}</span>
   </div>
-  <div v-else-if="type === title">
+  <div v-else-if="type === 'status'">
     <span class="node-title " :class="nodeClass">{{title}}<span v-if="data">{{$t('colon')}}</span></span>
     <span class="node-data">{{data}}</span>
   </div>
@@ -31,13 +31,14 @@ export default {
   },
   props: {
     type: String,
+    subType: String,
     title: String,
     data: String,
     nodeList: Array
   },
   computed: {
     nodeClass () {
-      return 'node-' + this.title.toLowerCase()
+      return 'node-' + this.subType.toLowerCase()
     }
   }
 }

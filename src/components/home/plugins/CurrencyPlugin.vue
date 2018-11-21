@@ -61,7 +61,7 @@ export default {
     margin-top: 16px;
     line-height: 20px;
     .home-common-flex;
-    align-items: center;
+    align-items: baseline;
 
     .currency-data {
       .home-commom-data-font;
