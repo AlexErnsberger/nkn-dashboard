@@ -6,7 +6,7 @@ import nbNamespace from '@/assets/js/nbNamespace'
 Vue.use(Vuex)
 
 let modules = {}
-modules[nbNamespace.global] = global
+modules[nbNamespace.GLOBAL] = global
 
 const vuex = new Vuex.Store({
   modules: modules

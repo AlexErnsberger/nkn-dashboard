@@ -1,19 +1,25 @@
 <template>
-<div :class="['nav-option', {'active':active}]" @click="handleClick">
+<div :class="['nav-tab', {'tab-active':tabActive}]" @click="handleClick">
   <img :src="currentIcon">
-  <span>{{option}}</span>
+  <span>{{navTitle}}</span>
 </div>
 </template>
 
 <script>
 export default {
   props: {
-    option: String,
+    tab: String, // 标识符
+    navTitle: String, // 导航栏标题
     icon: String,
     iconHover: String,
-    active: {
+    tabActive: {
       type: Boolean,
       default: false
+    }
+  },
+  mounted () {
+    if (this.tabActive) {
+      this.currentIcon = this.iconHover
     }
   },
   data () {
@@ -22,8 +28,8 @@ export default {
     }
   },
   watch: {
-    active () {
-      if (this.active) {
+    tabActive () {
+      if (this.tabActive) {
         this.currentIcon = this.iconHover
       } else {
         this.currentIcon = this.icon
@@ -32,14 +38,14 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('select', this.option)
+      this.$emit('select', this.tab)
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-.nav-option {
+.nav-tab {
   line-height: 52px;
   padding-left: 34px;
   cursor: pointer;
@@ -57,7 +63,7 @@ export default {
   }
 }
 
-.active {
+.tab-active {
   .mixin-slidehover;
 }
 </style>

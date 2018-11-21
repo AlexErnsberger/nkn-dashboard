@@ -19,7 +19,7 @@ export default {
         event: function (scope) {
           scope.$storage.logout()
           scope.$router.push({
-            name: scope.$namespace.signIn
+            name: scope.$namespace.SIGNIN
           })
         }
       }]

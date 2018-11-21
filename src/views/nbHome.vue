@@ -11,23 +11,24 @@
 
 <script>
 import HomeNav from '@/components/home/nav/HomeNav.vue'
-import Home from '@/components/home/homemain/HomeMain.vue'
-import Wallet from '@/components/home/homewallet/HomeWallet.vue'
-import Node from '@/components/home/homenode/HomeNode.vue'
-import Calculator from '@/components/home/homecalculator/HomeCalculate.vue'
-import Log from '@/components/home/homelog/HomeLog.vue'
+// 导入nav tab组件名需要和$namespace中的标识符HOME_*一致
+import TabHome from '@/components/home/homemain/HomeMain.vue'
+import TabWallet from '@/components/home/homewallet/HomeWallet.vue'
+import TabNode from '@/components/home/homenode/HomeNode.vue'
+import TabCalculator from '@/components/home/homecalculator/HomeCalculate.vue'
+import TabLog from '@/components/home/homelog/HomeLog.vue'
 export default {
   components: {
     HomeNav,
-    Home,
-    Wallet,
-    Node,
-    Calculator,
-    Log
+    TabHome,
+    TabWallet,
+    TabNode,
+    TabCalculator,
+    TabLog
   },
   data () {
     return {
-      currentComponent: 'Home'
+      currentComponent: this.$namespace.HOME_MAIN
     }
   },
   methods: {

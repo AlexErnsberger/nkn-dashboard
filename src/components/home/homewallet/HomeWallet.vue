@@ -45,7 +45,6 @@ import DialogInput from '@/components/base/plugins/DialogInput.vue'
 import DialogButton from '@/components/base/plugins/DialogButton.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
 export default {
-  name: 'home-wallet',
   components: {
     CurrencyPlugin,
     BlockPlugin,

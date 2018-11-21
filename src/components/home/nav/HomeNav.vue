@@ -1,11 +1,11 @@
 <template>
 <nav>
   <ul>
-    <nav-plugins option="Home" :icon="require('../../../assets/img/icon/home.png')" :iconHover="require('../../../assets/img/icon/home-hover.png')" :active="currentTab === 'Home'" @select="choose" tag="li"></nav-plugins>
-    <nav-plugins option="Wallet" :icon="require('../../../assets/img/icon/wallet.png')" :iconHover="require('../../../assets/img/icon/wallet-hover.png')" :active="currentTab === 'Wallet'" @select="choose" tag="li"></nav-plugins>
-    <nav-plugins option="Node" :icon="require('../../../assets/img/icon/node.png')" :iconHover="require('../../../assets/img/icon/node-hover.png')" :active="currentTab === 'Node'" @select="choose" tag="li"></nav-plugins>
-    <nav-plugins option="Calculator" :icon="require('../../../assets/img/icon/calculator.png')" :iconHover="require('../../../assets/img/icon/calculator-hover.png')" :active="currentTab === 'Calculator'" @select="choose" tag="li"></nav-plugins>
-    <nav-plugins option="Log" :icon="require('../../../assets/img/icon/log.png')" :iconHover="require('../../../assets/img/icon/log-hover.png')" :active="currentTab === 'Log'" @select="choose" tag="li"></nav-plugins>
+    <nav-plugins :tab="$namespace.HOME_MAIN" :tabActive="currentTab === $namespace.HOME_MAIN" navTitle="Home" :icon="require('../../../assets/img/icon/home.png')" :iconHover="require('../../../assets/img/icon/home-hover.png')" @select="choose" tag="li"></nav-plugins>
+    <nav-plugins :tab="$namespace.HOME_WALLET" :tabActive="currentTab === $namespace.HOME_WALLET" navTitle="Wallet" :icon="require('../../../assets/img/icon/wallet.png')" :iconHover="require('../../../assets/img/icon/wallet-hover.png')"  @select="choose" tag="li"></nav-plugins>
+    <nav-plugins :tab="$namespace.HOME_NODE" :tabActive="currentTab === $namespace.HOME_NODE" navTitle="Node" :icon="require('../../../assets/img/icon/node.png')" :iconHover="require('../../../assets/img/icon/node-hover.png')"  @select="choose" tag="li"></nav-plugins>
+    <nav-plugins :tab="$namespace.HOME_CALCULATOR" :tabActive="currentTab === $namespace.HOME_CALCULATOR" navTitle="Calculator" :icon="require('../../../assets/img/icon/calculator.png')" :iconHover="require('../../../assets/img/icon/calculator-hover.png')"  @select="choose" tag="li"></nav-plugins>
+    <nav-plugins :tab="$namespace.HOME_LOG" :tabActive="currentTab === $namespace.HOME_LOG" navTitle="Log" :icon="require('../../../assets/img/icon/log.png')" :iconHover="require('../../../assets/img/icon/log-hover.png')"  @select="choose" tag="li"></nav-plugins>
   </ul>
 </nav>
 </template>
@@ -18,7 +18,7 @@ export default {
   },
   data () {
     return {
-      currentTab: 'Home'
+      currentTab: this.$namespace.HOME_MAIN
     }
   },
   methods: {

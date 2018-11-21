@@ -27,7 +27,6 @@ import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 import NodeStatusPlugin from '@/components/home/commonplugins/NodeStatusPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
 export default {
-  name: 'home-main',
   components: {
     CurrencyPlugin,
     BlockPlugin,
