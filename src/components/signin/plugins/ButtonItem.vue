@@ -29,8 +29,7 @@ export default {
   text-align: center;
 
   button {
-    width: 400px;
-    height: 90px;
+    width: 400px;height: 90px;
     text-align: center;
     border-radius: 6px;
     background: @si-buttom-common-color;
@@ -38,6 +37,7 @@ export default {
     color: white;
     border: none;
     outline: none;
+    position: relative;
     .mixin-button-hover;
   }
 
