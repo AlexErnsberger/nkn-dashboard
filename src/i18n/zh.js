@@ -118,5 +118,6 @@ module.exports = merge(base, {
   },
   homeLog: {
     title: '日志'
-  }
+  },
+  colon: '：'
 })

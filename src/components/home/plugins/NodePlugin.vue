@@ -1,15 +1,15 @@
 <template>
 <div class="node-plugin">
   <div v-if="!type">
-    <span class="customer-title">{{title}}<span v-if="data">:</span></span>
+    <span class="customer-title">{{title}}<span v-if="data">{{$t('colon')}}</span></span>
     <span class="customer-data">{{data}}</span>
   </div>
   <div v-else-if="type === title">
-    <span class="node-title " :class="nodeClass">{{title}}<span v-if="data">:</span></span>
+    <span class="node-title " :class="nodeClass">{{title}}<span v-if="data">{{$t('colon')}}</span></span>
     <span class="node-data">{{data}}</span>
   </div>
   <div v-else-if="type === 'nodeList'">
-    <span class="customer-title">{{title}}:</span>
+    <span class="customer-title">{{title}}{{$t('colon')}}</span>
     <node-slide-plugin :nodeList="nodeList"></node-slide-plugin>
   </div>
   <div v-else-if="type === 'nodeAdd'" class="node-func">

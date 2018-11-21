@@ -18,7 +18,7 @@
   </div>
   <div class="nb-home-calcultor-compute home-info-seperate">
     <div class="price-block">
-      <span class="nkn-price-title">{{$t('homeCommon.price')}}</span>
+      <span class="nkn-price-title">{{$t('homeCommon.price')}}{{$t('colon')}}</span>
       <span class="nkn-price-data">0.5100 $</span>
     </div>
     <div class="price-compute">
