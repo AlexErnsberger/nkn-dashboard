@@ -11,7 +11,7 @@
 
 <script>
 import HomeNav from '@/components/home/nav/HomeNav.vue'
-// 导入nav tab组件名需要和$namespace中的标识符HOME_*一致
+// 导入nav tab组件名需要和$namespace中的常量标识符HOME_*一致
 import TabHome from '@/components/home/homemain/HomeMain.vue'
 import TabWallet from '@/components/home/homewallet/HomeWallet.vue'
 import TabNode from '@/components/home/homenode/HomeNode.vue'

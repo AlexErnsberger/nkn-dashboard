@@ -4,7 +4,7 @@
   <span v-if="iconDesc">{{iconDesc}}</span>
   <div :class="['slide-list',{'show':active}]">
     <ul>
-      <li v-for="(item, index) in list" :key="index" @click.stop="handleClick">{{item}}</li>
+      <slot name="nav-list" @click.stop="handleClick"></slot>
     </ul>
   </div>
 </div>
@@ -29,7 +29,6 @@ export default {
     },
     handleClick () {
       this.active = false
-      this.$emit('activeEvent', this)
     },
     checkClick (e) {
       if (!this.$el.contains(e.target)) {
@@ -60,6 +59,7 @@ export default {
     position: absolute;
     border: 1px solid rgba(0, 0, 0, .15);
     border-radius: .25rem;
+    z-index: 1;
 
     ul {
       padding: 0;

@@ -1,6 +1,8 @@
 <template>
 <nav>
-  <slide-plugin v-for="(item, index) in navs" :key="index" :iconSrc="item.iconSrc" :iconDesc="item.iconDesc" :list="item.list" @activeEvent="item.event"></slide-plugin>
+  <slide-plugin :iconSrc="require('../../assets/img/icon/user.png')">
+    <li slot="nav-list" @click="logOut">Logout</li>
+  </slide-plugin>
 </nav>
 </template>
 
@@ -10,19 +12,12 @@ export default {
   components: {
     SlidePlugin
   },
-  data () {
-    return {
-      navs: [{
-        iconSrc: require('../../assets/img/icon/user.png'),
-        iconDesc: '',
-        list: ['Logout'],
-        event: function (scope) {
-          scope.$storage.logout()
-          scope.$router.push({
-            name: scope.$namespace.SIGNIN
-          })
-        }
-      }]
+  methods: {
+    logOut () {
+      this.$storage.logout()
+      this.$router.push({
+        name: this.$namespace.SIGNIN.toLowerCase()
+      })
     }
   }
 }

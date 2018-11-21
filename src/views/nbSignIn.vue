@@ -17,7 +17,7 @@ export default {
   },
   data () {
     return {
-      currentComponent: 'SignIn'
+      currentComponent: this.$namespace.SIGNIN
     }
   },
   methods: {

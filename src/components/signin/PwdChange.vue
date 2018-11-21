@@ -36,7 +36,7 @@ export default {
       }
     },
     signIn () {
-      this.$emit('linkTo', 'SignIn')
+      this.$emit('linkTo', this.$namespace.SIGNIN)
     }
   }
 }

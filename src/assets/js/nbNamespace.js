@@ -1,7 +1,7 @@
 const nbNamespace = {
   GLOBAL: 'global',
-  SIGNIN: 'signin',
-  CHANGEPASSWORD: 'changepassword',
+  SIGNIN: 'SignIn',
+  PWDCHANGE: 'PwdChange',
   HOME_MAIN: 'TabHome',
   HOME_WALLET: 'TabWallet',
   HOME_NODE: 'TabNode',

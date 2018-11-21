@@ -30,7 +30,7 @@ export default {
       }
     },
     changePass () {
-      this.$emit('linkTo', 'PwdChange')
+      this.$emit('linkTo', this.$namespace.PWDCHANGE)
     }
   }
 }
