@@ -38,6 +38,7 @@ export default {
     color: white;
     border: none;
     outline: none;
+    .mixin-button-hover;
   }
 
   &>span {

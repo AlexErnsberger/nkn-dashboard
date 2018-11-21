@@ -15,6 +15,7 @@ export default {
 <style lang="less" scoped>
 .btn-plugin {
   display: inline-block;
+  position: relative;
   width: 130px;
   line-height: 38px;
   border-radius: 6px;
@@ -23,6 +24,7 @@ export default {
   color: white;
   text-align: center;
   cursor: pointer;
+  .mixin-button-hover;
 }
 
 .disabled {

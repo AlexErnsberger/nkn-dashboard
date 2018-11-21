@@ -119,5 +119,8 @@ module.exports = merge(base, {
   homeLog: {
     title: 'Log'
   },
+  dialog: {
+    cancel: 'cancel'
+  },
   colon: ':'
 })
