@@ -89,11 +89,13 @@ module.exports = merge(base, {
     webSocket: 'Websocket',
     jsonrpc: 'Json rpc',
     nodeNeighborTable: {
+      title: 'Node Neighbor',
       col1: 'Node ID',
       col2: 'Node IP',
       col3: 'Port'
     },
     chordNeighborTable: {
+      title: 'Chrod Neighbor',
       col1: 'Chord ID',
       col2: 'Chord IP',
       col3: 'Port'
