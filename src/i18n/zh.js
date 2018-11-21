@@ -3,7 +3,7 @@ const merge = require('webpack-merge')
 const base = require('./base')
 
 module.exports = merge(base, {
-  nav: {
+  header: {
     langSel: '简体中文'
   }
 })

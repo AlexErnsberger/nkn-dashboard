@@ -1,5 +1,5 @@
 module.exports = {
-  nav: {
+  header: {
     langList: {
       en: 'English',
       zh: '中文'

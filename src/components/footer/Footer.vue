@@ -1,8 +1,8 @@
 <template>
 <footer>
   <div class="nb-container">
-    <div class="nb-copyright">Copyright © 2017-2018 NKN | All rights reserved</div>
-    <div class="nb-attention">This software is in the early development stage and may not have all functions working properly. It should be used only for testing now.</div>
+    <div class="nb-copyright">{{$t("footer.copyRight")}}</div>
+    <div class="nb-attention">{{$t("footer.attention")}}</div>
   </div>
 </footer>
 </template>

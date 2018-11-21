@@ -1,11 +1,11 @@
 <template>
 <nav>
-  <slide-plugin :iconSrc="require('../../assets/img/icon/language.png')" :iconDesc="$t('nav.langSel')">
-    <li slot="nav-list" @click="changeLang('en')">{{$t("nav.langList.en")}}</li>
-    <li slot="nav-list" @click="changeLang('zh')">{{$t("nav.langList.zh")}}</li>
+  <slide-plugin :iconSrc="require('../../assets/img/icon/language.png')" :iconDesc="$t('header.langSel')">
+    <li slot="nav-list" @click="changeLang('en')">{{$t("header.langList.en")}}</li>
+    <li slot="nav-list" @click="changeLang('zh')">{{$t("header.langList.zh")}}</li>
   </slide-plugin>
   <slide-plugin :iconSrc="require('../../assets/img/icon/user.png')">
-    <li slot="nav-list" @click="logOut">{{$t('nav.logOut')}}</li>
+    <li slot="nav-list" @click="logOut">{{$t('header.logOut')}}</li>
   </slide-plugin>
 </nav>
 </template>

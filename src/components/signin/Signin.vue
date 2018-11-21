@@ -1,8 +1,8 @@
 <template>
 <div class="sigin-content">
-  <input-item label="ACCOUNT" placeholder="You NKN mining account" :maxlength=20 v-model="account" :size="90"></input-item>
-  <input-item class="input-separate" label="PASSWORD" type="password" placeholder="8-20 characters" :maxlength=20 v-model="password" :size="90" :errorInfo="errorInfo"></input-item>
-  <button-item class="buttom-separate" btnContent="Log in" linkContent="Change password" @click="login" @linkTo="changePass"></button-item>
+  <input-item :label="$t('signIn.accountLabel')" :placeholder="$t('signIn.accountPlaceholder')" :maxlength=20 v-model="account" :size="90"></input-item>
+  <input-item class="input-separate" :label="$t('signIn.pwdLabel')" type="password" :placeholder="$t('signIn.pwdPlaceholder')" :maxlength=20 v-model="password" :size="90" :errorInfo="errorInfo"></input-item>
+  <button-item class="buttom-separate" :btnContent="$t('signIn.login')" :linkContent="$t('signIn.pwdChange')" @click="login" @linkTo="changePass"></button-item>
 </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
   methods: {
     login () {
       if (!this.password) {
-        this.errorInfo = 'Please input 8-20 characters'
+        this.errorInfo = this.$t('signIn.pwdErrorInfo')
       } else {
         this.$router.push({name: 'home'})
       }

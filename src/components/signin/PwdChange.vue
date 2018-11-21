@@ -1,10 +1,10 @@
 <template>
 <div class="pwdchange-content">
-  <input-item label="ACCOUNT" placeholder="You NKN mining account" :maxlength=20 v-model="account" :size="90"></input-item>
-  <input-item class="input-separate" label="CURRENT PASSWORD" type="password" placeholder="8-20 characters" :maxlength=20 v-model="currentPassword" :size="90" :errorInfo="lengthErrorInfo"></input-item>
-  <input-item class="input-separate" label="NEW PASSWORD" type="password" placeholder="8-20 characters" :maxlength=20 v-model="newPassword" :size="90" :errorInfo="lengthErrorInfo"></input-item>
-  <input-item class="input-separate" label="CONFIRM NEW PASSWORD" type="password" placeholder="8-20 characters" :maxlength=20 v-model="confirmPassword" :size="90" :errorInfo="confilctErrorInfo"></input-item>
-  <button-item class="buttom-separate" btnContent="Change Password" linkContent="Log in" @click="pwdChange" @linkTo="signIn"></button-item>
+  <input-item :label="$t('signIn.accountLabel')" :placeholder="$t('signIn.accountPlaceholder')" :maxlength=20 v-model="account" :size="90"></input-item>
+  <input-item class="input-separate" :label="$t('pwdChange.currentPwdLabel')" type="password" :placeholder="$t('signIn.pwdPlaceholder')" :maxlength=20 v-model="currentPassword" :size="90" :errorInfo="lengthErrorInfo"></input-item>
+  <input-item class="input-separate" :label="$t('pwdChange.newPwdLabel')" type="password" :placeholder="$t('signIn.pwdPlaceholder')" :maxlength=20 v-model="newPassword" :size="90" :errorInfo="lengthErrorInfo"></input-item>
+  <input-item class="input-separate" :label="$t('pwdChange.confirmPwdLabel')" type="password" :placeholder="$t('signIn.pwdPlaceholder')" :maxlength=20 v-model="confirmPassword" :size="90" :errorInfo="confilctErrorInfo"></input-item>
+  <button-item class="buttom-separate" :btnContent="$t('signIn.pwdChange')" :linkContent="$t('signIn.login')" @click="pwdChange" @linkTo="signIn"></button-item>
 </div>
 </template>
 
@@ -29,10 +29,10 @@ export default {
   methods: {
     pwdChange () {
       if (!this.currentPassword) {
-        this.lengthErrorInfo = 'Please input 8-20 characters'
+        this.lengthErrorInfo = this.$t('signIn.pwdErrorInfo')
       }
       if (this.currentPassword !== this.confirmPassword) {
-        this.confilctErrorInfo = 'The password for the two input is inconsistent!'
+        this.confilctErrorInfo = this.$t('pwdChange.confirmPwdErrorInfo')
       }
     },
     signIn () {
