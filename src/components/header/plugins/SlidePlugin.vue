@@ -60,7 +60,7 @@ export default {
       width: 70px;
       text-align: center;
       font-size: 14px;
-      color: @si-color;
+      color: @home-table-color;
     }
   }
 
@@ -70,6 +70,7 @@ export default {
     border: 1px solid rgba(0, 0, 0, .15);
     border-radius: .25rem;
     z-index: 1;
+    margin:6px 0 0 13.5px;
 
     ul {
       padding: 0;
@@ -81,7 +82,7 @@ export default {
         list-style-type: none;
         cursor: pointer;
         text-align: center;
-        color: #8992b0;
+        color: @home-table-color;
         background: @common-bg-color;
       }
 
