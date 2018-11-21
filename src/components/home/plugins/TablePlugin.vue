@@ -62,6 +62,7 @@ export default {
   }
 
   .table-content {
+    height: 260px;
     overflow: auto;
 
     table {

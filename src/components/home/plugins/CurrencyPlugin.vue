@@ -4,7 +4,7 @@
     <div class="currency-title">{{title}}</div>
     <button v-if="copy" class="currency-copy" v-clipboard:copy="data">
       <img src="../../../assets/img/icon/copy.png">
-      <span>copy</span>
+      <span>{{$t('homeWallet.addressCopy')}}</span>
     </button>
   </div>
   <div class="currency-content">

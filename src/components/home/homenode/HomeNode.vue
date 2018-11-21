@@ -7,26 +7,26 @@
     <node-status-plugin></node-status-plugin>
   </div>
   <div class="my-node-info home-info-seperate">
-    <block-plugin title="Total Node" data="1000" class="home-node-block-plugin-width"></block-plugin>
-    <block-plugin title="Node Version" data="1.0" class="home-node-block-plugin-width"></block-plugin>
-    <block-plugin title="Relayed Transactions" data="120" class="home-node-block-plugin-width"></block-plugin>
-    <block-plugin title="Connected Client" data="6" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeCommon.nodeCount')" data="1000" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeCommon.version')" data="1.0" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeCommon.relayedTransactions')" data="120" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeCommon.connectedClient')" data="6" class="home-node-block-plugin-width"></block-plugin>
   </div>
   <div class="my-node-netinfo home-info-seperate">
-    <block-plugin title="Node IP" data="192.168.1.23" class="home-node-block-plugin-width" small></block-plugin>
-    <block-plugin title="Chord" data="1.0" class="home-node-block-plugin-width"></block-plugin>
-    <block-plugin title="Websocket" data="120" class="home-node-block-plugin-width"></block-plugin>
-    <block-plugin title="Json rpc" data="6" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeNode.nodeIP')" data="192.168.1.23" class="home-node-block-plugin-width" small></block-plugin>
+    <block-plugin :title="$t('homeNode.chordIP')" data="192.168.1.23" class="home-node-block-plugin-width" small></block-plugin>
+    <block-plugin :title="$t('homeNode.webSocket')" data="120" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeNode.jsonrpc')" data="6" class="home-node-block-plugin-width"></block-plugin>
   </div>
   <div class="my-node-id home-info-seperate">
-    <block-plugin title="Node ID" data="AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6" small></block-plugin>
+    <block-plugin :title="$t('homeNode.nodeID')" data="AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6" small></block-plugin>
   </div>
   <div class="my-node-chrod  home-info-seperate">
-    <block-plugin title="Chrod ID" data="AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6" small></block-plugin>
+    <block-plugin :title="$t('homeNode.chordID')" data="AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6" small></block-plugin>
   </div>
   <div class="my-neighbor-info home-info-seperate">
-    <table-plugin class="my-node-neighbor home-node-tablelist-size" title="Node Neighbor" colHeader1="Node ID" colHeader2="Node IP" colHeader3="Port" :data="testNodeList"></table-plugin>
-    <table-plugin class="my-chrod-neighbor home-node-tablelist-size" title="Chrod Neighbor" colHeader1="Chrod ID" colHeader2="Chrod IP" colHeader3="Port" :data="testChrodList"></table-plugin>
+    <table-plugin class="my-node-neighbor home-node-tablelist-size" :title="$t('homeNode.nodeNeighborTable.title')" :colHeader1="$t('homeNode.nodeNeighborTable.col1')" :colHeader2="$t('homeNode.nodeNeighborTable.col2')" :colHeader3="$t('homeNode.nodeNeighborTable.col3')" :data="testNodeList"></table-plugin>
+    <table-plugin class="my-chrod-neighbor home-node-tablelist-size" :title="$t('homeNode.chordNeighborTable.title')" :colHeader1="$t('homeNode.chordNeighborTable.col1')" :colHeader2="$t('homeNode.chordNeighborTable.col2')" :colHeader3="$t('homeNode.chordNeighborTable.col3')" :data="testChrodList"></table-plugin>
   </div>
   <common-loading v-if="false"></common-loading>
 </div>

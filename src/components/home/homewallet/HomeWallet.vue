@@ -4,30 +4,30 @@
     <node-info-plugin :nodeList="nodeList"></node-info-plugin>
   </div>
   <div class="my-wallet home-info-seperate">
-    <currency-plugin title="Balance" data="20000.0000" unit="NKN" class="home-wallet-currence-plugin-width"></currency-plugin>
-    <currency-plugin title="Mining Reward" data="20000.0000" unit="NKN" class="home-wallet-currence-plugin-width"></currency-plugin>
-    <currency-plugin title="Wallet Address" data="ADSAddsdsadDSSCSdsaDSDSdda" copy class="home-wallet-address-currence-plugin-width"></currency-plugin>
+    <currency-plugin :title="$t('homeCommon.balance')" :unit="$t('unit.NKN')" data="20000.0000" class="home-wallet-currence-plugin-width"></currency-plugin>
+    <currency-plugin :title="$t('homeCommon.miningReward')" :unit="$t('unit.NKN')" data="20000.0000"  class="home-wallet-currence-plugin-width"></currency-plugin>
+    <currency-plugin :title="$t('homeWallet.walletAddress')" data="ADSAddsdsadDSSCSdsaDSDSdda"  class="home-wallet-address-currence-plugin-width" copy></currency-plugin>
   </div>
   <div class="nkn-transfer home-info-seperate">
-    <block-plugin title="Transfer"></block-plugin>
+    <block-plugin :title="$t('homeWallet.transfer.title')"></block-plugin>
     <div class="nkn-transfer-input">
-      <input-item label="Transfer Address" class="home-wallet-tansfer-input-width" :size="55" homeStyle></input-item>
-      <input-item label="Transfer Amount" class="home-wallet-tansfer-input-width" :size="55" unit="NKN" homeStyle></input-item>
+      <input-item :label="$t('homeWallet.transfer.addressInput')" class="home-wallet-tansfer-input-width" :size="55" homeStyle></input-item>
+      <input-item :label="$t('homeWallet.transfer.amountInput')" :unit="$t('unit.NKN')" class="home-wallet-tansfer-input-width" :size="55"  homeStyle></input-item>
     </div>
     <div class="nkn-tranfer-commit">
-      <button-plugin @click.native="transferConfirm">Transfer</button-plugin>
+      <button-plugin @click.native="transferConfirm">{{$t('homeWallet.transfer.btn')}}</button-plugin>
     </div>
   </div>
   <div class="transfer-history home-wallet-tablelist-height home-info-seperate">
-    <table-plugin class="" title="Transaction History" colHeader1="From" colHeader2="To" colHeader3="Value" colHeader4="Time" :data="testTableList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
+    <table-plugin :title="$t('homeWallet.transferHistoryTable.title')" :colHeader1="$t('homeWallet.transferHistoryTable.col1')" :colHeader2="$t('homeWallet.transferHistoryTable.col2')" :colHeader3="$t('homeWallet.transferHistoryTable.col3')" :colHeader4="$t('homeWallet.transferHistoryTable.col4')" :data="testTableList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
   </div>
   <div class="mining-reward home-wallet-tablelist-height home-info-seperate">
-    <table-plugin title="Mining Reward" colHeader1="Height" colHeader2="Transaction Hash" colHeader3="Value" colHeader4="Time" :data="testRewardList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
+    <table-plugin :title="$t('homeWallet.miningRewardTable.title')" :colHeader1="$t('homeWallet.miningRewardTable.col1')" :colHeader2="$t('homeWallet.miningRewardTable.col2')" :colHeader3="$t('homeWallet.miningRewardTable.col3')" :colHeader4="$t('homeWallet.miningRewardTable.col4')" :data="testRewardList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
   </div>
   <common-dialog v-model="transfer">
-    <span slot="dialog-header-text">Transfer</span>
-    <dialog-input placeholder="wallet password" slot="dialog-body-content"></dialog-input>
-    <dialog-button type="danger" slot="dialog-footer-btn">transfer</dialog-button>
+    <span slot="dialog-header-text">{{$t('homeWallet.transfer.title')}}</span>
+    <dialog-input :placeholder="$t('homeWallet.transfer.walletPwd')" slot="dialog-body-content"></dialog-input>
+    <dialog-button type="danger" slot="dialog-footer-btn">{{$t('homeWallet.transfer.btn')}}</dialog-button>
   </common-dialog>
   <common-loading v-if="false"></common-loading>
 </div>

@@ -1,11 +1,11 @@
 <template>
-  <div class="common-node-status">
-    <node-plugin title="My Node" data="20"></node-plugin>
-    <node-plugin title="SyncStarted" data="2" type="SyncStarted"></node-plugin>
-    <node-plugin title="SyncFinished" data="2" type="SyncFinished"></node-plugin>
-    <node-plugin title="PersistFinished" data="2" type="PersistFinished"></node-plugin>
-    <node-plugin title="Stopped" data="2" type="Stopped"></node-plugin>
-  </div>
+<div class="common-node-status">
+  <node-plugin :title="$t('nodeCommon.myNodeCount')" data="20"></node-plugin>
+  <node-plugin :title="$t('nodeCommon.SyncStarted')" :type="$t('nodeCommon.SyncStarted')" data="2"></node-plugin>
+  <node-plugin :title="$t('nodeCommon.SyncFinished')" :type="$t('nodeCommon.SyncFinished')" data="2"></node-plugin>
+  <node-plugin :title="$t('nodeCommon.PersistFinished')" :type="$t('nodeCommon.PersistFinished')" data="2"></node-plugin>
+  <node-plugin :title="$t('nodeCommon.Stopped')" :type="$t('nodeCommon.Stopped')" data="2"></node-plugin>
+</div>
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.common-node-status{
+.common-node-status {
   .home-common-flex;
 }
 </style>

@@ -2,36 +2,36 @@
 <div class="nb-home-calculator home-component-position">
   <div class="nb-home-calculator-info">
     <div class="calculator-block home-calculator-block-size">
-      <input-item  label="Average block time in seconds" v-model="averageTime" class="home-calculator-input-width" prefix="1 block/" @change="handleChange" homeStyle></input-item>
+      <input-item  :label="$t('homeCalculator.input1')" :prefix="$t('homeCalculator.input1Prefix')" v-model="averageTime" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
     </div>
     <div class="calculator-block home-calculator-block-size">
-      <input-item  label="Currnet node count in NKN network" v-model="currentNode" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
+      <input-item  :label="$t('homeCalculator.input2')" v-model="currentNode" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
     </div>
   </div>
   <div class="nb-home-calculator-info home-info-seperate">
     <div class="calculator-block home-calculator-block-size">
-      <input-item  label="Amount of your nodes" v-model="nodeSum" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
+      <input-item  :label="$t('homeCalculator.input3')" v-model="nodeSum" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
     </div>
     <div class="calculator-block home-calculator-block-size">
-      <input-item  label="Your nodes working time in months" v-model="workingTimes" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
+      <input-item  :label="$t('homeCalculator.input4')" v-model="workingTimes" class="home-calculator-input-width"  @change="handleChange" homeStyle></input-item>
     </div>
   </div>
   <div class="nb-home-calcultor-compute home-info-seperate">
     <div class="price-block">
-      <span class="nkn-price-title">NKN Price:</span>
+      <span class="nkn-price-title">{{$t('homeCommon.price')}}</span>
       <span class="nkn-price-data">0.5100 $</span>
     </div>
     <div class="price-compute">
-      <button-plugin class="compute-reset" :disabled="disabled" @click.native="reset">Reset</button-plugin>
-      <button-plugin class="compute-calculate">Calculate</button-plugin>
+      <button-plugin class="compute-reset" :disabled="disabled" @click.native="reset">{{$t('homeCalculator.btnReset')}}</button-plugin>
+      <button-plugin class="compute-calculate">{{$t('homeCalculator.btnCompute')}}</button-plugin>
     </div>
   </div>
   <div class="nb-home-calcultor-specific home-info-seperate">
-    <calculator-item title="Approximate amount of NKN testnet tokens mined per day" data="144" unit="NKN"></calculator-item>
-    <calculator-item title="Total testnet tokens mined per 1 month" data="4320" unit="NKN"></calculator-item>
-    <calculator-item title="NKN mainnet tokens (1:5 ratio) per 1 month" data="864" unit="NKN"></calculator-item>
-    <calculator-item title="USD profit per day" data="1.4400" unit="$"></calculator-item>
-    <calculator-item title="USD profit per 1 month" data="43.2" unit="$"></calculator-item>
+    <calculator-item :title="$t('homeCalculator.result1')" :unit="$t('unit.NKN')" data="144"></calculator-item>
+    <calculator-item :title="$t('homeCalculator.result2')" :unit="$t('unit.NKN')" data="4320"></calculator-item>
+    <calculator-item :title="$t('homeCalculator.result3')" :unit="$t('unit.NKN')" data="864"></calculator-item>
+    <calculator-item :title="$t('homeCalculator.result4')" :unit="$t('unit.$')" data="1.4400"></calculator-item>
+    <calculator-item :title="$t('homeCalculator.result5')" :unit="$t('unit.$')" data="43.2"></calculator-item>
   </div>
   <common-loading v-if="false"></common-loading>
 </div>

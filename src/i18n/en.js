@@ -47,13 +47,24 @@ module.exports = merge(base, {
     relayedTransactions: 'Relayed Transactions',
     connectedClient: 'Connected Client'
   },
+  nodeCommon: {
+    myNodeCount: 'My Node',
+    SyncStarted: 'SyncStarted',
+    SyncFinished: 'SyncFinished',
+    PersistFinished: 'PersistFinished',
+    Stopped: 'Stopped',
+    nodeAdd: 'Add node',
+    nodeDel: 'Delete node'
+  },
   homeWallet: {
     walletAddress: 'Wallet Address',
     addressCopy: 'copy',
     transfer: {
       title: 'Transfer',
       addressInput: 'transfer Address',
-      amountInput: 'transfer Amount'
+      amountInput: 'transfer Amount',
+      walletPwd: 'wallet password',
+      btn: 'Transfer'
     },
     transferHistoryTable: {
       title: 'Transaction History',
@@ -71,8 +82,8 @@ module.exports = merge(base, {
     }
   },
   homeNode: {
-    ip: 'Node IP',
-    id: 'Node ID',
+    nodeIP: 'Node IP',
+    nodeID: 'Node ID',
     chordIP: 'Chrod IP',
     chordID: 'Chrod ID',
     webSocket: 'Websocket',
@@ -83,13 +94,14 @@ module.exports = merge(base, {
       col3: 'Port'
     },
     chordNeighborTable: {
-      col1: 'Node ID',
-      col2: 'Node IP',
+      col1: 'Chord ID',
+      col2: 'Chord IP',
       col3: 'Port'
     }
   },
   homeCalculator: {
     input1: 'Average block time in seconds',
+    input1Prefix: '1 block/',
     input2: 'Currnet node count in NKN network',
     input3: 'Amount of your nodes',
     input4: 'Your nodes working time in months',
@@ -103,14 +115,5 @@ module.exports = merge(base, {
   },
   homeLog: {
     title: 'Log'
-  },
-  nodeInfo: {
-    myNodeCount: 'My Node',
-    SyncStarted: 'SyncStarted',
-    SyncFinished: 'SyncFinished',
-    PersistFinished: 'PersistFinished',
-    Stopped: 'Stopped',
-    nodeAdd: 'Add node',
-    nodeDel: 'Delete node'
   }
 })
