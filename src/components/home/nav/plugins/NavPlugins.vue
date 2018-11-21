@@ -38,6 +38,8 @@ export default {
   },
   methods: {
     handleClick () {
+      // 返回页面顶部
+      document.documentElement.scrollTop = document.body.scrollTop = 0
       this.$emit('select', this.tab)
     }
   }

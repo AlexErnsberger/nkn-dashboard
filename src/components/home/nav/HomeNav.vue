@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import NavPlugins from '@/components/home/nav/NavPlugins.vue'
+import NavPlugins from '@/components/home/nav/plugins/NavPlugins.vue'
 export default {
   components: {
     NavPlugins
