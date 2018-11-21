@@ -4,6 +4,6 @@ const base = require('./base')
 
 module.exports = merge(base, {
   nav: {
-    langSel: '中文'
+    langSel: '简体中文'
   }
 })

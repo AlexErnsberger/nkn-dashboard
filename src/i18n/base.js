@@ -1,8 +1,8 @@
 module.exports = {
   nav: {
-    langList: [
-      'English',
-      '中文'
-    ]
+    langList: {
+      en: 'English',
+      zh: '中文'
+    }
   }
 }

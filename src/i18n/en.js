@@ -4,6 +4,7 @@ const base = require('./base')
 
 module.exports = merge(base, {
   nav: {
-    langSel: 'Language'
+    langSel: 'Language',
+    logOut: 'Logout'
   }
 })

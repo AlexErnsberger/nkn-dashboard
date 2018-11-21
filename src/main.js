@@ -7,6 +7,7 @@ import store from '@/store'
 import axios from '@/assets/js/axios'
 import VueAxios from 'vue-axios'
 import VueClipboard from 'vue-clipboard2'
+import i18n from '@/i18n'
 import storage from '@/assets/js/nbStorage'
 import namespace from '@/assets/js/nbNamespace'
 import '@/assets/css/global.css'
@@ -21,6 +22,7 @@ Vue.use(VueClipboard)
 new Vue({
   el: '#app',
   store,
+  i18n,
   router,
   components: { App },
   template: '<App/>'

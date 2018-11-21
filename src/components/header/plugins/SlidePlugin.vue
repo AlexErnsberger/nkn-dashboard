@@ -1,7 +1,9 @@
 <template>
 <div class="slide-plugin" @click="showList">
-  <img :src="iconSrc">
-  <span v-if="iconDesc">{{iconDesc}}</span>
+  <div class="slide-nav">
+    <img :src="iconSrc">
+    <span v-if="iconDesc">{{iconDesc}}</span>
+  </div>
   <div :class="['slide-list',{'show':active}]">
     <ul>
       <slot name="nav-list" @click.stop="handleClick"></slot>
@@ -45,13 +47,21 @@ export default {
 <style lang="less" scoped>
 .slide-plugin {
   cursor: pointer;
+  display: inline-block;
+  .slide-nav{
+    display: flex;
+    align-items: center;
+    img {
+      height: 27px;
+      max-width: 100%;
+    }
 
-  img {
-    height: 27px;
-  }
-
-  span {
-    padding: 0 10px;
+    span {
+      width: 70px;
+      text-align: center;
+      font-size: 14px;
+      color: @si-color;
+    }
   }
 
   .slide-list {

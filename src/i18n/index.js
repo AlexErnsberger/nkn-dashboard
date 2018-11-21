@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
+import nbStorage from '@/assets/js/nbStorage'
 
 Vue.use(VueI18n)
 
 const i18n = new VueI18n({
-  locale: 'en',
+  locale: nbStorage.getLanguage() || 'en',
   fallbackLocale: 'en',
   messages: {
     'en': require('@/i18n/en'),
