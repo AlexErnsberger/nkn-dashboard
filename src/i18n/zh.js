@@ -12,11 +12,12 @@ module.exports = merge(base, {
     attention: '目前软件正处于早期研发阶段，可能存在部分问题。请勿用于正式途径。'
   },
   signIn: {
+    title: 'NKN 挖矿面板',
     accountLabel: '账号',
     accountPlaceholder: '请输入您的矿机账号',
     pwdLabel: '密码',
     pwdPlaceholder: '请输入8-20位密码',
-    pwdErrorInfo: '输入密码的长度不得超过20位！',
+    pwdErrorInfo: '输入密码的长度需要在8-20位之间！',
     login: '登陆',
     pwdChange: '修改密码'
   },

@@ -1,7 +1,7 @@
 <template>
 <div class="nb-signin">
   <div class="nb-content-container">
-    <h1>NKN Mining Dashboard</h1>
+    <h1>{{$t('signIn.title')}}</h1>
     <component :is="currentComponent" @linkTo="setComponent"></component>
   </div>
 </div>

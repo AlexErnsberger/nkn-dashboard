@@ -12,6 +12,7 @@ module.exports = merge(base, {
     attention: 'This software is in the early development stage and may not have all functions working properly. It should be used only for testing now.'
   },
   signIn: {
+    title: 'NKN Mining Dashboard',
     accountLabel: 'ACCOUNT',
     accountPlaceholder: 'You NKN mining account',
     pwdLabel: 'PASSWORD',
