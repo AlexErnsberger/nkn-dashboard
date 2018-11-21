@@ -7,11 +7,11 @@
     <currency-plugin class="home-main-currency-plugin-width" :title="$t('homeCommon.priceToETH')" data="0.0002210" :unit="$t('unit.ETH')"></currency-plugin>
   </div>
   <div class="nkn-block home-info-seperate">
-    <block-plugin :title="$t('homeCommon.height')" data="5707446"></block-plugin>
-    <block-plugin :title="$t('homeCommon.transection')" data="5707446"></block-plugin>
-    <block-plugin :title="$t('homeCommon.averageBlockTime')" data="10s"></block-plugin>
-    <block-plugin :title="$t('homeCommon.nodeCount')" data="1000"></block-plugin>
-    <block-plugin :title="$t('homeCommon.version')" data="1.0"></block-plugin>
+    <block-plugin class="home-module-width" :title="$t('homeCommon.height')" data="5707446"></block-plugin>
+    <block-plugin class="home-module-width" :title="$t('homeCommon.transection')" data="5707446"></block-plugin>
+    <block-plugin class="home-module-width" :title="$t('homeCommon.averageBlockTime')" data="10s"></block-plugin>
+    <block-plugin class="home-module-width" :title="$t('homeCommon.nodeCount')" data="1000"></block-plugin>
+    <block-plugin class="home-module-width" :title="$t('homeCommon.version')" data="1.0"></block-plugin>
   </div>
   <div class="nkn-node home-info-seperate">
     <node-status-plugin></node-status-plugin>

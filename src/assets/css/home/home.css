@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.home-module-width{
+  width: 20%;
+}
+
 .home-main-currency-plugin-width{
   width: 220px;
 }
