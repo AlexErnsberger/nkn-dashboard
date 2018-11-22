@@ -26,11 +26,11 @@ export default {
       if (!this.password) {
         this.errorInfo = this.$t('signIn.pwdErrorInfo')
       } else {
-        this.$router.push({name: 'home'})
+        this.$router.push({name: this.$namespace.HOME})
       }
     },
     changePass () {
-      this.$emit('linkTo', this.$namespace.PWDCHANGE)
+      this.$emit('linkTo', this.$namespace.SIGNIN_PWDCHANGE)
     }
   }
 }

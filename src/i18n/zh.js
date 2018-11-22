@@ -85,8 +85,8 @@ module.exports = merge(base, {
   homeNode: {
     nodeIP: '节点 IP',
     nodeID: '节点 ID',
-    chordIP: 'Chrod IP',
-    chordID: 'Chrod ID',
+    chordIP: '共识 IP',
+    chordID: '共识 ID',
     webSocket: '网络套接字',
     jsonrpc: 'Json rpc',
     nodeNeighborTable: {
@@ -96,9 +96,9 @@ module.exports = merge(base, {
       col3: '端口'
     },
     chordNeighborTable: {
-      title: '邻居Chrod',
-      col1: 'Chord ID',
-      col2: 'Chord IP',
+      title: '邻居共识节点',
+      col1: '共识 ID',
+      col2: '共识 IP',
       col3: '端口'
     }
   },
