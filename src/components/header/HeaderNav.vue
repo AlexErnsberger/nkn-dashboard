@@ -26,6 +26,7 @@ export default {
     changeLang (lang) {
       this.$i18n.locale = lang
       this.$storage.setLanguage(lang)
+      this.$store.commit('local/setLang', lang)
     }
   }
 }

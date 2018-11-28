@@ -1,5 +1,6 @@
 import axios from '@/assets/js/axios'
 import RequestData from '@/assets/js/network/nbRequestData'
+import Axios from 'axios'
 import Is from 'is_js'
 
 function postRequest (scope, api, param, success, fail) {

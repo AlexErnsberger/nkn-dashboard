@@ -4,9 +4,9 @@
     <node-info-plugin :nodeList="nodeList"></node-info-plugin>
   </div>
   <div class="my-wallet home-info-seperate">
-    <currency-plugin :title="$t('homeCommon.balance')" :unit="$t('unit.NKN')" data="20000.0000" class="home-wallet-currence-plugin-width"></currency-plugin>
-    <currency-plugin :title="$t('homeCommon.miningReward')" :unit="$t('unit.NKN')" data="20000.0000"  class="home-wallet-currence-plugin-width"></currency-plugin>
-    <currency-plugin :title="$t('homeWallet.walletAddress')" data="ADSAddsdsadDSSCSdsaDSDSdda"  class="home-wallet-address-currence-plugin-width" copy></currency-plugin>
+    <currency-plugin :title="$t('homeCommon.balance')" :unit="$t('unit.NKN')" data="20000.0000" class="home-wallet-currency-plugin-width"></currency-plugin>
+    <currency-plugin :title="$t('homeCommon.miningReward')" :unit="$t('unit.NKN')" data="20000.0000"  class="home-wallet-currency-plugin-width"></currency-plugin>
+    <currency-plugin :title="$t('homeWallet.walletAddress')" data="ADSAddsdsadDSSCSdsaDSDSdda"  class="home-wallet-address-currency-plugin-width" copy></currency-plugin>
   </div>
   <div class="nkn-transfer home-info-seperate">
     <block-plugin :title="$t('homeWallet.transfer.title')"></block-plugin>

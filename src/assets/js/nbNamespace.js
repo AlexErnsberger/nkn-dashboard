@@ -1,5 +1,4 @@
 const nbNamespace = {
-  GLOBAL: 'global',
   SIGNIN: 'SignIn',
   SIGNIN_PWDCHANGE: 'PwdChange',
   HOME: 'home',
