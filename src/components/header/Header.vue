@@ -5,7 +5,7 @@
       <div class="header-logo">
         <img src="../../assets/img/icon/logo.png">
       </div>
-        <!-- <div class="header-nav" v-if="$store.getters['global/getUserInfo']"> -->
+        <!-- <div class="header-nav" v-if="$store.getters['session/getUserInfo']"> -->
         <div class="header-nav">
           <header-nav></header-nav>
         </div>
@@ -34,16 +34,12 @@ header {
     .home-common-flex;
 
     .header-logo {
-      margin: 12px 0;
+      padding: 12px 0;
 
       img {
         width: 90px;
         height: 36px;
       }
-    }
-
-    .header-nav {
-      margin: 16.5px 0;
     }
   }
 

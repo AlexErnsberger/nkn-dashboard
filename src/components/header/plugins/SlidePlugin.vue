@@ -1,12 +1,12 @@
 <template>
-<div class="slide-plugin" @click="showList">
+<div class="slide-plugin">
   <div class="slide-nav">
     <img :src="iconSrc">
     <span v-if="iconDesc">{{iconDesc}}</span>
   </div>
-  <div :class="['slide-list',{'show':active}]">
+  <div class="slide-list">
     <ul>
-      <slot name="nav-list" @click.stop="handleClick"></slot>
+      <slot name="nav-list" @click="handleClick"></slot>
     </ul>
   </div>
 </div>
@@ -18,28 +18,6 @@ export default {
     iconSrc: String,
     iconDesc: String,
     list: Array
-  },
-  data () {
-    return {
-      active: false
-    }
-  },
-  methods: {
-    showList () {
-      this.active = !this.active
-      setTimeout(document.addEventListener('click', this.checkClick), 0)
-    },
-    handleClick () {
-      this.active = false
-    },
-    checkClick (e) {
-      if (!this.$el.contains(e.target)) {
-        this.active = false
-      }
-    }
-  },
-  beforeDestroy () {
-    document.removeEventListener('click', this.checkClick)
   }
 }
 </script>
@@ -48,6 +26,7 @@ export default {
 .slide-plugin {
   cursor: pointer;
   display: inline-block;
+  padding: 16.5px 0;
   .slide-nav{
     display: flex;
     align-items: center;
@@ -92,8 +71,10 @@ export default {
     }
   }
 
-  .show {
-    display: block;
+  &:hover {
+    & .slide-list{
+      display: block;
+    }
   }
 }
 </style>

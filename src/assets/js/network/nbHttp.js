@@ -27,6 +27,18 @@ function getRequest (scope, api, param, success, fail) {
   })
 }
 
+function requestDone (scope, reqs, success, fail) {
+  return Axios.all(reqs).then(Axios.spread(() => {
+    if (Is.function(success)) {
+      success.call(scope)
+    }
+  })).catch((e) => {
+    if (Is.function(fail)) {
+      fail.call(scope)
+    }
+  })
+}
+
 class nbHttpRequest {
   logIn () {
     return postRequest()
