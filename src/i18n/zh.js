@@ -18,7 +18,7 @@ module.exports = merge(base, {
     pwdLabel: '密码',
     pwdPlaceholder: '请输入8-20位密码',
     pwdErrorInfo: '输入密码的长度需要在8-20位之间！',
-    login: '登陆',
+    login: '登录',
     pwdChange: '修改密码'
   },
   pwdChange: {

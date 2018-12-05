@@ -25,9 +25,20 @@ export default {
     login () {
       if (!this.password) {
         this.errorInfo = this.$t('signIn.pwdErrorInfo')
-      } else {
-        this.$router.push({name: this.$namespace.HOME})
+        return
       }
+      this.$http.login(this, {
+        account: this.account,
+        password: this.password
+      }, (data) => {
+        console.log(data)
+        if (data.status) {
+          this.$store.commit('setReqKey', data.data.reqKey)
+          this.$router.push({name: this.$namespace.HOME})
+        } else {
+          alert(data.errMsg)
+        }
+      })
     },
     changePass () {
       this.$emit('linkTo', this.$namespace.SIGNIN_PWDCHANGE)

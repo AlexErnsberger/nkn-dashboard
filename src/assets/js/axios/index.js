@@ -1,8 +1,9 @@
 import axios from 'axios'
 import Qs from 'qs'
+import store from '@/store'
 
 let instance = axios.create({
-  method: 'post',
+  // method: 'post',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
   },
@@ -13,6 +14,9 @@ let instance = axios.create({
 })
 
 instance.interceptors.request.use((config) => {
+  if (store.state.reqKey) {
+    config.headers['reqkey'] = store.state.reqKey
+  }
   return config
 }, (error) => {
   return Promise.reject(error)

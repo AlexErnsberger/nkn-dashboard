@@ -19,6 +19,7 @@ export default {
   methods: {
     logOut () {
       this.$storage.logout()
+      this.$store.commit('setReqKey', '')
       this.$router.push({
         name: this.$namespace.SIGNIN.toLowerCase()
       })
@@ -31,7 +32,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less" scoped>
-
-</style>

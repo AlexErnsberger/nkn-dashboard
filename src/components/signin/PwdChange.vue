@@ -30,10 +30,29 @@ export default {
     pwdChange () {
       if (!this.currentPassword) {
         this.lengthErrorInfo = this.$t('signIn.pwdErrorInfo')
+        return
       }
       if (this.currentPassword !== this.confirmPassword) {
         this.confilctErrorInfo = this.$t('pwdChange.confirmPwdErrorInfo')
+        return
       }
+      if (this.currentPassword === this.newPassword) {
+        this.confilctErrorInfo = 'old and new passwords cannot equally'
+        return
+      }
+      this.$http.pwdc(this, {
+        account: this.account,
+        currentPassword: this.currentPassword,
+        newPassword: this.newPassword
+      }, (data) => {
+        console.log(data)
+        if (data.status) {
+          alert('change password success')
+          this.signIn()
+        } else {
+          alert(data.errMsg)
+        }
+      })
     },
     signIn () {
       this.$emit('linkTo', this.$namespace.SIGNIN)
@@ -41,7 +60,3 @@ export default {
   }
 }
 </script>
-
-<style >
-
-</style>

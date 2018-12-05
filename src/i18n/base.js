@@ -2,7 +2,7 @@ module.exports = {
   header: {
     langList: {
       en: 'English',
-      zh: '中文'
+      zh: '简体中文'
     }
   },
   unit: {

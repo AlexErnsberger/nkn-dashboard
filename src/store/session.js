@@ -8,6 +8,7 @@ const sessionModule = {
   namespaced: true,
   state: {
     userInfo: null,
+    reqKey: '',
     loading: false
   },
   getters: {
@@ -16,6 +17,9 @@ const sessionModule = {
     },
     getLoading (state) {
       return state.loading
+    },
+    getReqKey (state) {
+      return state.reqKey
     }
   },
   mutations: {
@@ -24,6 +28,9 @@ const sessionModule = {
     },
     setLoading (state, data) {
       state.loading = data
+    },
+    setReqKey (state, data) {
+      state.reqKey = data
     }
   },
   plugins: [vuexSession.plugin]
