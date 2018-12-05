@@ -18,7 +18,7 @@
 export default {
   props: {
     title: String,
-    data: String,
+    data: [String, Number],
     unit: String,
     copy: Boolean
   }

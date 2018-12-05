@@ -33,7 +33,7 @@ export default {
     type: String,
     subType: String,
     title: String,
-    data: String,
+    data: [String, Number],
     nodeList: Array
   },
   computed: {

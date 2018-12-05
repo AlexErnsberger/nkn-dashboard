@@ -1,5 +1,5 @@
 import axios from '@/assets/js/axios'
-// import Axios from 'axios'
+import Axios from 'axios'
 import Is from 'is_js'
 
 function postRequest (scope, api, param, success, fail) {
@@ -27,17 +27,17 @@ function postRequest (scope, api, param, success, fail) {
 //   })
 // }
 
-// function requestDone (scope, reqs, success, fail) {
-//   return Axios.all(reqs).then(Axios.spread(() => {
-//     if (Is.function(success)) {
-//       success.call(scope)
-//     }
-//   })).catch((e) => {
-//     if (Is.function(fail)) {
-//       fail.call(scope)
-//     }
-//   })
-// }
+function reqBatch (scope, reqs, success, fail) {
+  return Axios.all(reqs).then(Axios.spread(() => {
+    if (Is.function(success)) {
+      success.call(scope)
+    }
+  })).catch((e) => {
+    if (Is.function(fail)) {
+      fail.call(scope)
+    }
+  })
+}
 
 let login = function (scope, param, success) {
   return postRequest(scope, '/login', param, success)
@@ -47,8 +47,20 @@ let pwdc = function (scope, param, success) {
   return postRequest(scope, '/pwdc', param, success)
 }
 
+let myInfo = function (scope, success) {
+  return postRequest(scope, '/myInfo', {}, success)
+}
+
+let globalInfo = function (scope, success) {
+  return postRequest(scope, '/globalInfo', {}, success)
+}
+
+let myNodeInfo = function (scope, success) {
+  return postRequest(scope, '/nodeInfo', {}, success)
+}
+
 export default {
-  login, pwdc
+  login, pwdc, myInfo, globalInfo, myNodeInfo, reqBatch
 }
 
 // class nbHttpRequest {
