@@ -47,7 +47,7 @@ export default {
       img {
         width: 10px;
         height: 10px;
-        vertical-align: -2px;
+        vertical-align: -.5px;
       }
 
       span {

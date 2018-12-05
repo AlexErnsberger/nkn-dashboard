@@ -59,8 +59,12 @@ let myNodeInfo = function (scope, success) {
   return postRequest(scope, '/nodeInfo', {}, success)
 }
 
+let myNodeList = function (scope, success) {
+  return postRequest(scope, '/myNodeList', {}, success)
+}
+
 export default {
-  login, pwdc, myInfo, globalInfo, myNodeInfo, reqBatch
+  login, pwdc, myInfo, globalInfo, myNodeInfo, reqBatch, myNodeList
 }
 
 // class nbHttpRequest {

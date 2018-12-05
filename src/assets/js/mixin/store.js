@@ -1,7 +1,9 @@
 export default {
   methods: {
     checkNull (obj, propName) {
-      return obj ? (obj[propName] ? obj[propName] : '') : ''
+      if (propName) {
+        return obj ? (obj[propName] ? obj[propName] : '') : ''
+      }
     }
   }
 }

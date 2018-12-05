@@ -53,8 +53,27 @@ const myNodeData = {
   errmsg: Random.string()
 }
 
+function nodeList () {
+  let array = []
+  for (let i = 0; i < 5; i++) {
+    let node = {
+      name: 'Node' + Random.integer(1, 10),
+      id: Random.guid()
+    }
+    array.push(node)
+  }
+  return array
+}
+
+const myNodeList = {
+  status: true,
+  data: nodeList(),
+  errmsg: Random.string()
+}
+
 Mock.mock('/login', 'post', loginData)
 Mock.mock('/pwdc', 'post', pwdcData)
 Mock.mock('/myInfo', 'post', myInfoData)
 Mock.mock('/globalInfo', 'post', globalData)
 Mock.mock('/nodeInfo', 'post', myNodeData)
+Mock.mock('/myNodeList', 'post', myNodeList)

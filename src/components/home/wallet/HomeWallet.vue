@@ -1,7 +1,7 @@
 <template>
 <div class="nb-home-wallet home-component-position">
   <div class="my-node">
-    <node-info-plugin :nodeList="nodeList"></node-info-plugin>
+    <node-info-plugin></node-info-plugin>
   </div>
   <div class="my-wallet home-info-seperate">
     <currency-plugin :title="$t('homeCommon.balance')" :unit="$t('unit.NKN')" data="20000.0000" class="home-wallet-currency-plugin-width"></currency-plugin>
@@ -44,6 +44,9 @@ import CommonDialog from '@/components/base/CommonDialog.vue'
 import DialogInput from '@/components/base/plugins/DialogInput.vue'
 import DialogButton from '@/components/base/plugins/DialogButton.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
+import { mapMutations } from 'vuex'
+import storeMix from '@/assets/js/mixin/store'
+
 export default {
   components: {
     CurrencyPlugin,
@@ -57,16 +60,30 @@ export default {
     DialogButton,
     CommonLoading
   },
+  mixins: [storeMix],
+  mounted () {
+    this.getMyNodeList()
+  },
   methods: {
     transferConfirm () {
       this.transfer = true
+    },
+    ...mapMutations([
+      'setNodeList'
+    ]),
+    getMyNodeList () {
+      this.$http.myNodeList(this, (res) => {
+        console.log(res.data)
+        if (res.status) {
+          this.setNodeList(res.data)
+        } else {
+          alert('its myNodeList')
+        }
+      })
     }
   },
   data () {
     return {
-      nodeList: [
-        'Node #8', 'Node #2', 'Node #3'
-      ],
       testListSum: 10,
       transfer: false,
       testTableList: [],

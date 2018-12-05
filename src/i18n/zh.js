@@ -49,6 +49,7 @@ module.exports = merge(base, {
     connectedClient: '客户端连接数量'
   },
   nodeCommon: {
+    myNode: '我的节点',
     myNodeCount: '我的节点数量',
     SyncStarted: '开始同步',
     SyncFinished: '结束同步',

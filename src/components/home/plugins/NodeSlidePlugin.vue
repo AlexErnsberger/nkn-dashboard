@@ -16,8 +16,14 @@ export default {
   },
   data () {
     return {
-      currentNode: this.nodeList[0],
       showList: false
+    }
+  },
+  computed: {
+    currentNode () {
+      if (this.$store.getters.getMyNodeList) {
+        return this.$store.getters.getMyNodeList[0].name
+      }
     }
   },
   methods: {
@@ -44,6 +50,7 @@ export default {
 <style lang="less" scoped>
 .node-slide-plugin {
   display: inline-block;
+  cursor: pointer;
 
   .node-selected {
     .home-commom-data-font;
@@ -82,6 +89,10 @@ export default {
         }
       }
     }
+  }
+
+  &:hover .node-list{
+    display: block;
   }
 
   .show {

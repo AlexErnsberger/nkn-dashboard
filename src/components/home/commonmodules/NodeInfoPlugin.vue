@@ -1,6 +1,6 @@
 <template>
 <div class="common-node-plugin">
-  <node-plugin :title="$t('nodeCommon.myNodeCount')" type="nodeList" :nodeList="nodeList" ></node-plugin>
+  <node-plugin :title="$t('nodeCommon.myNode')" type="nodeList"></node-plugin>
   <node-plugin :title="$t('nodeCommon.SyncStarted')" type="status" subType="SyncStarted" class="node-flex-center"></node-plugin>
   <node-plugin :title="$t('nodeCommon.nodeAdd')" type="nodeAdd" class="node-separate"></node-plugin>
   <node-plugin :title="$t('nodeCommon.nodeDel')" type="nodeDelete" class="node-separate"></node-plugin>

@@ -11,7 +11,8 @@ const vuex = new Vuex.Store({
     reqKey: '',
     loading: false,
     globalNKNInfo: null,
-    myNodeInfo: null
+    myNodeInfo: null,
+    myNodeList: null
   },
   getters: {
     getUserInfo (state) {
@@ -28,6 +29,9 @@ const vuex = new Vuex.Store({
     },
     getNodeInfo (state) {
       return state.myNodeInfo
+    },
+    getMyNodeList (state) {
+      return state.myNodeList
     }
   },
   mutations: {
@@ -45,6 +49,9 @@ const vuex = new Vuex.Store({
     },
     setNodeInfo (state, data) {
       state.myNodeInfo = data
+    },
+    setNodeList (state, data) {
+      state.myNodeList = data
     }
   },
   modules: {
