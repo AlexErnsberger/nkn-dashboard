@@ -9,7 +9,7 @@
         <th v-if="colHeader3" class="table-header-size">{{colHeader3}}</th>
         <th v-if="colHeader4" class="table-header-size">{{colHeader4}}</th>
       </tr>
-      <tr class="table-record" v-for="(item, index) in currentData" :key="index">
+      <tr class="table-record" v-for="(item, index) in data" :key="index">
         <td v-for="(value, index) in item" :key="index">{{value}}</td>
       </tr>
     </table>
@@ -27,7 +27,7 @@ export default {
     TableSeparatePlugin
   },
   mounted () {
-    this.currentData = this.data.slice(0, this.eachPageSum - 1)
+    // this.currentData = this.data.slice(0, this.eachPageSum - 1)
   },
   props: {
     title: String,
@@ -42,12 +42,12 @@ export default {
   },
   data () {
     return {
-      currentData: this.data
+      // currentData: this.data
     }
   },
   methods: {
     handleData (start, end) {
-      this.currentData = this.data.slice(start, end)
+      // this.currentData = this.data.slice(start, end)
     }
   }
 }
@@ -62,7 +62,6 @@ export default {
   }
 
   .table-content {
-    height: 260px;
     overflow: auto;
 
     table {
@@ -117,7 +116,7 @@ export default {
 
   .table-separate {
     text-align: right;
-    margin-top: 28px;
+    margin-top: 10px;
   }
 }
 </style>

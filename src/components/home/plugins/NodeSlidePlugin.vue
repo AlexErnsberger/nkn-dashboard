@@ -1,48 +1,62 @@
 <template>
 <div class="node-slide-plugin">
-  <div class="node-selected" @click="viewList">{{currentNode}}</div>
-  <div class="node-list" :class="{'show':showList}">
+  <div class="node-selected">{{currentNode}}</div>
+  <div class="node-list">
     <ul>
-      <li v-for="(node, index) in nodeList" :key="index" @click="choose(node)">{{node}}</li>
+      <li v-for="(node, index) in nodeList" :key="index" @click="choose(node)">{{node.name}}</li>
     </ul>
   </div>
 </div>
 </template>
 
 <script>
+import {
+  mapGetters,
+  mapMutations
+} from 'vuex'
 export default {
-  props: {
-    nodeList: Array
-  },
   data () {
     return {
-      showList: false
+      currentNode: ''
     }
   },
   computed: {
-    currentNode () {
-      if (this.$store.getters.getMyNodeList) {
-        return this.$store.getters.getMyNodeList[0].name
-      }
-    }
+    ...mapGetters({
+      nodeList: 'getMyNodeList'
+    })
   },
   methods: {
-    viewList () {
-      this.showList = !this.showList
-      setTimeout(document.addEventListener('click', this.checkClick), 0)
-    },
-    checkClick (e) {
-      if (!this.$el.contains(e.target)) {
-        this.showList = false
-      }
-    },
+    ...mapMutations([
+      'setNodeWallet',
+      'setLoading'
+    ]),
     choose (node) {
-      this.currentNode = node
-      this.showList = false
+      this.currentNode = node.name
+      this.getNodeWallet(node)
+    },
+    getNodeWallet (node) {
+      this.setLoading(true)
+      this.$http.nodeWallet(this, {
+        id: node.id
+      }, (res) => {
+        let data = res.data
+        console.log(data)
+        if (res.status) {
+          this.setNodeWallet(res.data)
+          this.setLoading(false)
+        } else {
+          alert('its nodeWallet')
+        }
+      })
     }
   },
-  beforeDestroy () {
-    document.removeEventListener('click', this.checkClick)
+  watch: {
+    nodeList () {
+      if (this.nodeList) {
+        this.currentNode = this.nodeList[0].name
+        this.getNodeWallet(this.currentNode)
+      }
+    }
   }
 }
 </script>
@@ -53,6 +67,8 @@ export default {
   cursor: pointer;
 
   .node-selected {
+    display: inline;
+    padding: 20px 0;
     .home-commom-data-font;
 
     &::after {
@@ -91,11 +107,7 @@ export default {
     }
   }
 
-  &:hover .node-list{
-    display: block;
-  }
-
-  .show {
+  &:hover .node-list {
     display: block;
   }
 }

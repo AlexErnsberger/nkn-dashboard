@@ -4,9 +4,9 @@
     <node-info-plugin></node-info-plugin>
   </div>
   <div class="my-wallet home-info-seperate">
-    <currency-plugin :title="$t('homeCommon.balance')" :unit="$t('unit.NKN')" data="20000.0000" class="home-wallet-currency-plugin-width"></currency-plugin>
-    <currency-plugin :title="$t('homeCommon.miningReward')" :unit="$t('unit.NKN')" data="20000.0000"  class="home-wallet-currency-plugin-width"></currency-plugin>
-    <currency-plugin :title="$t('homeWallet.walletAddress')" data="ADSAddsdsadDSSCSdsaDSDSdda"  class="home-wallet-address-currency-plugin-width" copy></currency-plugin>
+    <currency-plugin :title="$t('homeCommon.balance')" :unit="$t('unit.NKN')" :data="checkNull(nodeWallet, 'balance')" class="home-wallet-currency-plugin-width"></currency-plugin>
+    <currency-plugin :title="$t('homeCommon.miningReward')" :unit="$t('unit.NKN')" :data="checkNull(nodeWallet, 'miningAward')"  class="home-wallet-currency-plugin-width"></currency-plugin>
+    <currency-plugin :title="$t('homeWallet.walletAddress')" :data="checkNull(nodeWallet, 'walletAddr')"  class="home-wallet-address-currency-plugin-width" copy></currency-plugin>
   </div>
   <div class="nkn-transfer home-info-seperate">
     <block-plugin :title="$t('homeWallet.transfer.title')"></block-plugin>
@@ -19,10 +19,10 @@
     </div>
   </div>
   <div class="transfer-history home-wallet-tablelist-height home-info-seperate">
-    <table-plugin :title="$t('homeWallet.transferHistoryTable.title')" :colHeader1="$t('homeWallet.transferHistoryTable.col1')" :colHeader2="$t('homeWallet.transferHistoryTable.col2')" :colHeader3="$t('homeWallet.transferHistoryTable.col3')" :colHeader4="$t('homeWallet.transferHistoryTable.col4')" :data="testTableList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
+    <table-plugin :title="$t('homeWallet.transferHistoryTable.title')" :colHeader1="$t('homeWallet.transferHistoryTable.col1')" :colHeader2="$t('homeWallet.transferHistoryTable.col2')" :colHeader3="$t('homeWallet.transferHistoryTable.col3')" :colHeader4="$t('homeWallet.transferHistoryTable.col4')" :data="testTableList" :dataSum="txSum" :eachPageSum="8" needSep></table-plugin>
   </div>
   <div class="mining-reward home-wallet-tablelist-height home-info-seperate">
-    <table-plugin :title="$t('homeWallet.miningRewardTable.title')" :colHeader1="$t('homeWallet.miningRewardTable.col1')" :colHeader2="$t('homeWallet.miningRewardTable.col2')" :colHeader3="$t('homeWallet.miningRewardTable.col3')" :colHeader4="$t('homeWallet.miningRewardTable.col4')" :data="testRewardList" :dataSum="testListSum" :eachPageSum="8" needSep></table-plugin>
+    <table-plugin :title="$t('homeWallet.miningRewardTable.title')" :colHeader1="$t('homeWallet.miningRewardTable.col1')" :colHeader2="$t('homeWallet.miningRewardTable.col2')" :colHeader3="$t('homeWallet.miningRewardTable.col3')" :colHeader4="$t('homeWallet.miningRewardTable.col4')" :data="testRewardList" :dataSum="miningSum" :eachPageSum="8" needSep></table-plugin>
   </div>
   <common-dialog v-model="transfer">
     <span slot="dialog-header-text">{{$t('homeWallet.transfer.title')}}</span>
@@ -44,7 +44,7 @@ import CommonDialog from '@/components/base/CommonDialog.vue'
 import DialogInput from '@/components/base/plugins/DialogInput.vue'
 import DialogButton from '@/components/base/plugins/DialogButton.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 import storeMix from '@/assets/js/mixin/store'
 
 export default {
@@ -63,6 +63,22 @@ export default {
   mixins: [storeMix],
   mounted () {
     this.getMyNodeList()
+    this.getNodeWalletMining()
+    this.getNodeWalletTransaction()
+  },
+  data () {
+    return {
+      txSum: 0,
+      miningSum: 0,
+      transfer: false,
+      testTableList: [],
+      testRewardList: []
+    }
+  },
+  computed: {
+    ...mapGetters({
+      nodeWallet: 'getNodeWallet'
+    })
   },
   methods: {
     transferConfirm () {
@@ -73,21 +89,39 @@ export default {
     ]),
     getMyNodeList () {
       this.$http.myNodeList(this, (res) => {
-        console.log(res.data)
+        let data = res.data
         if (res.status) {
-          this.setNodeList(res.data)
+          this.setNodeList(data)
         } else {
           alert('its myNodeList')
         }
       })
-    }
-  },
-  data () {
-    return {
-      testListSum: 10,
-      transfer: false,
-      testTableList: [],
-      testRewardList: []
+    },
+    getNodeWalletTransaction () {
+      this.$http.nodeWalletTransaction(this, {
+        pageNo: 1
+      }, (res) => {
+        let data = res.data
+        if (res.status) {
+          this.testTableList = data.transactionList
+          this.txSum = data.sum
+        } else {
+          alert('its NodeWalletTransaction')
+        }
+      })
+    },
+    getNodeWalletMining () {
+      this.$http.nodeWalletMining(this, {
+        pageNo: 1
+      }, (res) => {
+        let data = res.data
+        if (res.status) {
+          this.testRewardList = data.miningList
+          this.miningSum = data.sum
+        } else {
+          alert('its nodeWalletMining')
+        }
+      })
     }
   }
 }

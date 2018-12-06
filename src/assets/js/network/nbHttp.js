@@ -63,8 +63,20 @@ let myNodeList = function (scope, success) {
   return postRequest(scope, '/myNodeList', {}, success)
 }
 
+let nodeWallet = function (scope, param, success) {
+  return postRequest(scope, '/nodeWallet', param, success)
+}
+
+let nodeWalletTransaction = function (scope, param, success) {
+  return postRequest(scope, '/nodeWalletTransaction', param, success)
+}
+
+let nodeWalletMining = function (scope, param, success) {
+  return postRequest(scope, '/nodeWalletMining', param, success)
+}
+
 export default {
-  login, pwdc, myInfo, globalInfo, myNodeInfo, reqBatch, myNodeList
+  login, pwdc, myInfo, globalInfo, myNodeInfo, reqBatch, myNodeList, nodeWallet, nodeWalletTransaction, nodeWalletMining
 }
 
 // class nbHttpRequest {

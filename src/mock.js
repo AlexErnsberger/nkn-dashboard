@@ -53,7 +53,7 @@ const myNodeData = {
   errmsg: Random.string()
 }
 
-function nodeList () {
+const nodeList = function () {
   let array = []
   for (let i = 0; i < 5; i++) {
     let node = {
@@ -71,9 +71,70 @@ const myNodeList = {
   errmsg: Random.string()
 }
 
+const transactionList = function () {
+  let array = []
+  for (let i = 0; i < 8; i++) {
+    let node = {
+      from: Random.guid(),
+      to: Random.guid(),
+      count: Random.integer(10, 1000),
+      time: Random.date('yyyy/MM/dd')
+    }
+    array.push(node)
+  }
+  return array
+}
+
+const miningList = function () {
+  let array = []
+  for (let i = 0; i < 8; i++) {
+    let node = {
+      height: Random.integer(20000, 60000),
+      hash: Random.guid(),
+      count: Random.integer(10, 1000),
+      time: Random.date('yyyy/MM/dd')
+    }
+    array.push(node)
+  }
+  return array
+}
+
+const nodeWalletInfo = {
+  status: true,
+  data: {
+    balance: Random.integer(10, 1000),
+    miningAward: Random.integer(10, 1000),
+    walletAddr: Random.guid()
+  },
+  errmsg: Random.string()
+}
+
+const nodeWalletTransaction = {
+  status: true,
+  data: {
+    num: Random.integer(1, 3),
+    transactionList: transactionList()
+  },
+  errmsg: Random.string()
+}
+
+const nodeWalletMining = {
+  status: true,
+  data: {
+    sum: Random.integer(1, 3),
+    miningList: miningList()
+  },
+  errmsg: Random.string()
+}
+
+
+
 Mock.mock('/login', 'post', loginData)
 Mock.mock('/pwdc', 'post', pwdcData)
 Mock.mock('/myInfo', 'post', myInfoData)
 Mock.mock('/globalInfo', 'post', globalData)
 Mock.mock('/nodeInfo', 'post', myNodeData)
 Mock.mock('/myNodeList', 'post', myNodeList)
+Mock.mock('/nodeWallet', 'post', nodeWalletInfo)
+Mock.mock('/nodeWalletTransaction', 'post', nodeWalletTransaction)
+Mock.mock('/nodeWalletMining', 'post', nodeWalletMining)
