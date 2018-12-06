@@ -39,8 +39,9 @@ import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 import TablePlugin from '@/components/home/plugins/TablePlugin.vue'
 import NodeStatusPlugin from '@/components/home/commonmodules/NodeStatusPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
-import storeMix from '@/assets/js/mixin/store'
-import { mapGetters, mapMutations } from 'vuex'
+import checkNullMix from '@/assets/js/mixin/checkNull'
+import nodeSetMix from '@/assets/js/mixin/nodeSet'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -51,7 +52,7 @@ export default {
     NodeStatusPlugin,
     CommonLoading
   },
-  mixins: [storeMix],
+  mixins: [checkNullMix, nodeSetMix],
   data () {
     return {
       nodeDetail: null
@@ -59,30 +60,15 @@ export default {
   },
   computed: {
     ...mapGetters({
-      NKNGlobalInfo: 'getGlobalInfo',
-      currentNode: 'getCurrentNode'
+      NKNGlobalInfo: 'getGlobalInfo'
     })
   },
   methods: {
-    ...mapMutations([
-      'setNodeList', 'setCurrentNode'
-    ]),
     getNodeDetail (node) {
       this.$http.nodeDetail(this, {nodeId: node.id}, (res) => {
         let data = res.data
         if (res.status) {
           this.nodeDetail = data
-        }
-      })
-    },
-    getMyNodeList () {
-      return this.$http.myNodeList(this, (res) => {
-        let data = res.data
-        if (res.status && data) {
-          this.setNodeList(data)
-          this.setCurrentNode(data[0])
-        } else {
-          alert('its myNodeList')
         }
       })
     }
@@ -93,9 +79,6 @@ export default {
     }
   },
   mounted () {
-    if (!this.nodeList) {
-      this.getMyNodeList()
-    }
     if (this.currentNode) {
       this.getNodeDetail(this.currentNode)
     }

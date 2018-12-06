@@ -42,7 +42,7 @@ import CalculatorItem from '@/components/home/calculator/plugins/CalculatorItem.
 import ButtonPlugin from '@/components/home/plugins/ButtonPlugin.vue'
 import InputItem from '@/components/signin/plugins/InputItem.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
-import storeMix from '@/assets/js/mixin/store'
+import checkNullMix from '@/assets/js/mixin/checkNull'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -52,7 +52,7 @@ export default {
     InputItem,
     CommonLoading
   },
-  mixins: [storeMix],
+  mixins: [checkNullMix],
   data () {
     return {
       averageTime: '',

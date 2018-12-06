@@ -10,13 +10,13 @@
 
 <script>
 import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
-import storeMix from '@/assets/js/mixin/store'
+import checkNullMix from '@/assets/js/mixin/checkNull'
 import { mapGetters } from 'vuex'
 export default {
   components: {
     NodePlugin
   },
-  mixins: [storeMix],
+  mixins: [checkNullMix],
   computed: {
     ...mapGetters({
       myNodeInfo: 'getNodeInfo'

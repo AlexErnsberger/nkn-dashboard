@@ -44,8 +44,8 @@ import CommonDialog from '@/components/base/CommonDialog.vue'
 import DialogInput from '@/components/base/plugins/DialogInput.vue'
 import DialogButton from '@/components/base/plugins/DialogButton.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
-import { mapMutations, mapGetters } from 'vuex'
-import storeMix from '@/assets/js/mixin/store'
+import checkNullMix from '@/assets/js/mixin/checkNull'
+import nodeSetMix from '@/assets/js/mixin/nodeSet'
 
 export default {
   components: {
@@ -60,11 +60,8 @@ export default {
     DialogButton,
     CommonLoading
   },
-  mixins: [storeMix],
+  mixins: [checkNullMix, nodeSetMix],
   mounted () {
-    if (!this.nodeList) {
-      this.getMyNodeList()
-    }
     if (this.currentNode) {
       let node = this.currentNode
       this.getNodeWallet(node)
@@ -85,29 +82,9 @@ export default {
       wpass: ''
     }
   },
-  computed: {
-    ...mapGetters({
-      nodeList: 'getMyNodeList',
-      currentNode: 'getCurrentNode'
-    })
-  },
   methods: {
-    ...mapMutations([
-      'setNodeList', 'setCurrentNode'
-    ]),
     transferConfirm () {
       this.transfer = true
-    },
-    getMyNodeList () {
-      return this.$http.myNodeList(this, (res) => {
-        let data = res.data
-        if (res.status && data) {
-          this.setNodeList(data)
-          this.setCurrentNode(data[0])
-        } else {
-          alert('its myNodeList')
-        }
-      })
     },
     getNodeWallet (node) {
       this.$http.nodeWallet(this, {

@@ -14,22 +14,21 @@
 import NodeInfoPlugin from '@/components/home/commonmodules/NodeInfoPlugin.vue'
 import LogPlugin from '@/components/home/log/plugins/LogPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
-import { mapMutations, mapGetters } from 'vuex'
+import nodeSetMix from '@/assets/js/mixin/nodeSet'
+
 export default {
   components: {
     NodeInfoPlugin,
     LogPlugin,
     CommonLoading
   },
+  mixins: [nodeSetMix],
   data () {
     return {
       logList: []
     }
   },
   methods: {
-    ...mapMutations([
-      'setNodeList', 'setCurrentNode'
-    ]),
     getNodeLog (node) {
       this.$http.log(this, {nodeId: node.id}, (res) => {
         let data = res.data
@@ -37,24 +36,7 @@ export default {
           this.logList = data
         }
       })
-    },
-    getMyNodeList () {
-      return this.$http.myNodeList(this, (res) => {
-        let data = res.data
-        if (res.status && data) {
-          this.setNodeList(data)
-          this.setCurrentNode(data[0])
-        } else {
-          alert('its myNodeList')
-        }
-      })
     }
-  },
-  computed: {
-    ...mapGetters({
-      currentNode: 'getCurrentNode',
-      nodeList: 'getMyNodeList'
-    })
   },
   watch: {
     currentNode () {
@@ -62,9 +44,6 @@ export default {
     }
   },
   mounted () {
-    if (!this.nodeList) {
-      this.getMyNodeList()
-    }
     if (this.currentNode) {
       this.getNodeLog(this.currentNode)
     }

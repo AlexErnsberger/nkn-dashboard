@@ -26,7 +26,7 @@ import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 import NodeStatusPlugin from '@/components/home/commonmodules/NodeStatusPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
-import storeMix from '@/assets/js/mixin/store'
+import checkNullMix from '@/assets/js/mixin/checkNull'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -37,7 +37,7 @@ export default {
     NodeStatusPlugin,
     CommonLoading
   },
-  mixins: [storeMix],
+  mixins: [checkNullMix],
   mounted () {
     this.$store.commit('setLoading', true)
     this.reqBatchHandle()
