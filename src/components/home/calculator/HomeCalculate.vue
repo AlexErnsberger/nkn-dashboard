@@ -70,10 +70,13 @@ export default {
   },
   methods: {
     reset () {
+      if (!this.averageTime && !this.NKNnodeNum && !this.myNodeNum && !this.workedTimes) {
+        return
+      }
       this.averageTime = ''
-      this.currentNode = ''
-      this.nodeSum = ''
-      this.workingTimes = ''
+      this.NKNnodeNum = ''
+      this.myNodeNum = ''
+      this.workedTimes = ''
       this.disabled = !this.disabled
     },
     handleChange (e) {
