@@ -14,7 +14,7 @@
 import NodeInfoPlugin from '@/components/home/commonmodules/NodeInfoPlugin.vue'
 import LogPlugin from '@/components/home/log/plugins/LogPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
-import { mapGetters } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 export default {
   components: {
     NodeInfoPlugin,
@@ -27,19 +27,33 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'setNodeList', 'setCurrentNode'
+    ]),
     getNodeLog (node) {
       this.$http.log(this, {nodeId: node.id}, (res) => {
         let data = res.data
-        console.log(data)
         if (res.status) {
           this.logList = data
+        }
+      })
+    },
+    getMyNodeList () {
+      return this.$http.myNodeList(this, (res) => {
+        let data = res.data
+        if (res.status && data) {
+          this.setNodeList(data)
+          this.setCurrentNode(data[0])
+        } else {
+          alert('its myNodeList')
         }
       })
     }
   },
   computed: {
     ...mapGetters({
-      currentNode: 'getCurrentNode'
+      currentNode: 'getCurrentNode',
+      nodeList: 'getMyNodeList'
     })
   },
   watch: {
@@ -48,7 +62,12 @@ export default {
     }
   },
   mounted () {
-    this.getNodeLog(this.currentNode)
+    if (!this.nodeList) {
+      this.getMyNodeList()
+    }
+    if (this.currentNode) {
+      this.getNodeLog(this.currentNode)
+    }
   }
 }
 </script>

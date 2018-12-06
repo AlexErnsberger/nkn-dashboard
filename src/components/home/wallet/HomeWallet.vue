@@ -62,7 +62,15 @@ export default {
   },
   mixins: [storeMix],
   mounted () {
-    this.getMyNodeList()
+    if (!this.nodeList) {
+      this.getMyNodeList()
+    }
+    if (this.currentNode) {
+      let node = this.currentNode
+      this.getNodeWallet(node)
+      this.getNodeWalletMining(node)
+      this.getNodeWalletTransaction(node)
+    }
   },
   data () {
     return {
@@ -93,8 +101,9 @@ export default {
     getMyNodeList () {
       return this.$http.myNodeList(this, (res) => {
         let data = res.data
-        if (res.status) {
+        if (res.status && data) {
           this.setNodeList(data)
+          this.setCurrentNode(data[0])
         } else {
           alert('its myNodeList')
         }
@@ -160,9 +169,6 @@ export default {
     }
   },
   watch: {
-    nodeList () {
-      this.setCurrentNode(this.nodeList[0])
-    },
     currentNode () {
       let node = this.currentNode
       this.getNodeWallet(node)
