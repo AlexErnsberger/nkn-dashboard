@@ -94,7 +94,6 @@ export default {
         workedTimes: this.workedTimes
       }, (res) => {
         let data = res.data
-        console.log(data)
         if (res.status) {
           this.result = data
         }

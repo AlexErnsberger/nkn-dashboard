@@ -172,6 +172,21 @@ const caculator = {
   errmsg: Random.string()
 }
 
+const logDataList = function () {
+  let array = []
+  for (let i = 0; i < 20; i++) {
+    let node = Random.guid() + Random.guid() + Random.guid()
+    array.push(node)
+  }
+  return array
+}
+
+const logData = {
+  status: true,
+  data: logDataList(),
+  errmsg: Random.string()
+}
+
 Mock.mock('/login', 'post', loginData)
 Mock.mock('/pwdc', 'post', pwdcData)
 Mock.mock('/myInfo', 'post', myInfoData)
@@ -184,3 +199,4 @@ Mock.mock('/nodeWalletMining', 'post', nodeWalletMining)
 Mock.mock('/walletTransfer', 'post', walletTransfer)
 Mock.mock('/nodeDetail', 'post', nodeDetail)
 Mock.mock('/dataCompute', 'post', caculator)
+Mock.mock('/log', 'post', logData)

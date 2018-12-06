@@ -87,6 +87,10 @@ let dataCompute = function (scope, param, success) {
   return postRequest(scope, '/dataCompute', param, success)
 }
 
+let log = function (scope, param, success) {
+  return postRequest(scope, '/log', param, success)
+}
+
 export default {
   login,
   pwdc,
@@ -100,7 +104,8 @@ export default {
   nodeWalletMining,
   walletTransfer,
   nodeDetail,
-  dataCompute
+  dataCompute,
+  log
 }
 
 // class nbHttpRequest {

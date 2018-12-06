@@ -1,10 +1,10 @@
 <template>
 <div class="nb-home-log home-component-position">
   <div class="my-node">
-    <node-info-plugin :nodeList="nodeList"></node-info-plugin>
+    <node-info-plugin></node-info-plugin>
   </div>
   <div class="nb-home-log-content home-info-seperate">
-    <log-plugin></log-plugin>
+    <log-plugin :logs="logList"></log-plugin>
   </div>
   <common-loading v-if="false"></common-loading>
 </div>
@@ -14,6 +14,7 @@
 import NodeInfoPlugin from '@/components/home/commonmodules/NodeInfoPlugin.vue'
 import LogPlugin from '@/components/home/log/plugins/LogPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     NodeInfoPlugin,
@@ -22,10 +23,32 @@ export default {
   },
   data () {
     return {
-      nodeList: [
-        'Node #8', 'Node #2', 'Node #3'
-      ]
+      logList: []
     }
+  },
+  methods: {
+    getNodeLog (node) {
+      this.$http.log(this, {nodeId: node.id}, (res) => {
+        let data = res.data
+        console.log(data)
+        if (res.status) {
+          this.logList = data
+        }
+      })
+    }
+  },
+  computed: {
+    ...mapGetters({
+      currentNode: 'getCurrentNode'
+    })
+  },
+  watch: {
+    currentNode () {
+      this.getNodeLog(this.currentNode)
+    }
+  },
+  mounted () {
+    this.getNodeLog(this.currentNode)
   }
 }
 </script>
