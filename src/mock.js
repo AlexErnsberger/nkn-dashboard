@@ -133,6 +133,19 @@ const walletTransfer = {
   errmsg: Random.string()
 }
 
+const neighborNodeData = function () {
+  let array = []
+  for (let i = 0; i < 20; i++) {
+    let node = {
+      id: Random.guid(),
+      ip: Random.ip(),
+      port: Random.ip()
+    }
+    array.push(node)
+  }
+  return array
+}
+
 const nodeDetail = {
   status: true,
   data: {
@@ -140,7 +153,9 @@ const nodeDetail = {
     chordIP: Random.ip(),
     chordID: Random.guid(),
     webSocket: Random.integer(100, 150),
-    jsonrpc: Random.integer(1, 10)
+    jsonrpc: Random.integer(1, 10),
+    neighborNode: neighborNodeData(),
+    neighborChrod: neighborNodeData()
   },
   errmsg: Random.string()
 }

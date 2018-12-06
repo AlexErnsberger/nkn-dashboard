@@ -27,37 +27,11 @@ export default {
   },
   methods: {
     ...mapMutations([
-      // 'setNodeWallet',
-      // 'setLoading',
       'setCurrentNode'
     ]),
     choose (node) {
       this.setCurrentNode(node)
-      // this.getNodeWallet(node)
     }
-    // getNodeWallet (node) {
-    //   this.setLoading(true)
-    //   this.$http.nodeWallet(this, {
-    //     id: node.id
-    //   }, (res) => {
-    //     let data = res.data
-    //     console.log(data)
-    //     if (res.status) {
-    //       this.setNodeWallet(res.data)
-    //       this.setLoading(false)
-    //     } else {
-    //       alert('its nodeWallet')
-    //     }
-    //   })
-    // }
-  },
-  watch: {
-    // nodeList () {
-    //   if (this.nodeList) {
-    //     this.setCurrentNode(this.nodeList[0])
-    //     // this.getNodeWallet(this.currentNode)
-    //   }
-    // }
   }
 }
 </script>

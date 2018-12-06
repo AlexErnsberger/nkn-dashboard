@@ -13,20 +13,20 @@
     <block-plugin :title="$t('homeCommon.connectedClient')" :data="checkNull(NKNGlobalInfo, 'connectedClient')" class="home-node-block-plugin-width"></block-plugin>
   </div>
   <div class="my-node-netinfo home-info-seperate">
-    <block-plugin :title="$t('homeNode.nodeIP')" data="192.168.1.23" class="home-node-block-plugin-width" small></block-plugin>
-    <block-plugin :title="$t('homeNode.chordIP')" data="192.168.1.23" class="home-node-block-plugin-width" small></block-plugin>
-    <block-plugin :title="$t('homeNode.webSocket')" data="120" class="home-node-block-plugin-width"></block-plugin>
-    <block-plugin :title="$t('homeNode.jsonrpc')" data="6" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeNode.nodeIP')" :data="checkNull(nodeDetail,'nodeIP')" class="home-node-block-plugin-width" small></block-plugin>
+    <block-plugin :title="$t('homeNode.chordIP')" :data="checkNull(nodeDetail,'chordIP')" class="home-node-block-plugin-width" small></block-plugin>
+    <block-plugin :title="$t('homeNode.webSocket')" :data="checkNull(nodeDetail,'webSocket')" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeNode.jsonrpc')" :data="checkNull(nodeDetail,'jsonrpc')" class="home-node-block-plugin-width"></block-plugin>
   </div>
   <div class="my-node-id home-info-seperate">
-    <block-plugin :title="$t('homeNode.nodeID')" data="AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6" small></block-plugin>
+    <block-plugin :title="$t('homeNode.nodeID')" :data="checkNull(currentNode,'id')" small></block-plugin>
   </div>
   <div class="my-node-chrod  home-info-seperate">
-    <block-plugin :title="$t('homeNode.chordID')" data="AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6AKBSQRCtRwe4yj2rU1sBoQQ5sVMhhspri6" small></block-plugin>
+    <block-plugin :title="$t('homeNode.chordID')" :data="checkNull(nodeDetail,'chordID')" small></block-plugin>
   </div>
   <div class="my-neighbor-info home-info-seperate">
-    <table-plugin class="my-node-neighbor home-node-tablelist-size" :title="$t('homeNode.nodeNeighborTable.title')" :colHeader1="$t('homeNode.nodeNeighborTable.col1')" :colHeader2="$t('homeNode.nodeNeighborTable.col2')" :colHeader3="$t('homeNode.nodeNeighborTable.col3')" :data="testNodeList"></table-plugin>
-    <table-plugin class="my-chrod-neighbor home-node-tablelist-size" :title="$t('homeNode.chordNeighborTable.title')" :colHeader1="$t('homeNode.chordNeighborTable.col1')" :colHeader2="$t('homeNode.chordNeighborTable.col2')" :colHeader3="$t('homeNode.chordNeighborTable.col3')" :data="testChrodList"></table-plugin>
+    <table-plugin class="my-node-neighbor home-node-tablelist-size" :title="$t('homeNode.nodeNeighborTable.title')" :colHeader1="$t('homeNode.nodeNeighborTable.col1')" :colHeader2="$t('homeNode.nodeNeighborTable.col2')" :colHeader3="$t('homeNode.nodeNeighborTable.col3')" :data="checkNull(nodeDetail,'neighborNode', 'array')"></table-plugin>
+    <table-plugin class="my-chrod-neighbor home-node-tablelist-size" :title="$t('homeNode.chordNeighborTable.title')" :colHeader1="$t('homeNode.chordNeighborTable.col1')" :colHeader2="$t('homeNode.chordNeighborTable.col2')" :colHeader3="$t('homeNode.chordNeighborTable.col3')" :data="checkNull(nodeDetail,'neighborChrod', 'array')"></table-plugin>
   </div>
   <common-loading v-if="false"></common-loading>
 </div>
@@ -40,7 +40,7 @@ import TablePlugin from '@/components/home/plugins/TablePlugin.vue'
 import NodeStatusPlugin from '@/components/home/commonmodules/NodeStatusPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
 import storeMix from '@/assets/js/mixin/store'
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -54,35 +54,33 @@ export default {
   mixins: [storeMix],
   data () {
     return {
-      testNodeList: [],
-      testChrodList: []
+      nodeDetail: null
     }
   },
   computed: {
     ...mapGetters({
-      NKNGlobalInfo: 'getGlobalInfo'
+      NKNGlobalInfo: 'getGlobalInfo',
+      currentNode: 'getCurrentNode'
     })
   },
   methods: {
-    ...mapMutations([
-      'setNodeList'
-    ]),
-    getMyNodeList () {
-      this.$http.myNodeList(this, (res) => {
+    getNodeDetail (node) {
+      this.$http.nodeDetail(this, {nodeId: node.id}, (res) => {
         let data = res.data
+        console.log(data)
         if (res.status) {
-          this.setNodeList(data)
-        } else {
-          alert('its myNodeList')
+          this.nodeDetail = data
         }
       })
-    },
-    getNodeDetail () {
-      this.$http.nodeDetail(this, {})
+    }
+  },
+  watch: {
+    currentNode () {
+      this.getNodeDetail(this.currentNode)
     }
   },
   mounted () {
-    this.getMyNodeList()
+    this.getNodeDetail(this.currentNode)
   }
 }
 </script>
