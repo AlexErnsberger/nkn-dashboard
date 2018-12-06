@@ -13,7 +13,7 @@ const vuex = new Vuex.Store({
     globalNKNInfo: null,
     myNodeInfo: null,
     myNodeList: null,
-    nodeWallet: null
+    currentNode: null
   },
   getters: {
     getUserInfo (state) {
@@ -34,8 +34,8 @@ const vuex = new Vuex.Store({
     getMyNodeList (state) {
       return state.myNodeList
     },
-    getNodeWallet (state) {
-      return state.nodeWallet
+    getCurrentNode (state) {
+      return state.currentNode
     }
   },
   mutations: {
@@ -57,8 +57,8 @@ const vuex = new Vuex.Store({
     setNodeList (state, data) {
       state.myNodeList = data
     },
-    setNodeWallet (state, data) {
-      state.nodeWallet = data
+    setCurrentNode (state, data) {
+      state.currentNode = data
     }
   },
   modules: {

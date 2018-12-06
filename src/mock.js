@@ -127,7 +127,23 @@ const nodeWalletMining = {
   errmsg: Random.string()
 }
 
+const walletTransfer = {
+  status: true,
+  data: '转账成功',
+  errmsg: Random.string()
+}
 
+const nodeDetail = {
+  status: true,
+  data: {
+    nodeIP: Random.ip(),
+    chordIP: Random.ip(),
+    chordID: Random.guid(),
+    webSocket: Random.integer(100, 150),
+    jsonrpc: Random.integer(1, 10)
+  },
+  errmsg: Random.string()
+}
 
 Mock.mock('/login', 'post', loginData)
 Mock.mock('/pwdc', 'post', pwdcData)
@@ -138,3 +154,5 @@ Mock.mock('/myNodeList', 'post', myNodeList)
 Mock.mock('/nodeWallet', 'post', nodeWalletInfo)
 Mock.mock('/nodeWalletTransaction', 'post', nodeWalletTransaction)
 Mock.mock('/nodeWalletMining', 'post', nodeWalletMining)
+Mock.mock('/walletTransfer', 'post', walletTransfer)
+Mock.mock('/nodeDetail', 'post', nodeDetail)

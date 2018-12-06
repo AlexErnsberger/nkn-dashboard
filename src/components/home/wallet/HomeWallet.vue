@@ -11,8 +11,8 @@
   <div class="nkn-transfer home-info-seperate">
     <block-plugin :title="$t('homeWallet.transfer.title')"></block-plugin>
     <div class="nkn-transfer-input">
-      <input-item :label="$t('homeWallet.transfer.addressInput')" class="home-wallet-tansfer-input-width" :size="55" homeStyle></input-item>
-      <input-item :label="$t('homeWallet.transfer.amountInput')" :unit="$t('unit.NKN')" class="home-wallet-tansfer-input-width" :size="55"  homeStyle></input-item>
+      <input-item :label="$t('homeWallet.transfer.addressInput')" v-model="toAddr" class="home-wallet-tansfer-input-width" :size="55" homeStyle></input-item>
+      <input-item :label="$t('homeWallet.transfer.amountInput')" v-model="tranferNum" :unit="$t('unit.NKN')" class="home-wallet-tansfer-input-width" :size="55"  homeStyle></input-item>
     </div>
     <div class="nkn-tranfer-commit">
       <button-plugin @click.native="transferConfirm">{{$t('homeWallet.transfer.btn')}}</button-plugin>
@@ -26,8 +26,8 @@
   </div>
   <common-dialog v-model="transfer">
     <span slot="dialog-header-text">{{$t('homeWallet.transfer.title')}}</span>
-    <dialog-input :placeholder="$t('homeWallet.transfer.walletPwd')" slot="dialog-body-content"></dialog-input>
-    <dialog-button type="danger" slot="dialog-footer-btn">{{$t('homeWallet.transfer.btn')}}</dialog-button>
+    <dialog-input :placeholder="$t('homeWallet.transfer.walletPwd')" v-model="wpass" slot="dialog-body-content"></dialog-input>
+    <dialog-button type="danger" slot="dialog-footer-btn" @click.native="NKNTransfer">{{$t('homeWallet.transfer.btn')}}</dialog-button>
   </common-dialog>
   <common-loading v-if="false"></common-loading>
 </div>
@@ -63,32 +63,35 @@ export default {
   mixins: [storeMix],
   mounted () {
     this.getMyNodeList()
-    this.getNodeWalletMining()
-    this.getNodeWalletTransaction()
   },
   data () {
     return {
       txSum: 0,
       miningSum: 0,
       transfer: false,
+      nodeWallet: null,
       testTableList: [],
-      testRewardList: []
+      testRewardList: [],
+      toAddr: '',
+      tranferNum: '',
+      wpass: ''
     }
   },
   computed: {
     ...mapGetters({
-      nodeWallet: 'getNodeWallet'
+      nodeList: 'getMyNodeList',
+      currentNode: 'getCurrentNode'
     })
   },
   methods: {
+    ...mapMutations([
+      'setNodeList', 'setCurrentNode'
+    ]),
     transferConfirm () {
       this.transfer = true
     },
-    ...mapMutations([
-      'setNodeList'
-    ]),
     getMyNodeList () {
-      this.$http.myNodeList(this, (res) => {
+      return this.$http.myNodeList(this, (res) => {
         let data = res.data
         if (res.status) {
           this.setNodeList(data)
@@ -97,9 +100,22 @@ export default {
         }
       })
     },
-    getNodeWalletTransaction () {
+    getNodeWallet (node) {
+      this.$http.nodeWallet(this, {
+        id: node.id
+      }, (res) => {
+        let data = res.data
+        if (res.status) {
+          this.nodeWallet = data
+        } else {
+          alert('its nodeWallet')
+        }
+      })
+    },
+    getNodeWalletTransaction (node) {
       this.$http.nodeWalletTransaction(this, {
-        pageNo: 1
+        pageNo: 1,
+        nodeId: node.id
       }, (res) => {
         let data = res.data
         if (res.status) {
@@ -110,9 +126,10 @@ export default {
         }
       })
     },
-    getNodeWalletMining () {
+    getNodeWalletMining (node) {
       this.$http.nodeWalletMining(this, {
-        pageNo: 1
+        pageNo: 1,
+        nodeId: node.id
       }, (res) => {
         let data = res.data
         if (res.status) {
@@ -122,6 +139,36 @@ export default {
           alert('its nodeWalletMining')
         }
       })
+    },
+    NKNTransfer () {
+      this.$http.walletTransfer(this, {
+        to: this.toAddr,
+        num: this.tranferNum,
+        wpass: this.wpass
+      }, (res) => {
+        console.log(res.data)
+        if (res.status) {
+          alert(res.data)
+          this.transfer = false
+          this.clearInput()
+        }
+      })
+    },
+    clearInput () {
+      this.toAddr = ''
+      this.tranferNum = ''
+      this.wpass = ''
+    }
+  },
+  watch: {
+    nodeList () {
+      this.setCurrentNode(this.nodeList[0])
+    },
+    currentNode () {
+      let node = this.currentNode
+      this.getNodeWallet(node)
+      this.getNodeWalletMining(node)
+      this.getNodeWalletTransaction(node)
     }
   }
 }

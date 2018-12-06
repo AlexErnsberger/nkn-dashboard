@@ -10,7 +10,7 @@
   </div>
   <div v-else-if="type === 'nodeList'">
     <span class="customer-title">{{title}}{{$t('colon')}}</span>
-    <node-slide-plugin :nodeList="nodeList"></node-slide-plugin>
+    <node-slide-plugin></node-slide-plugin>
   </div>
   <div v-else-if="type === 'nodeAdd'" class="node-func">
     <img class="node-icon" src="../../../assets/img/icon/add.png">
@@ -39,6 +39,11 @@ export default {
   computed: {
     nodeClass () {
       return 'node-' + this.subType.toLowerCase()
+    }
+  },
+  methods: {
+    handleBubbling (node) {
+      this.$emit('bubbling', node)
     }
   }
 }

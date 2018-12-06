@@ -1,16 +1,16 @@
 <template>
 <div class="nb-home-node home-component-position">
   <div class="my-node-operate">
-    <node-info-plugin :nodeList="nodeList"></node-info-plugin>
+    <node-info-plugin></node-info-plugin>
   </div>
   <div class="my-node-status home-info-seperate">
     <node-status-plugin></node-status-plugin>
   </div>
   <div class="my-node-info home-info-seperate">
-    <block-plugin :title="$t('homeCommon.nodeCount')" data="1000" class="home-node-block-plugin-width"></block-plugin>
-    <block-plugin :title="$t('homeCommon.version')" data="1.0" class="home-node-block-plugin-width"></block-plugin>
-    <block-plugin :title="$t('homeCommon.relayedTransactions')" data="120" class="home-node-block-plugin-width"></block-plugin>
-    <block-plugin :title="$t('homeCommon.connectedClient')" data="6" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeCommon.nodeCount')" :data="checkNull(NKNGlobalInfo, 'nodeCount')" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeCommon.version')" :data="checkNull(NKNGlobalInfo, 'version')" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeCommon.relayedTransactions')" :data="checkNull(NKNGlobalInfo, 'relayedTransactions')" class="home-node-block-plugin-width"></block-plugin>
+    <block-plugin :title="$t('homeCommon.connectedClient')" :data="checkNull(NKNGlobalInfo, 'connectedClient')" class="home-node-block-plugin-width"></block-plugin>
   </div>
   <div class="my-node-netinfo home-info-seperate">
     <block-plugin :title="$t('homeNode.nodeIP')" data="192.168.1.23" class="home-node-block-plugin-width" small></block-plugin>
@@ -39,6 +39,9 @@ import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 import TablePlugin from '@/components/home/plugins/TablePlugin.vue'
 import NodeStatusPlugin from '@/components/home/commonmodules/NodeStatusPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
+import storeMix from '@/assets/js/mixin/store'
+import { mapMutations, mapGetters } from 'vuex'
+
 export default {
   components: {
     NodeInfoPlugin,
@@ -48,14 +51,38 @@ export default {
     NodeStatusPlugin,
     CommonLoading
   },
+  mixins: [storeMix],
   data () {
     return {
-      nodeList: [
-        'Node #8', 'Node #2', 'Node #3'
-      ],
       testNodeList: [],
       testChrodList: []
     }
+  },
+  computed: {
+    ...mapGetters({
+      NKNGlobalInfo: 'getGlobalInfo'
+    })
+  },
+  methods: {
+    ...mapMutations([
+      'setNodeList'
+    ]),
+    getMyNodeList () {
+      this.$http.myNodeList(this, (res) => {
+        let data = res.data
+        if (res.status) {
+          this.setNodeList(data)
+        } else {
+          alert('its myNodeList')
+        }
+      })
+    },
+    getNodeDetail () {
+      this.$http.nodeDetail(this, {})
+    }
+  },
+  mounted () {
+    this.getMyNodeList()
   }
 }
 </script>

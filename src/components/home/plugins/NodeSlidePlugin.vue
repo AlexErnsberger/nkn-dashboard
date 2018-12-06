@@ -1,6 +1,6 @@
 <template>
 <div class="node-slide-plugin">
-  <div class="node-selected">{{currentNode}}</div>
+  <div class="node-selected" v-text="currentNode?currentNode.name:''"></div>
   <div class="node-list">
     <ul>
       <li v-for="(node, index) in nodeList" :key="index" @click="choose(node)">{{node.name}}</li>
@@ -17,46 +17,47 @@ import {
 export default {
   data () {
     return {
-      currentNode: ''
     }
   },
   computed: {
     ...mapGetters({
-      nodeList: 'getMyNodeList'
+      nodeList: 'getMyNodeList',
+      currentNode: 'getCurrentNode'
     })
   },
   methods: {
     ...mapMutations([
-      'setNodeWallet',
-      'setLoading'
+      // 'setNodeWallet',
+      // 'setLoading',
+      'setCurrentNode'
     ]),
     choose (node) {
-      this.currentNode = node.name
-      this.getNodeWallet(node)
-    },
-    getNodeWallet (node) {
-      this.setLoading(true)
-      this.$http.nodeWallet(this, {
-        id: node.id
-      }, (res) => {
-        let data = res.data
-        console.log(data)
-        if (res.status) {
-          this.setNodeWallet(res.data)
-          this.setLoading(false)
-        } else {
-          alert('its nodeWallet')
-        }
-      })
+      this.setCurrentNode(node)
+      // this.getNodeWallet(node)
     }
+    // getNodeWallet (node) {
+    //   this.setLoading(true)
+    //   this.$http.nodeWallet(this, {
+    //     id: node.id
+    //   }, (res) => {
+    //     let data = res.data
+    //     console.log(data)
+    //     if (res.status) {
+    //       this.setNodeWallet(res.data)
+    //       this.setLoading(false)
+    //     } else {
+    //       alert('its nodeWallet')
+    //     }
+    //   })
+    // }
   },
   watch: {
-    nodeList () {
-      if (this.nodeList) {
-        this.currentNode = this.nodeList[0].name
-        this.getNodeWallet(this.currentNode)
-      }
-    }
+    // nodeList () {
+    //   if (this.nodeList) {
+    //     this.setCurrentNode(this.nodeList[0])
+    //     // this.getNodeWallet(this.currentNode)
+    //   }
+    // }
   }
 }
 </script>
