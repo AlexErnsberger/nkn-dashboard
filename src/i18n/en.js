@@ -49,6 +49,7 @@ module.exports = merge(base, {
     connectedClient: 'Connected Client'
   },
   nodeCommon: {
+    myNode: 'My Node',
     myNodeCount: 'My Node',
     SyncStarted: 'SyncStarted',
     SyncFinished: 'SyncFinished',
