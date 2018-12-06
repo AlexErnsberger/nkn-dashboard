@@ -146,7 +146,6 @@ export default {
         num: this.tranferNum,
         wpass: this.wpass
       }, (res) => {
-        console.log(res.data)
         if (res.status) {
           alert(res.data)
           this.transfer = false

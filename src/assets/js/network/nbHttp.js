@@ -83,8 +83,24 @@ let nodeDetail = function (scope, param, success) {
   return postRequest(scope, '/nodeDetail', param, success)
 }
 
+let dataCompute = function (scope, param, success) {
+  return postRequest(scope, '/dataCompute', param, success)
+}
+
 export default {
-  login, pwdc, myInfo, globalInfo, myNodeInfo, reqBatch, myNodeList, nodeWallet, nodeWalletTransaction, nodeWalletMining, walletTransfer, nodeDetail
+  login,
+  pwdc,
+  myInfo,
+  globalInfo,
+  myNodeInfo,
+  reqBatch,
+  myNodeList,
+  nodeWallet,
+  nodeWalletTransaction,
+  nodeWalletMining,
+  walletTransfer,
+  nodeDetail,
+  dataCompute
 }
 
 // class nbHttpRequest {

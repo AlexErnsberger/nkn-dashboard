@@ -160,6 +160,18 @@ const nodeDetail = {
   errmsg: Random.string()
 }
 
+const caculator = {
+  status: true,
+  data: {
+    dailyToken: Random.integer(1, 100),
+    monthToken: Random.integer(1, 100),
+    NKNToken: Random.integer(10000, 60000),
+    dailyProfit: Random.float(1, 2, 3),
+    monthProfit: Random.float(2, 5, 3)
+  },
+  errmsg: Random.string()
+}
+
 Mock.mock('/login', 'post', loginData)
 Mock.mock('/pwdc', 'post', pwdcData)
 Mock.mock('/myInfo', 'post', myInfoData)
@@ -171,3 +183,4 @@ Mock.mock('/nodeWalletTransaction', 'post', nodeWalletTransaction)
 Mock.mock('/nodeWalletMining', 'post', nodeWalletMining)
 Mock.mock('/walletTransfer', 'post', walletTransfer)
 Mock.mock('/nodeDetail', 'post', nodeDetail)
+Mock.mock('/dataCompute', 'post', caculator)

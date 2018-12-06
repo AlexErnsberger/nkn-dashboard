@@ -58,7 +58,6 @@ export default {
       this.$http.myInfo(this, (res) => {
         if (res.status) {
           let data = res.data
-          console.log(data)
           this.myBalance = data.balance
           this.myAward = data.miningAward
         } else {
@@ -70,7 +69,6 @@ export default {
       this.$http.globalInfo(this, (res) => {
         if (res.status) {
           let data = res.data
-          console.log(data)
           this.$store.commit('setGlobalNKNInfo', data)
         } else {
           alert('its globalInfo')
@@ -81,7 +79,6 @@ export default {
       this.$http.myNodeInfo(this, (res) => {
         if (res.status) {
           let data = res.data
-          console.log(data)
           this.$store.commit('setNodeInfo', data)
         } else {
           alert('its myNodeInfo')

@@ -67,7 +67,6 @@ export default {
     getNodeDetail (node) {
       this.$http.nodeDetail(this, {nodeId: node.id}, (res) => {
         let data = res.data
-        console.log(data)
         if (res.status) {
           this.nodeDetail = data
         }
