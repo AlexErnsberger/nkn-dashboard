@@ -28,11 +28,11 @@ export default {
   },
   methods: {
     pwdChange () {
-      if (!this.currentPassword) {
+      if (!this.currentPassword || this.currentPassword.length < 8 || this.newPassword.length < 8) {
         this.lengthErrorInfo = this.$t('signIn.pwdErrorInfo')
         return
       }
-      if (this.currentPassword !== this.confirmPassword) {
+      if (this.newPassword !== this.confirmPassword) {
         this.confilctErrorInfo = this.$t('pwdChange.confirmPwdErrorInfo')
         return
       }

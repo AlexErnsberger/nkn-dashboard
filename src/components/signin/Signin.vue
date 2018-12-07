@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     login () {
-      if (!this.password) {
+      if (!this.password || this.password.length < 8) {
         this.errorInfo = this.$t('signIn.pwdErrorInfo')
         return
       }
