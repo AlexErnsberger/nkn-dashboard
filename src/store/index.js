@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import VuexPersistence from 'vuex-persist'
+import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
 
-// const vuexSession = new VuexPersistence({
-//   storage: window.sessionStorage
-// })
+const vuexSession = new VuexPersistence({
+  storage: window.sessionStorage
+})
 
 const vuex = new Vuex.Store({
   state: {
@@ -89,8 +89,8 @@ const vuex = new Vuex.Store({
         commit('setResInfo', null)
       }, 2000)
     }
-  }
-  // plugins: [vuexSession.plugin]
+  },
+  plugins: [vuexSession.plugin]
 })
 
 export default vuex
