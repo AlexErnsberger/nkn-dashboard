@@ -148,9 +148,11 @@ export default {
   watch: {
     currentNode () {
       let node = this.currentNode
-      this.getNodeWallet(node)
-      this.getNodeWalletMining(node)
-      this.getNodeWalletTransaction(node)
+      if (node) {
+        this.getNodeWallet(node)
+        this.getNodeWalletMining(node)
+        this.getNodeWalletTransaction(node)
+      }
     }
   }
 }

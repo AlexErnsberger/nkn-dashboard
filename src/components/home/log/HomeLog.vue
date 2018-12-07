@@ -40,7 +40,9 @@ export default {
   },
   watch: {
     currentNode () {
-      this.getNodeLog(this.currentNode)
+      if (this.currentNode) {
+        this.getNodeLog(this.currentNode)
+      }
     }
   },
   mounted () {

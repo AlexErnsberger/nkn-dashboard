@@ -61,6 +61,7 @@ export default {
     display: none;
     position: absolute;
     margin-top: 12px;
+    z-index: 1;
 
     ul {
       margin: 0;

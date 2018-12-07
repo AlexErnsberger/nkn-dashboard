@@ -62,7 +62,7 @@ const nodeList = function () {
   let array = []
   for (let i = 0; i < 5; i++) {
     let node = {
-      name: 'Node' + Random.integer(1, 10),
+      name: 'Node#' + Random.integer(1, 10),
       id: Random.guid(),
       status: nodeTypeStatus(Random.integer(0, 3))
     }
@@ -193,6 +193,23 @@ const logData = {
   errmsg: Random.string()
 }
 
+const addNode = {
+  status: true,
+  data: {
+    node: {
+      id: Random.guid(),
+      name: 'Node#' + Random.integer(0, 10),
+      status: 'Stopped'
+    }
+  },
+  errmsg: Random.string()
+}
+
+const delNode = {
+  status: true,
+  errmsg: Random.string()
+}
+
 Mock.mock('/login', 'post', loginData)
 Mock.mock('/pwdc', 'post', pwdcData)
 Mock.mock('/myInfo', 'post', myInfoData)
@@ -206,3 +223,5 @@ Mock.mock('/walletTransfer', 'post', walletTransfer)
 Mock.mock('/nodeDetail', 'post', nodeDetail)
 Mock.mock('/dataCompute', 'post', caculator)
 Mock.mock('/log', 'post', logData)
+Mock.mock('/addNode', 'post', addNode)
+Mock.mock('/delNode', 'post', delNode)

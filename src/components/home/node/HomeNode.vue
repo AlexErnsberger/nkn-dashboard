@@ -75,7 +75,9 @@ export default {
   },
   watch: {
     currentNode () {
-      this.getNodeDetail(this.currentNode)
+      if (this.currentNode) {
+        this.getNodeDetail(this.currentNode)
+      }
     }
   },
   mounted () {

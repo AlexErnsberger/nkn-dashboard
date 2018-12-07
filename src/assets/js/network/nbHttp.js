@@ -91,6 +91,14 @@ let log = function (scope, param, success) {
   return postRequest(scope, '/log', param, success)
 }
 
+let addNode = function (scope, success) {
+  return postRequest(scope, '/addNode', {}, success)
+}
+
+let delNode = function (scope, param, success) {
+  return postRequest(scope, '/delNode', param, success)
+}
+
 export default {
   login,
   pwdc,
@@ -105,7 +113,9 @@ export default {
   walletTransfer,
   nodeDetail,
   dataCompute,
-  log
+  log,
+  addNode,
+  delNode
 }
 
 // class nbHttpRequest {

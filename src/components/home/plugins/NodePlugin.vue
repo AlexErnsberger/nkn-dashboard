@@ -12,11 +12,11 @@
     <span class="customer-title">{{title}}{{$t('colon')}}</span>
     <node-slide-plugin></node-slide-plugin>
   </div>
-  <div v-else-if="type === 'nodeAdd'" class="node-func">
+  <div v-else-if="type === 'nodeAdd'" class="node-func" @click="addNode">
     <img class="node-icon" src="../../../assets/img/icon/add.png">
     <span class="node-title">{{title}}</span>
   </div>
-  <div v-else-if="type === 'nodeDelete'" class="node-func">
+  <div v-else-if="type === 'nodeDelete'" class="node-func" @click="delCurrentNode">
     <img class="node-icon" src="../../../assets/img/icon/delete.png">
     <span class="node-title">{{title}}</span>
   </div>
@@ -25,6 +25,7 @@
 
 <script>
 import NodeSlidePlugin from '@/components/home/plugins/NodeSlidePlugin.vue'
+import { mapMutations, mapGetters } from 'vuex'
 export default {
   components: {
     NodeSlidePlugin
@@ -37,13 +38,43 @@ export default {
     nodeList: Array
   },
   computed: {
+    ...mapGetters({
+      currentNode: 'getCurrentNode',
+      myNodeList: 'getMyNodeList'
+    }),
     nodeClass () {
       return 'node-' + this.subType.toLowerCase()
     }
   },
   methods: {
-    handleBubbling (node) {
-      this.$emit('bubbling', node)
+    ...mapMutations([
+      'addNodeList', 'setCurrentNode', 'delNode'
+    ]),
+    addNode () {
+      this.$http.addNode(this, (res) => {
+        let data = res.data
+        if (res.status) {
+          this.addNodeList(data.node)
+        }
+      })
+    },
+    delCurrentNode () {
+      let nlists = this.myNodeList
+      if (nlists && nlists.length > 0) {
+        this.$http.delNode(this, {
+          nodeId: this.currentNode.id
+        }, (res) => {
+          console.log(res)
+          if (res.status) {
+            this.delNode(this.currentNode)
+            if (nlists && nlists.length > 0) {
+              this.setCurrentNode(nlists[0])
+            } else {
+              this.setCurrentNode(null)
+            }
+          }
+        })
+      }
     }
   }
 }

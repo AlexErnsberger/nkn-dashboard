@@ -60,6 +60,18 @@ const vuex = new Vuex.Store({
     setNodeList (state, data) {
       state.myNodeList = data
     },
+    addNodeList (state, data) {
+      state.myNodeList.push(data)
+    },
+    delNode (state, delNode) {
+      let arr = state.myNodeList
+      for (let idx = 0; idx < arr.length; idx++) {
+        const node = arr[idx]
+        if (node.id === delNode.id) {
+          state.myNodeList.splice(idx, 1)
+        }
+      }
+    },
     setCurrentNode (state, data) {
       state.currentNode = data
     }

@@ -60,7 +60,7 @@ export default {
   display: none;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
 
   .dialog-message-box {
     width: 500px;
