@@ -4,7 +4,7 @@
     <li slot="nav-list" @click="changeLang('en')">{{$t("header.langList.en")}}</li>
     <li slot="nav-list" @click="changeLang('zh')">{{$t("header.langList.zh")}}</li>
   </slide-plugin>
-  <slide-plugin :iconSrc="require('../../assets/img/icon/user.png')">
+  <slide-plugin :iconSrc="require('../../assets/img/icon/user.png')"  v-if="userToken">
     <li slot="nav-list" @click="logOut">{{$t('header.logOut')}}</li>
   </slide-plugin>
 </nav>
@@ -12,6 +12,7 @@
 
 <script>
 import SlidePlugin from '@/components/header/plugins/SlidePlugin.vue'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     SlidePlugin
@@ -29,6 +30,11 @@ export default {
       this.$storage.setLanguage(lang)
       this.$store.commit('local/setLang', lang)
     }
+  },
+  computed: {
+    ...mapGetters({
+      userToken: 'getReqKey'
+    })
   }
 }
 </script>

@@ -5,7 +5,6 @@
       <div class="header-logo">
         <img src="../../assets/img/icon/logo.png">
       </div>
-        <!-- <div class="header-nav" v-if="$store.getters['session/getUserInfo']"> -->
         <div class="header-nav">
           <header-nav></header-nav>
         </div>

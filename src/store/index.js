@@ -16,7 +16,8 @@ const vuex = new Vuex.Store({
     globalNKNInfo: null,
     myNodeInfo: null,
     myNodeList: null,
-    currentNode: null
+    currentNode: null,
+    resInfo: null
   },
   getters: {
     getUserInfo (state) {
@@ -39,6 +40,9 @@ const vuex = new Vuex.Store({
     },
     getCurrentNode (state) {
       return state.currentNode
+    },
+    getResInfo (state) {
+      return state.resInfo
     }
   },
   mutations: {
@@ -74,6 +78,16 @@ const vuex = new Vuex.Store({
     },
     setCurrentNode (state, data) {
       state.currentNode = data
+    },
+    setResInfo (state, data) {
+      state.resInfo = data
+    }
+  },
+  actions: {
+    clearResInfo ({commit}) {
+      setTimeout(() => {
+        commit('setResInfo', null)
+      }, 2000)
     }
   }
   // plugins: [vuexSession.plugin]
