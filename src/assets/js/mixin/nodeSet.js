@@ -12,8 +12,9 @@ export default {
       'setNodeList', 'setCurrentNode'
     ]),
     getMyNodeList () {
-      return this.$http.myNodeList(this, (res) => {
+      this.$http.myNodeList(this, (res) => {
         let data = res.data
+        console.log(res)
         if (res.status && data) {
           this.setNodeList(data)
           this.setCurrentNode(data[0])

@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import sessionModule from '@/store/session'
-import localModule from '@/store/local'
+// import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
+
+// const vuexSession = new VuexPersistence({
+//   storage: window.sessionStorage
+// })
 
 const vuex = new Vuex.Store({
   state: {
@@ -60,11 +63,8 @@ const vuex = new Vuex.Store({
     setCurrentNode (state, data) {
       state.currentNode = data
     }
-  },
-  modules: {
-    session: sessionModule,
-    local: localModule
   }
+  // plugins: [vuexSession.plugin]
 })
 
 export default vuex

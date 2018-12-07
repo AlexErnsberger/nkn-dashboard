@@ -9,7 +9,7 @@
   <div class="nkn-block home-info-seperate">
     <block-plugin class="home-module-width" :title="$t('homeCommon.height')" :data="checkNull(NKNGlobalInfo, 'height')"></block-plugin>
     <block-plugin class="home-module-width" :title="$t('homeCommon.transection')" :data="checkNull(NKNGlobalInfo, 'transection')"></block-plugin>
-    <block-plugin class="home-module-width" :title="$t('homeCommon.averageBlockTime')" :data="checkNull(NKNGlobalInfo, 'averageBlockTime')"></block-plugin>
+    <block-plugin class="home-module-width" :title="$t('homeCommon.averageBlockTime')" :data="checkNull(NKNGlobalInfo, 'averageBlockTime')+$t('unit.s')"></block-plugin>
     <block-plugin class="home-module-width" :title="$t('homeCommon.nodeCount')" :data="checkNull(NKNGlobalInfo, 'nodeCount')"></block-plugin>
     <block-plugin class="home-module-width" :title="$t('homeCommon.version')" :data="checkNull(NKNGlobalInfo, 'version')"></block-plugin>
   </div>

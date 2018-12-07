@@ -5,7 +5,6 @@ import App from './App'
 import router from './router'
 import store from '@/store'
 import nbHttp from '@/assets/js/network/nbHttp'
-// import VueAxios from 'vue-axios'
 import VueClipboard from 'vue-clipboard2'
 import i18n from '@/i18n'
 import storage from '@/assets/js/nbStorage'
@@ -19,7 +18,6 @@ Vue.config.productionTip = false
 Vue.prototype.$storage = storage
 Vue.prototype.$namespace = namespace
 Vue.prototype.$http = nbHttp
-// Vue.use(VueAxios, axios)
 Vue.use(VueClipboard)
 
 /* eslint-disable no-new */

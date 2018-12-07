@@ -9,6 +9,7 @@ module.exports = {
     NKN: 'NKN',
     USDT: 'USDT',
     ETH: 'ETH',
-    $: '$'
+    $: '$',
+    s: 's'
   }
 }

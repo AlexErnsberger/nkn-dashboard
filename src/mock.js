@@ -53,12 +53,18 @@ const myNodeData = {
   errmsg: Random.string()
 }
 
+const nodeTypeStatus = function (idx) {
+  let types = ['SyncStarted', 'SyncFinished', 'PersistFinished', 'Stopped']
+  return types[idx]
+}
+
 const nodeList = function () {
   let array = []
   for (let i = 0; i < 5; i++) {
     let node = {
       name: 'Node' + Random.integer(1, 10),
-      id: Random.guid()
+      id: Random.guid(),
+      status: nodeTypeStatus(Random.integer(0, 3))
     }
     array.push(node)
   }
