@@ -17,6 +17,7 @@ export default {
 .log-list {
   height: 714px;
   overflow: auto;
+  .scroll-bar-set;
   .log-title {
     .home-common-title-font;
     margin-bottom: 4px;
