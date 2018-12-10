@@ -190,11 +190,14 @@ export default {
     .mixin-boxshadow;
   }
 
-  .my-wallet, .nkn-transfer-input {
+  .my-wallet,  {
     .home-common-flex;
   }
 
   .nkn-transfer {
+    .nkn-transfer-input {
+      .home-common-flex;
+    }
     .nkn-tranfer-commit {
       display: flex;
       justify-content: flex-end;

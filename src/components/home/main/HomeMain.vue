@@ -100,10 +100,7 @@ export default {
 
 <style lang="less" scoped>
 .nb-home-main {
-  .nkn-currency {
-    .home-common-flex;
-  }
-  .nkn-block{
+  .nkn-currency, .nkn-block {
     .home-common-flex;
   }
   .nkn-block,
