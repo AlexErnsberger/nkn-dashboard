@@ -19,10 +19,12 @@
     </div>
   </div>
   <div class="transfer-history home-wallet-tablelist-height home-info-seperate">
-    <table-plugin :title="$t('homeWallet.transferHistoryTable.title')" :colHeader1="$t('homeWallet.transferHistoryTable.col1')" :colHeader2="$t('homeWallet.transferHistoryTable.col2')" :colHeader3="$t('homeWallet.transferHistoryTable.col3')" :colHeader4="$t('homeWallet.transferHistoryTable.col4')" :data="testTableList" :dataSum="txSum" needSep></table-plugin>
+    <table-plugin :title="$t('homeWallet.transferHistoryTable.title')" :colHeader1="$t('homeWallet.transferHistoryTable.col1')" :colHeader2="$t('homeWallet.transferHistoryTable.col2')" :colHeader3="$t('homeWallet.transferHistoryTable.col3')" :colHeader4="$t('homeWallet.transferHistoryTable.col4')" :data="testTableList"></table-plugin>
+    <table-separate-plugin class="table-sep" :dataSum="txSum" @getData="getNodeWalletTransaction(currentNode, currentPage)"></table-separate-plugin>
   </div>
   <div class="mining-reward home-wallet-tablelist-height home-info-seperate">
-    <table-plugin :title="$t('homeWallet.miningRewardTable.title')" :colHeader1="$t('homeWallet.miningRewardTable.col1')" :colHeader2="$t('homeWallet.miningRewardTable.col2')" :colHeader3="$t('homeWallet.miningRewardTable.col3')" :colHeader4="$t('homeWallet.miningRewardTable.col4')" :data="testRewardList" :dataSum="miningSum" needSep></table-plugin>
+    <table-plugin :title="$t('homeWallet.miningRewardTable.title')" :colHeader1="$t('homeWallet.miningRewardTable.col1')" :colHeader2="$t('homeWallet.miningRewardTable.col2')" :colHeader3="$t('homeWallet.miningRewardTable.col3')" :colHeader4="$t('homeWallet.miningRewardTable.col4')" :data="testRewardList"></table-plugin>
+    <table-separate-plugin class="table-sep" :dataSum="miningSum" @getData="getNodeWalletMining(currentNode, currentPage)"></table-separate-plugin>
   </div>
   <common-dialog v-model="transfer">
     <span slot="dialog-header-text">{{$t('homeWallet.transfer.title')}}</span>
@@ -39,6 +41,7 @@ import BlockPlugin from '@/components/home/plugins/BlockPlugin.vue'
 import ButtonPlugin from '@/components/home/plugins/ButtonPlugin.vue'
 import InputItem from '@/components/signin/plugins/InputItem.vue'
 import TablePlugin from '@/components/home/plugins/TablePlugin.vue'
+import TableSeparatePlugin from '@/components/home/plugins/TableSeparatePlugin.vue'
 import NodeInfoPlugin from '@/components/home/commonmodules/NodeInfoPlugin.vue'
 import CommonDialog from '@/components/base/CommonDialog.vue'
 import DialogInput from '@/components/base/plugins/DialogInput.vue'
@@ -57,6 +60,7 @@ export default {
     InputItem,
     ButtonPlugin,
     TablePlugin,
+    TableSeparatePlugin,
     CommonDialog,
     DialogInput,
     DialogButton,
@@ -181,24 +185,16 @@ export default {
 
 <style lang="less" scoped>
 .nb-home-wallet {
-  .my-node {
+  .my-node, .transfer-history, .mining-reward, .nkn-transfer {
     .home-common-bg;
     .mixin-boxshadow;
   }
 
-  .my-wallet {
+  .my-wallet, .nkn-transfer-input {
     .home-common-flex;
-
   }
 
   .nkn-transfer {
-    .home-common-bg;
-    .mixin-boxshadow;
-
-    .nkn-transfer-input {
-      .home-common-flex;
-    }
-
     .nkn-tranfer-commit {
       display: flex;
       justify-content: flex-end;
@@ -206,14 +202,15 @@ export default {
     }
   }
 
-  .transfer-history {
-    .home-common-bg;
-    .mixin-boxshadow;
+  .mining-reward, .transfer-history{
+    position: relative;
   }
 
-  .mining-reward {
-    .home-common-bg;
-    .mixin-boxshadow;
+  .table-sep {
+    text-align: right;
+    margin-top: 10px;
+    position: absolute;
+    right: 20px; bottom: 5px;
   }
 }
 </style>

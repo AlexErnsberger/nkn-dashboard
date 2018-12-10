@@ -14,9 +14,6 @@
       </tr>
     </table>
   </div>
-  <div class="table-separate" v-if="needSep">
-    <table-separate-plugin :dataSum="dataSum"  @getData="handleData"></table-separate-plugin>
-  </div>
 </div>
 </template>
 
@@ -26,29 +23,13 @@ export default {
   components: {
     TableSeparatePlugin
   },
-  mounted () {
-    // this.currentData = this.data.slice(0, this.eachPageSum - 1)
-  },
   props: {
     title: String,
     data: Array,
-    dataSum: Number,
-    needSep: Boolean,
     colHeader1: String,
     colHeader2: String,
     colHeader3: String,
     colHeader4: String
-  },
-  data () {
-    return {
-      // currentData: this.data
-    }
-  },
-  methods: {
-    handleData (pageNo) {
-      // this.currentData = this.data.slice(start, end)
-      this.$emit('getData', pageNo)
-    }
   }
 }
 </script>
@@ -93,11 +74,6 @@ export default {
         }
       }
     }
-  }
-
-  .table-separate {
-    text-align: right;
-    margin-top: 10px;
   }
 }
 </style>
