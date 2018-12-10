@@ -29,7 +29,7 @@
     <dialog-input :placeholder="$t('homeWallet.transfer.walletPwd')" v-model="wpass" slot="dialog-body-content"></dialog-input>
     <dialog-button type="danger" slot="dialog-footer-btn" @click.native="NKNTransfer">{{$t('homeWallet.transfer.btn')}}</dialog-button>
   </common-dialog>
-  <common-loading v-if="false"></common-loading>
+  <common-loading v-if="getLoading"></common-loading>
 </div>
 </template>
 
@@ -46,6 +46,7 @@ import DialogButton from '@/components/base/plugins/DialogButton.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
 import checkNullMix from '@/assets/js/mixin/checkNull'
 import nodeSetMix from '@/assets/js/mixin/nodeSet'
+import loadingMix from '@/assets/js/mixin/loading'
 
 export default {
   components: {
@@ -60,7 +61,7 @@ export default {
     DialogButton,
     CommonLoading
   },
-  mixins: [checkNullMix, nodeSetMix],
+  mixins: [checkNullMix, nodeSetMix, loadingMix],
   data () {
     return {
       txSum: 0,
@@ -141,6 +142,11 @@ export default {
         }
       })
     },
+    reqBatchHandle (node, pageNo) {
+      this.$http.reqBatch(this, [this.getNodeWallet(node), this.getNodeWalletMining(node, pageNo), this.getNodeWalletTransaction(node, pageNo)], () => {
+        this.setLoading(false)
+      })
+    },
     clearInput () {
       this.toAddr = ''
       this.tranferNum = ''
@@ -151,18 +157,14 @@ export default {
     currentNode () {
       let node = this.currentNode
       if (node) {
-        this.getNodeWallet(node)
-        this.getNodeWalletMining(node)
-        this.getNodeWalletTransaction(node)
+        this.reqBatchHandle(node, 1)
       }
     }
   },
   mounted () {
     if (this.currentNode) {
       let node = this.currentNode
-      this.getNodeWallet(node)
-      this.getNodeWalletMining(node, 1)
-      this.getNodeWalletTransaction(node, 1)
+      this.reqBatchHandle(node, 1)
     }
   }
 }

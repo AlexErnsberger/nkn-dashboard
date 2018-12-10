@@ -33,7 +33,7 @@
     <calculator-item :title="$t('homeCalculator.result4')" :unit="$t('unit.$')" :data="checkNull(result, 'dailyProfit')"></calculator-item>
     <calculator-item :title="$t('homeCalculator.result5')" :unit="$t('unit.$')" :data="checkNull(result, 'monthProfit')"></calculator-item>
   </div>
-  <common-loading v-if="false"></common-loading>
+  <common-loading v-if="getLoading"></common-loading>
 </div>
 </template>
 
@@ -43,6 +43,7 @@ import ButtonPlugin from '@/components/home/plugins/ButtonPlugin.vue'
 import InputItem from '@/components/signin/plugins/InputItem.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
 import checkNullMix from '@/assets/js/mixin/checkNull'
+import loadingMix from '@/assets/js/mixin/loading'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -52,7 +53,7 @@ export default {
     InputItem,
     CommonLoading
   },
-  mixins: [checkNullMix],
+  mixins: [checkNullMix, loadingMix],
   data () {
     return {
       averageTime: '',
@@ -87,6 +88,7 @@ export default {
       }
     },
     dataCompute () {
+      this.setLoading(true)
       this.$http.dataCompute(this, {
         averageTime: this.averageTime,
         NKNnodeNum: this.NKNnodeNum,
@@ -97,6 +99,7 @@ export default {
         if (res.status) {
           this.result = data
         }
+        this.setLoading(false)
       })
     }
   }

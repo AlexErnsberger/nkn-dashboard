@@ -16,7 +16,7 @@
   <div class="nkn-node home-info-seperate">
     <node-status-plugin></node-status-plugin>
   </div>
-  <common-loading v-if="$store.getters.getLoading"></common-loading>
+  <common-loading v-if="getLoading"></common-loading>
 </div>
 </template>
 
@@ -27,6 +27,7 @@ import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 import NodeStatusPlugin from '@/components/home/commonmodules/NodeStatusPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
 import checkNullMix from '@/assets/js/mixin/checkNull'
+import loadingMix from '@/assets/js/mixin/loading'
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
@@ -37,7 +38,7 @@ export default {
     NodeStatusPlugin,
     CommonLoading
   },
-  mixins: [checkNullMix],
+  mixins: [checkNullMix, loadingMix],
   data () {
     return {
       myBalance: '',
@@ -51,7 +52,7 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'setLoading', 'setGlobalNKNInfo', 'setNodeInfo', 'setLoading'
+      'setGlobalNKNInfo', 'setNodeInfo', 'setLoading'
     ]),
     getMyInfo () {
       this.$http.myInfo(this, (res) => {

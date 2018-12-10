@@ -6,7 +6,7 @@
   <div class="nb-home-log-content home-info-seperate">
     <log-plugin :logs="logList"></log-plugin>
   </div>
-  <common-loading v-if="false"></common-loading>
+  <common-loading v-if="getLoading"></common-loading>
 </div>
 </template>
 
@@ -15,6 +15,7 @@ import NodeInfoPlugin from '@/components/home/commonmodules/NodeInfoPlugin.vue'
 import LogPlugin from '@/components/home/log/plugins/LogPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
 import nodeSetMix from '@/assets/js/mixin/nodeSet'
+import loadingMix from '@/assets/js/mixin/loading'
 
 export default {
   components: {
@@ -22,7 +23,7 @@ export default {
     LogPlugin,
     CommonLoading
   },
-  mixins: [nodeSetMix],
+  mixins: [nodeSetMix, loadingMix],
   data () {
     return {
       logList: []
@@ -30,11 +31,13 @@ export default {
   },
   methods: {
     getNodeLog (node) {
+      this.setLoading(true)
       this.$http.log(this, {nodeId: node.id}, (res) => {
         let data = res.data
         if (res.status) {
-          this.logList = data
+          this.logList = Object.assign([], data)
         }
+        this.setLoading(false)
       })
     }
   },

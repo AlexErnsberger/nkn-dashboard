@@ -25,6 +25,7 @@ export default {
   },
   mounted () {
     if (!this.nodeList) {
+      this.setLoading(true)
       this.getMyNodeList()
     }
   }

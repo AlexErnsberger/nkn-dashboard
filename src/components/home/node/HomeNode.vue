@@ -28,7 +28,7 @@
     <table-plugin class="my-node-neighbor home-node-tablelist-size" :title="$t('homeNode.nodeNeighborTable.title')" :colHeader1="$t('homeNode.nodeNeighborTable.col1')" :colHeader2="$t('homeNode.nodeNeighborTable.col2')" :colHeader3="$t('homeNode.nodeNeighborTable.col3')" :data="checkNull(nodeDetail,'neighborNode', 'array')"></table-plugin>
     <table-plugin class="my-chrod-neighbor home-node-tablelist-size" :title="$t('homeNode.chordNeighborTable.title')" :colHeader1="$t('homeNode.chordNeighborTable.col1')" :colHeader2="$t('homeNode.chordNeighborTable.col2')" :colHeader3="$t('homeNode.chordNeighborTable.col3')" :data="checkNull(nodeDetail,'neighborChrod', 'array')"></table-plugin>
   </div>
-  <common-loading v-if="false"></common-loading>
+  <common-loading v-if="getLoading"></common-loading>
 </div>
 </template>
 
@@ -41,6 +41,7 @@ import NodeStatusPlugin from '@/components/home/commonmodules/NodeStatusPlugin.v
 import CommonLoading from '@/components/base/CommonLoading.vue'
 import checkNullMix from '@/assets/js/mixin/checkNull'
 import nodeSetMix from '@/assets/js/mixin/nodeSet'
+import loadingMix from '@/assets/js/mixin/loading'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -52,7 +53,7 @@ export default {
     NodeStatusPlugin,
     CommonLoading
   },
-  mixins: [checkNullMix, nodeSetMix],
+  mixins: [checkNullMix, nodeSetMix, loadingMix],
   data () {
     return {
       nodeDetail: null
@@ -65,11 +66,13 @@ export default {
   },
   methods: {
     getNodeDetail (node) {
+      this.setLoading(true)
       this.$http.nodeDetail(this, {nodeId: node.id}, (res) => {
         let data = res.data
         if (res.status) {
           this.nodeDetail = data
         }
+        this.setLoading(false)
       })
     }
   },
