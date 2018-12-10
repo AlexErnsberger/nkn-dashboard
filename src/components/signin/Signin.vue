@@ -35,7 +35,6 @@ export default {
         account: this.account,
         password: this.password
       }, (data) => {
-        console.log(data)
         if (data.status) {
           this.setReqKey(data.data.reqKey)
           this.$router.push({name: this.$namespace.HOME})

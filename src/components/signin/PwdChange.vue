@@ -50,7 +50,6 @@ export default {
         currentPassword: this.currentPassword,
         newPassword: this.newPassword
       }, (data) => {
-        console.log(data)
         if (data.status) {
           this.setResInfo({content: `${this.$t('pwdChange.successModify')}`})
           this.signIn()
