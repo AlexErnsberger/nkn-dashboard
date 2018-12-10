@@ -118,7 +118,7 @@ const nodeWalletInfo = {
 const nodeWalletTransaction = {
   status: true,
   data: {
-    num: Random.integer(1, 3),
+    sum: 8,
     transactionList: transactionList()
   },
   errmsg: Random.string()
@@ -127,7 +127,7 @@ const nodeWalletTransaction = {
 const nodeWalletMining = {
   status: true,
   data: {
-    sum: Random.integer(1, 3),
+    sum: 8,
     miningList: miningList()
   },
   errmsg: Random.string()

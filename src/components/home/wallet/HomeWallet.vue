@@ -11,18 +11,18 @@
   <div class="nkn-transfer home-info-seperate">
     <block-plugin :title="$t('homeWallet.transfer.title')"></block-plugin>
     <div class="nkn-transfer-input">
-      <input-item :label="$t('homeWallet.transfer.addressInput')" v-model="toAddr" class="home-wallet-tansfer-input-width" :size="55" homeStyle></input-item>
-      <input-item :label="$t('homeWallet.transfer.amountInput')" v-model="tranferNum" :unit="$t('unit.NKN')" class="home-wallet-tansfer-input-width" :size="55"  homeStyle></input-item>
+      <input-item :label="$t('homeWallet.transfer.addressInput')" v-model="toAddr" class="home-wallet-tansfer-input-width" :size="55" :errorInfo="addrErr" homeStyle></input-item>
+      <input-item :label="$t('homeWallet.transfer.amountInput')" v-model="tranferNum" :unit="$t('unit.NKN')" class="home-wallet-tansfer-input-width" :errorInfo="transferErr" :size="55"  homeStyle></input-item>
     </div>
     <div class="nkn-tranfer-commit">
       <button-plugin @click.native="transferConfirm">{{$t('homeWallet.transfer.btn')}}</button-plugin>
     </div>
   </div>
   <div class="transfer-history home-wallet-tablelist-height home-info-seperate">
-    <table-plugin :title="$t('homeWallet.transferHistoryTable.title')" :colHeader1="$t('homeWallet.transferHistoryTable.col1')" :colHeader2="$t('homeWallet.transferHistoryTable.col2')" :colHeader3="$t('homeWallet.transferHistoryTable.col3')" :colHeader4="$t('homeWallet.transferHistoryTable.col4')" :data="testTableList" :dataSum="txSum" :eachPageSum="8" needSep></table-plugin>
+    <table-plugin :title="$t('homeWallet.transferHistoryTable.title')" :colHeader1="$t('homeWallet.transferHistoryTable.col1')" :colHeader2="$t('homeWallet.transferHistoryTable.col2')" :colHeader3="$t('homeWallet.transferHistoryTable.col3')" :colHeader4="$t('homeWallet.transferHistoryTable.col4')" :data="testTableList" :dataSum="txSum" needSep></table-plugin>
   </div>
   <div class="mining-reward home-wallet-tablelist-height home-info-seperate">
-    <table-plugin :title="$t('homeWallet.miningRewardTable.title')" :colHeader1="$t('homeWallet.miningRewardTable.col1')" :colHeader2="$t('homeWallet.miningRewardTable.col2')" :colHeader3="$t('homeWallet.miningRewardTable.col3')" :colHeader4="$t('homeWallet.miningRewardTable.col4')" :data="testRewardList" :dataSum="miningSum" :eachPageSum="8" needSep></table-plugin>
+    <table-plugin :title="$t('homeWallet.miningRewardTable.title')" :colHeader1="$t('homeWallet.miningRewardTable.col1')" :colHeader2="$t('homeWallet.miningRewardTable.col2')" :colHeader3="$t('homeWallet.miningRewardTable.col3')" :colHeader4="$t('homeWallet.miningRewardTable.col4')" :data="testRewardList" :dataSum="miningSum" needSep></table-plugin>
   </div>
   <common-dialog v-model="transfer">
     <span slot="dialog-header-text">{{$t('homeWallet.transfer.title')}}</span>
@@ -61,14 +61,6 @@ export default {
     CommonLoading
   },
   mixins: [checkNullMix, nodeSetMix],
-  mounted () {
-    if (this.currentNode) {
-      let node = this.currentNode
-      this.getNodeWallet(node)
-      this.getNodeWalletMining(node)
-      this.getNodeWalletTransaction(node)
-    }
-  },
   data () {
     return {
       txSum: 0,
@@ -78,12 +70,22 @@ export default {
       testTableList: [],
       testRewardList: [],
       toAddr: '',
+      addrErr: '',
       tranferNum: '',
+      transferErr: '',
       wpass: ''
     }
   },
   methods: {
     transferConfirm () {
+      if (!this.toAddr) {
+        this.addrErr = 'please enter a valid address!'
+        return
+      }
+      if (!this.tranferNum) {
+        this.transferErr = 'please enter the amount of transfer!'
+        return
+      }
       this.transfer = true
     },
     getNodeWallet (node) {
@@ -98,9 +100,9 @@ export default {
         }
       })
     },
-    getNodeWalletTransaction (node) {
+    getNodeWalletTransaction (node, pageNo) {
       this.$http.nodeWalletTransaction(this, {
-        pageNo: 1,
+        pageNo: pageNo,
         nodeId: node.id
       }, (res) => {
         let data = res.data
@@ -112,9 +114,9 @@ export default {
         }
       })
     },
-    getNodeWalletMining (node) {
+    getNodeWalletMining (node, pageNo) {
       this.$http.nodeWalletMining(this, {
-        pageNo: 1,
+        pageNo: pageNo,
         nodeId: node.id
       }, (res) => {
         let data = res.data
@@ -153,6 +155,14 @@ export default {
         this.getNodeWalletMining(node)
         this.getNodeWalletTransaction(node)
       }
+    }
+  },
+  mounted () {
+    if (this.currentNode) {
+      let node = this.currentNode
+      this.getNodeWallet(node)
+      this.getNodeWalletMining(node, 1)
+      this.getNodeWalletTransaction(node, 1)
     }
   }
 }

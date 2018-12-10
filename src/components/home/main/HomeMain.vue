@@ -27,7 +27,7 @@ import NodePlugin from '@/components/home/plugins/NodePlugin.vue'
 import NodeStatusPlugin from '@/components/home/commonmodules/NodeStatusPlugin.vue'
 import CommonLoading from '@/components/base/CommonLoading.vue'
 import checkNullMix from '@/assets/js/mixin/checkNull'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
@@ -38,10 +38,6 @@ export default {
     CommonLoading
   },
   mixins: [checkNullMix],
-  mounted () {
-    this.$store.commit('setLoading', true)
-    this.reqBatchHandle()
-  },
   data () {
     return {
       myBalance: '',
@@ -54,6 +50,9 @@ export default {
     })
   },
   methods: {
+    ...mapMutations([
+      'setLoading', 'setGlobalNKNInfo', 'setNodeInfo', 'setLoading'
+    ]),
     getMyInfo () {
       this.$http.myInfo(this, (res) => {
         if (res.status) {
@@ -69,7 +68,7 @@ export default {
       this.$http.globalInfo(this, (res) => {
         if (res.status) {
           let data = res.data
-          this.$store.commit('setGlobalNKNInfo', data)
+          this.setGlobalNKNInfo(data)
         } else {
           alert('its globalInfo')
         }
@@ -79,7 +78,7 @@ export default {
       this.$http.myNodeInfo(this, (res) => {
         if (res.status) {
           let data = res.data
-          this.$store.commit('setNodeInfo', data)
+          this.setNodeInfo(data)
         } else {
           alert('its myNodeInfo')
         }
@@ -87,9 +86,13 @@ export default {
     },
     reqBatchHandle () {
       this.$http.reqBatch(this, [this.getMyInfo(), this.getMyNodeInfo(), this.getGlobalInfo()], () => {
-        this.$store.commit('setLoading', false)
+        this.setLoading(false)
       })
     }
+  },
+  mounted () {
+    this.setLoading(true)
+    this.reqBatchHandle()
   }
 }
 </script>

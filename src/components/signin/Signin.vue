@@ -9,6 +9,7 @@
 <script>
 import InputItem from '@/components/signin/plugins/InputItem.vue'
 import ButtonItem from '@/components/signin/plugins/ButtonItem.vue'
+import { mapMutations } from 'vuex'
 export default {
   components: {
     InputItem,
@@ -22,6 +23,9 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'setReqKey'
+    ]),
     login () {
       if (!this.password || this.password.length < 8) {
         this.errorInfo = this.$t('signIn.pwdErrorInfo')
@@ -33,7 +37,7 @@ export default {
       }, (data) => {
         console.log(data)
         if (data.status) {
-          this.$store.commit('setReqKey', data.data.reqKey)
+          this.setReqKey(data.data.reqKey)
           this.$router.push({name: this.$namespace.HOME})
         } else {
           alert(data.errMsg)
@@ -46,7 +50,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less" scoped>
-
-</style>

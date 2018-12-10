@@ -19,12 +19,12 @@
 <script>
 export default {
   props: {
-    dataSum: Number,
-    eachPageSum: Number
+    dataSum: Number
   },
   data () {
     return {
-      currentPage: 1
+      currentPage: 1,
+      eachPageSum: 8
     }
   },
   methods: {
@@ -32,29 +32,32 @@ export default {
       if (this.currentPage === 1) {
         return
       }
-      this.$emit('getData', 0, this.eachPageSum - 1)
+      // this.$emit('getData', 0, this.eachPageSum - 1)
       this.currentPage = 1
+      this.$emit('getData', this.currentPage)
     },
     lastPage () {
       if (this.currentPage === this.pageSum) {
         return
       }
-      this.$emit('getData', this.eachPageSum * (this.pageSum - 1), this.dataSum - 1)
+      // this.$emit('getData', this.eachPageSum * (this.pageSum - 1), this.dataSum - 1)
       this.currentPage = this.pageSum
+      this.$emit('getData', this.currentPage)
     },
     previousPage () {
       if (this.currentPage === 1) {
         return
       }
-      this.$emit('getData', (this.currentPage - 2) * this.eachPageSum, (this.currentPage - 1) * this.eachPageSum - 1)
-      this.currentPage -= 1
+      // this.$emit('getData', (this.currentPage - 2) * this.eachPageSum, (this.currentPage - 1) * this.eachPageSum - 1)
+      this.$emit('getData', --this.currentPage)
     },
     nextPage () {
       if (this.currentPage === this.pageSum) {
         return
       }
-      this.$emit('getData', this.currentPage * this.eachPageSum, (this.currentPage + 1) * this.eachPageSum - 1)
-      this.currentPage += 1
+      // this.$emit('getData', this.currentPage * this.eachPageSum, (this.currentPage + 1) * this.eachPageSum - 1)
+      // this.currentPage += 1
+      this.$emit('getData', ++this.currentPage)
     }
   },
   computed: {

@@ -15,7 +15,7 @@
     </table>
   </div>
   <div class="table-separate" v-if="needSep">
-    <table-separate-plugin :dataSum="dataSum" :eachPageSum="eachPageSum" @getData="handleData"></table-separate-plugin>
+    <table-separate-plugin :dataSum="dataSum"  @getData="handleData"></table-separate-plugin>
   </div>
 </div>
 </template>
@@ -33,7 +33,6 @@ export default {
     title: String,
     data: Array,
     dataSum: Number,
-    eachPageSum: Number,
     needSep: Boolean,
     colHeader1: String,
     colHeader2: String,
@@ -46,8 +45,9 @@ export default {
     }
   },
   methods: {
-    handleData (start, end) {
+    handleData (pageNo) {
       // this.currentData = this.data.slice(start, end)
+      this.$emit('getData', pageNo)
     }
   }
 }
