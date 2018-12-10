@@ -25,7 +25,9 @@ module.exports = merge(base, {
     currentPwdLabel: 'CURRENT PASSWORD',
     newPwdLabel: 'NEW PASSWORD',
     confirmPwdLabel: 'CONFIRM NEW PASSWORD',
-    confirmPwdErrorInfo: 'The password for the two input is inconsistent!'
+    confirmPwdErrorInfo: 'The password for the two input is inconsistent!',
+    confirmPwdEqual: 'The new password cannot be the same as the old one!',
+    successModify: 'Password modification succeeded!'
   },
   homeNav: {
     tabHome: 'Home',
@@ -56,7 +58,10 @@ module.exports = merge(base, {
     PersistFinished: 'PersistFinished',
     Stopped: 'Stopped',
     nodeAdd: 'Add node',
-    nodeDel: 'Delete node'
+    nodeDel: 'Delete node',
+    nodeAddPrefix: 'A new node',
+    nodeAddSuffix: 'has been successfully created!',
+    nodeDelMsg: 'has been successfully deleted!'
   },
   homeWallet: {
     walletAddress: 'Wallet Address',
@@ -64,9 +69,13 @@ module.exports = merge(base, {
     transfer: {
       title: 'Transfer',
       addressInput: 'transfer Address',
+      addressInputErr: 'please enter a valid address!',
       amountInput: 'transfer Amount',
+      amountInputErr: 'please enter the amount of transfer!',
       walletPwd: 'wallet password',
-      btn: 'Transfer'
+      pwdErr: 'Please enter your wallet password!',
+      btn: 'Transfer',
+      success: 'Successful transfer!'
     },
     transferHistoryTable: {
       title: 'Transaction History',

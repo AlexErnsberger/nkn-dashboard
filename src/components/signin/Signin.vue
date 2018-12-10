@@ -46,6 +46,8 @@ export default {
     },
     changePass () {
       this.$emit('linkTo', this.$namespace.SIGNIN_PWDCHANGE)
+      // 返回页面顶部
+      document.documentElement.scrollTop = document.body.scrollTop = 0
     }
   }
 }

@@ -11,6 +11,8 @@
 <script>
 import InputItem from '@/components/signin/plugins/InputItem.vue'
 import ButtonItem from '@/components/signin/plugins/ButtonItem.vue'
+import { mapMutations } from 'vuex'
+
 export default {
   components: {
     InputItem,
@@ -27,6 +29,9 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'setResInfo'
+    ]),
     pwdChange () {
       if (!this.currentPassword || this.currentPassword.length < 8 || this.newPassword.length < 8) {
         this.lengthErrorInfo = this.$t('signIn.pwdErrorInfo')
@@ -37,7 +42,7 @@ export default {
         return
       }
       if (this.currentPassword === this.newPassword) {
-        this.confilctErrorInfo = 'old and new passwords cannot equally'
+        this.confilctErrorInfo = this.$t('pwdChange.confirmPwdEqual')
         return
       }
       this.$http.pwdc(this, {
@@ -47,7 +52,7 @@ export default {
       }, (data) => {
         console.log(data)
         if (data.status) {
-          alert('change password success')
+          this.setResInfo({content: `${this.$t('pwdChange.successModify')}`})
           this.signIn()
         } else {
           alert(data.errMsg)
@@ -56,6 +61,8 @@ export default {
     },
     signIn () {
       this.$emit('linkTo', this.$namespace.SIGNIN)
+      // 返回页面顶部
+      document.documentElement.scrollTop = document.body.scrollTop = 0
     }
   }
 }

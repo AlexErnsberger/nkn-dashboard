@@ -25,7 +25,9 @@ module.exports = merge(base, {
     currentPwdLabel: '当前密码',
     newPwdLabel: '新密码',
     confirmPwdLabel: '再次输入新密码',
-    confirmPwdErrorInfo: '两次输入的密码不一致！'
+    confirmPwdErrorInfo: '两次输入的密码不一致！',
+    confirmPwdEqual: '新密码不能和老密码一致！',
+    successModify: '密码修改成功！'
   },
   homeNav: {
     tabHome: '主页',
@@ -56,7 +58,10 @@ module.exports = merge(base, {
     PersistFinished: '完成同步',
     Stopped: '终止',
     nodeAdd: '新增节点',
-    nodeDel: '删除节点'
+    nodeDel: '删除节点',
+    nodeAddPrefix: '节点',
+    nodeAddSuffix: '创建成功！',
+    nodeDelMsg: '删除成功！'
   },
   homeWallet: {
     walletAddress: '钱包地址',
@@ -64,9 +69,13 @@ module.exports = merge(base, {
     transfer: {
       title: '转账',
       addressInput: '目标地址',
+      addressInputErr: '请输入有效的转账地址！',
       amountInput: '转账数量',
+      amountInputErr: '请输入有效的转账数量!',
       walletPwd: '钱包密码',
-      btn: '确定'
+      pwdErr: '请输入您的钱包密码！',
+      btn: '确定',
+      success: '转账成功!'
     },
     transferHistoryTable: {
       title: '交易历史记录',

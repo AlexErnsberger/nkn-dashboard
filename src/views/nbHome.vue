@@ -42,8 +42,8 @@ export default {
 <style lang="less" scoped>
 .nb-content-container{
   .home-common-flex;
-}
-.nb-home-content {
-  width: 928px;
+  .nb-home-content {
+    width: 928px;
+  }
 }
 </style>

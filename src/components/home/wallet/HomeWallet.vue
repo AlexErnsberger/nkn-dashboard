@@ -26,7 +26,7 @@
   </div>
   <common-dialog v-model="transfer">
     <span slot="dialog-header-text">{{$t('homeWallet.transfer.title')}}</span>
-    <dialog-input :placeholder="$t('homeWallet.transfer.walletPwd')" v-model="wpass" slot="dialog-body-content"></dialog-input>
+    <dialog-input :placeholder="$t('homeWallet.transfer.walletPwd')" v-model="wpass" :errorInfo="wpassErr" slot="dialog-body-content"></dialog-input>
     <dialog-button type="danger" slot="dialog-footer-btn" @click.native="NKNTransfer">{{$t('homeWallet.transfer.btn')}}</dialog-button>
   </common-dialog>
   <common-loading v-if="getLoading"></common-loading>
@@ -47,6 +47,7 @@ import CommonLoading from '@/components/base/CommonLoading.vue'
 import checkNullMix from '@/assets/js/mixin/checkNull'
 import nodeSetMix from '@/assets/js/mixin/nodeSet'
 import loadingMix from '@/assets/js/mixin/loading'
+import { mapMutations } from 'vuex'
 
 export default {
   components: {
@@ -74,17 +75,21 @@ export default {
       addrErr: '',
       tranferNum: '',
       transferErr: '',
-      wpass: ''
+      wpass: '',
+      wpassErr: ''
     }
   },
   methods: {
+    ...mapMutations([
+      'setResInfo'
+    ]),
     transferConfirm () {
       if (!this.toAddr) {
-        this.addrErr = 'please enter a valid address!'
+        this.addrErr = this.$t('homeWallet.transfer.addressInputErr')
         return
       }
       if (!this.tranferNum) {
-        this.transferErr = 'please enter the amount of transfer!'
+        this.transferErr = this.$t('homeWallet.transfer.amountInputErr')
         return
       }
       this.transfer = true
@@ -130,14 +135,18 @@ export default {
       })
     },
     NKNTransfer () {
+      if (!this.wpass) {
+        this.wpassErr = this.$t('homeWallet.transfer.pwdErr')
+        return
+      }
       this.$http.walletTransfer(this, {
         to: this.toAddr,
         num: this.tranferNum,
         wpass: this.wpass
       }, (res) => {
         if (res.status) {
-          alert(res.data)
           this.transfer = false
+          this.setResInfo({content: `${this.$t('homeWallet.transfer.success')}`})
           this.clearInput()
         }
       })

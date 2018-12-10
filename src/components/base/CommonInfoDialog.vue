@@ -42,7 +42,7 @@ export default {
   display: none;box-sizing: border-box;
   position: fixed;
   z-index: 2;
-  top: 16px;right: 8%;
+  top: 16px;right: calc(50% - 265px);
   width: 530px;height: 64px;
   padding: 20px;
   background: @common-bg-color;

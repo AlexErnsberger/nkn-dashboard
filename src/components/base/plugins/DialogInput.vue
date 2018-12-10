@@ -1,5 +1,8 @@
 <template>
-<input class="dialog-input" :type="type" :placeholder="placeholder">
+  <div>
+    <input class="dialog-input" :type="type" :placeholder="placeholder" :value="value" @input="handleInput">
+    <div class="item-errorinfo" :class="{'item-errorInfo-show':errorInfo}">{{errorInfo}}</div>
+  </div>
 </template>
 
 <script>
@@ -10,6 +13,15 @@ export default {
     },
     placeholder: {
       type: String
+    },
+    errorInfo: {
+      type: String
+    },
+    value: [String, Number]
+  },
+  methods: {
+    handleInput (e) {
+      this.$emit('input', e.target.value)
     }
   }
 }
@@ -34,5 +46,15 @@ export default {
   &:focus {
     box-shadow: 0 0 0 2px #89bdf5;
   }
+}
+.item-errorinfo{
+    visibility: hidden;
+    position: absolute;
+    color: #c22;
+    font-size: 12px;
+    font-weight: 300;
+  }
+.item-errorInfo-show{
+  visibility: visible;
 }
 </style>

@@ -70,7 +70,7 @@ export default {
         let data = res.data
         if (res.status) {
           this.addNodeList(data.node)
-          this.setResInfo({content: `A new node ${data.node.name} has been successfully created!`})
+          this.setResInfo({content: `${this.$t('nodeCommon.nodeAddPrefix')} ${data.node.name} ${this.$t('nodeCommon.nodeAddSuffix')}`})
         }
       })
     },
@@ -83,7 +83,7 @@ export default {
           console.log(res)
           if (res.status) {
             this.delNode(this.currentNode)
-            this.setResInfo({content: `${this.currentNode.name} has been successfully deleted!`})
+            this.setResInfo({content: `${this.currentNode.name} ${this.$t('nodeCommon.nodeDelMsg')}`})
             if (nlists && nlists.length > 0) {
               this.setCurrentNode(nlists[0])
             } else {

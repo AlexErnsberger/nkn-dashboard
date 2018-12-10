@@ -35,11 +35,8 @@ export default {
   },
   methods: {
     handleClick (e) {
-      let box = document.querySelector('.dialog-message-box')
-      if (box) {
-        if (!box.contains(e.target)) {
-          this.$emit('input', false)
-        }
+      if (e.target.classList.contains('nb-dialog')) {
+        this.hiddenDialog()
       }
     },
     hiddenDialog () {
