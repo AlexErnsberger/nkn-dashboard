@@ -29,7 +29,7 @@
   <common-dialog v-model="transfer">
     <span slot="dialog-header-text">{{$t('homeWallet.transfer.title')}}</span>
     <dialog-input :placeholder="$t('homeWallet.transfer.walletPwd')" v-model="wpass" :errorInfo="wpassErr" slot="dialog-body-content"></dialog-input>
-    <dialog-button type="danger" slot="dialog-footer-btn" @click.native="NKNTransfer">{{$t('homeWallet.transfer.btn')}}</dialog-button>
+    <dialog-button type="primary" slot="dialog-footer-btn" @click.native="NKNTransfer">{{$t('homeWallet.transfer.btn')}}</dialog-button>
   </common-dialog>
   <common-loading v-if="getLoading"></common-loading>
 </div>
@@ -213,7 +213,7 @@ export default {
     text-align: right;
     margin-top: 10px;
     position: absolute;
-    right: 20px; bottom: 5px;
+    right: 20px; bottom: 25px;
   }
 }
 </style>

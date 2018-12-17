@@ -12,7 +12,7 @@
     <span class="customer-title">{{title}}{{$t('colon')}}</span>
     <node-slide-plugin></node-slide-plugin>
   </div>
-  <div v-else-if="type === 'nodeAdd'" class="node-func" @click="addNode">
+  <div v-else-if="type === 'nodeAdd'" class="node-func" @click="addNodeHandler">
     <img class="node-icon" src="../../../assets/img/icon/add.png">
     <span class="node-title">{{title}}</span>
   </div>
@@ -26,7 +26,12 @@
       <img src="../../../assets/img/infobox/warning.png" class="del-btn-img">
       <span class="del-btn-text">Are you sure to delete <strong v-if="currentNode">{{currentNode.name + "#"}}</strong></span>
     </div>
-    <dialog-button slot="dialog-footer-btn" type="danger" @click.native="delCurrentNode">delete</dialog-button>
+    <dialog-button slot="dialog-footer-btn" type="primary" @click.native="delCurrentNode">delete</dialog-button>
+  </common-dialog>
+  <common-dialog v-model="add">
+    <span slot="dialog-header-text">Please type you IP for new node </span>
+    <dialog-input placeholder="node IP" v-model="ip" :errorInfo="ipErr" slot="dialog-body-content"></dialog-input>
+    <dialog-button type="primary" slot="dialog-footer-btn" @click.native="addNode">add</dialog-button>
   </common-dialog>
 </div>
 </template>
@@ -35,10 +40,11 @@
 import NodeSlidePlugin from '@/components/home/plugins/NodeSlidePlugin'
 import CommonDialog from '@/components/base/CommonDialog'
 import DialogButton from '@/components/base/plugins/DialogButton.vue'
+import DialogInput from '@/components/base/plugins/DialogInput.vue'
 import { mapMutations, mapGetters } from 'vuex'
 export default {
   components: {
-    NodeSlidePlugin, CommonDialog, DialogButton
+    NodeSlidePlugin, CommonDialog, DialogButton, DialogInput
   },
   props: {
     type: String,
@@ -49,7 +55,10 @@ export default {
   },
   data () {
     return {
-      del: false
+      del: false,
+      add: false,
+      ip: '',
+      ipErr: ''
     }
   },
   computed: {
@@ -65,13 +74,24 @@ export default {
     ...mapMutations([
       'addNodeList', 'setCurrentNode', 'delNode', 'setResInfo'
     ]),
+    addNodeHandler () {
+      this.add = true
+    },
     addNode () {
-      this.$http.addNode(this, (res) => {
+      if (!this.ip) {
+        this.ipErr = 'illegal ip address'
+        return
+      }
+      this.$http.addNode(this, {
+        nodeIP: this.ip
+      }, (res) => {
         let data = res.data
         if (res.status) {
           this.addNodeList(data.node)
           this.setResInfo({content: `${this.$t('nodeCommon.nodeAddPrefix')} ${data.node.name} ${this.$t('nodeCommon.nodeAddSuffix')}`})
         }
+        this.add = false
+        this.ip = ''
       })
     },
     delCurrentNode () {
@@ -80,7 +100,6 @@ export default {
         this.$http.delNode(this, {
           nodeId: this.currentNode.id
         }, (res) => {
-          console.log(res)
           if (res.status) {
             this.delNode(this.currentNode)
             this.setResInfo({content: `${this.currentNode.name} ${this.$t('nodeCommon.nodeDelMsg')}`})
@@ -90,6 +109,7 @@ export default {
               this.setCurrentNode(null)
             }
           }
+          this.del = false
         })
       }
     },

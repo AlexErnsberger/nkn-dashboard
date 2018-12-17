@@ -32,7 +32,6 @@ export default {
   font-size: 14px;
   font-weight: 300;
   line-height: 1.5;
-  margin-bottom: 10px;
   padding: .5rem 1rem;
   color: #495057;
   background-color: #fff;

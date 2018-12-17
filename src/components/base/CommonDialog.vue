@@ -8,7 +8,7 @@
       <slot name="dialog-body-content"></slot>
     </dialog-content>
     <dialog-footer>
-      <dialog-button type="secondary" @click.native="hiddenDialog">{{$t('dialog.cancel')}}</dialog-button>
+      <dialog-button type="cancel" @click.native="hiddenDialog">{{$t('dialog.cancel')}}</dialog-button>
       <slot name="dialog-footer-btn"></slot>
     </dialog-footer>
   </div>

@@ -12,15 +12,16 @@
 
 <script>
 import SlidePlugin from '@/components/header/plugins/SlidePlugin.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   components: {
     SlidePlugin
   },
   methods: {
+    ...mapMutations(['setReqKey']),
     logOut () {
       this.$storage.logout()
-      this.$store.commit('setReqKey', '')
+      this.setReqKey('')
       this.$router.push({
         name: this.$namespace.SIGNIN.toLowerCase()
       })
@@ -28,7 +29,6 @@ export default {
     changeLang (lang) {
       this.$i18n.locale = lang
       this.$storage.setLanguage(lang)
-      this.$store.commit('local/setLang', lang)
     }
   },
   computed: {

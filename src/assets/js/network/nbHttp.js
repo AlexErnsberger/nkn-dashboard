@@ -91,8 +91,8 @@ let log = function (scope, param, success) {
   return postRequest(scope, '/log', param, success)
 }
 
-let addNode = function (scope, success) {
-  return postRequest(scope, '/addNode', {}, success)
+let addNode = function (scope, param, success) {
+  return postRequest(scope, '/addNode', param, success)
 }
 
 let delNode = function (scope, param, success) {

@@ -43,7 +43,7 @@ export default {
   }
 
   .table-content {
-    height: 300px;
+    height: 310px;
     overflow: auto;
     .scroll-bar-set;
 

@@ -1,5 +1,5 @@
 <template>
-<button class="dialog-btn" :class="[{'danger':type==='danger'},{'primary':type==='primary'},{'secondary':type==='secondary'}]">
+<button class="dialog-btn" :class="[{'primary':type==='primary'},{'cancel': type === 'cancel'}]">
     <slot></slot>
   </button>
 </template>
@@ -30,15 +30,18 @@ export default {
   color: white;
   pointer-events: auto;
   position: relative;
-  outline: none;border:none;
+  outline: none;
+  min-width: 90px;
   .mixin-button-hover;
 }
 
-.secondary {
-  background: #6c757d;
+.primary {
+  background: #318bec;
 }
 
-.danger {
-  background: #dc3545;
+.cancel {
+  background: #fff;
+  color: #666;
+  border-color: #D9D9D9;
 }
 </style>
