@@ -21,17 +21,17 @@
     <span class="node-title">{{title}}</span>
   </div>
   <common-dialog v-model="del">
-    <span slot="dialog-header-text">Warning</span>
+    <span slot="dialog-header-text">{{$t('nodeCommon.delDialogTitle')}}</span>
     <div slot="dialog-body-content">
       <img src="../../../assets/img/infobox/warning.png" class="del-btn-img">
-      <span class="del-btn-text">Are you sure to delete <strong v-if="currentNode">{{currentNode.name + "#"}}</strong></span>
+      <span class="del-btn-text">{{$t('nodeCommon.delDialogRemind')}} <strong v-if="currentNode">{{currentNode.name + "#"}}</strong></span>
     </div>
-    <dialog-button slot="dialog-footer-btn" type="primary" @click.native="delCurrentNode">delete</dialog-button>
+    <dialog-button slot="dialog-footer-btn" type="primary" @click.native="delCurrentNode">{{$t('nodeCommon.delDialogBtn')}}</dialog-button>
   </common-dialog>
   <common-dialog v-model="add">
-    <span slot="dialog-header-text">Please type you IP for new node </span>
-    <dialog-input placeholder="node IP" v-model="ip" :errorInfo="ipErr" slot="dialog-body-content"></dialog-input>
-    <dialog-button type="primary" slot="dialog-footer-btn" @click.native="addNode">add</dialog-button>
+    <span slot="dialog-header-text">{{$t('nodeCommon.addDialogTitle')}}</span>
+    <dialog-input :placeholder="$t('nodeCommon.addDialogInput')" v-model="ip" :errorInfo="ipErr" slot="dialog-body-content"></dialog-input>
+    <dialog-button type="primary" slot="dialog-footer-btn" @click.native="addNode">{{$t('nodeCommon.addDialogBtn')}}</dialog-button>
   </common-dialog>
 </div>
 </template>
@@ -79,7 +79,7 @@ export default {
     },
     addNode () {
       if (!this.ip) {
-        this.ipErr = 'illegal ip address'
+        this.ipErr = this.$t('nodeCommon.addDialogErr')
         return
       }
       this.$http.addNode(this, {
@@ -92,6 +92,7 @@ export default {
         }
         this.add = false
         this.ip = ''
+        this.ipErr = ''
       })
     },
     delCurrentNode () {

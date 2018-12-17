@@ -25,7 +25,6 @@ export default {
   font-size: 1rem;
   line-height: 1.5;
   border-radius: .25rem;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   margin-right: .25rem;
   color: white;
   pointer-events: auto;
